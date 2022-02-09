@@ -70,35 +70,35 @@
                                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     </div>
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active" data-bs-interval="1500">
+                                        <div class="carousel-item active" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic1.png" class="d-block w-100" alt="Knitting_pic">
                                         </div>
-                                        <div class="carousel-item" data-bs-interval="1500">
+                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic2.png" class="d-block w-100" alt="Knitting_pic">
                                         </div>
-                                        <div class="carousel-item" data-bs-interval="1500">
+                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic3.png" class="d-block w-100" alt="Knitting_pic">
                                         </div>
                                     </div>
                                 </div>
                                 <div id="carouselExampleControls" class="carousel slide p-0 d-sm-none" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
+                                        <div class="carousel-item active" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic_sm1.jpg" class="d-block w-100" alt="Knitting_pic">
                                         </div>
-                                        <div class="carousel-item">
+                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic_sm2.jpg" class="d-block w-100" alt="Knitting_pic">
                                         </div>
-                                        <div class="carousel-item">
+                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic_sm3.jpg" class="d-block w-100" alt="Knitting_pic">
                                         </div>
-                                        <div class="carousel-item">
+                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic_sm4.jpg" class="d-block w-100" alt="Knitting_pic">
                                         </div>
-                                        <div class="carousel-item">
+                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic_sm5.jpg" class="d-block w-100" alt="Knitting_pic">
                                         </div>
-                                        <div class="carousel-item">
+                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
                                             <img src="img/top_pic_sm6.jpg" class="d-block w-100" alt="Knitting_pic">
                                         </div>
                                     </div>

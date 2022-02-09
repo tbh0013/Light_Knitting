@@ -118,7 +118,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <p class="more_item_button mt-5 text-center"><button type="button" class="bg-white border-3 px-5 py-2">more item</button></p>
+                        <p class="more_item_button mt-5 text-center"><button type="button" class="bg-white border-3 px-5 py-2" style="border-radius: 5px;">more item</button></p>
                     </div><!--#item_article_containe-->
 
                     <div id="sub_category" class="container border-bottom mb-3">
