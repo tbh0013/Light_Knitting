@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width",initial-scale="1">
+        <link href="css/slick.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
         <title>Light Knitting</title>
     </head>
 
@@ -123,6 +125,16 @@
                     <div id="top_lineup_container" class="container-fluid my-5  p-0 text-center">
                         <div class="jumbotron pb-5" style="background-image: url(img/top_bg.png);">
                             <h2 id="top_lineup" class="text-decoration-underline">LINE UP</h2>
+                            <!---------------- jQUeryスライドショーver ------------------------->
+                            <ul class="container lineup_slide slick-slider">
+                                <li><img class="img-fluid p-1" alt="画像1" src="img/top_lineup1.jpg" /></li>
+                                <li><img class="img-fluid p-1" alt="画像2" src="img/top_lineup2.jpg" /></li>
+                                <li><img class="img-fluid p-1" alt="画像3" src="img/top_lineup3.jpg" /></li>
+                                <li><img class="img-fluid p-1" alt="画像1" src="img/top_lineup1.jpg" /></li>
+                                <li><img class="img-fluid p-1" alt="画像2" src="img/top_lineup2.jpg" /></li>
+                                <li><img class="img-fluid p-1" alt="画像3" src="img/top_lineup3.jpg" /></li>
+                            </ul>
+                            <!-----------------スライドショー無しver-----------------------------
                             <div class=" container row mx-auto">
                                 <div class="col p-0 m-2">
                                     <a href="item_detail.html"><img src="img/top_lineup1.jpg" class="img-fluid p-0"></a>
@@ -133,9 +145,11 @@
                                 <div class="col p-0 m-2">
                                     <a href="item_detail.html"><img src="img/top_lineup3.jpg" class="img-fluid p-0"></a>
                                 </div>
-                            </div>
+                            </div> 
+                            --------------------------------------------------------------------->
                         </div>
                     </div><!--#top_lineUp_container-->
+
 
                     <div id="top_news_container" class="container text-center my-5">
                         <h2 id="top_news" class="text-decoration-underline">NEWS</h2>
@@ -157,9 +171,9 @@
                     </div><!--#top_news_container-->
 
                     <div id="top_movie_container" class="container-fluid p-0 text-center my-5">
-                        <div class="jumbotron pb-5" style="background-image: url(img/top_bg.png);">
-                            <h2 id="top_news" class="text-decoration-underline">MOVIE</h2>
-                            <img src="img/movie.jpg" class="img-fluid p-0">
+                        <div class="pb-5" style="background-image: url(img/top_bg.png);">
+                            <h2 id="top_movie" class="text-decoration-underline">MOVIE</h2>
+                            <video src="img/knitting_movie.mp4" loop autoplay muted class="container w-75"></video>
                         </div>
                     </div><!--#top_movie_container-->
 
@@ -192,6 +206,8 @@
             </footer>
         </div><!--#wrapper-->
 
+        <script type="text/javascript" src="js/slick.min.js"></script>
+        <script type="text/javascript" src="js/slide.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </body>
 </html>
