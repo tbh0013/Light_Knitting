@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-02-08 07:31:05
+-- 生成日時: 2022-02-13 00:44:36
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.0.11
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- データベース: `knit_shop`
+-- データベース: `knit_shop_test`
 --
 
 -- --------------------------------------------------------
@@ -87,12 +87,12 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`news_id`, `date`, `title`, `text`, `image_path`, `url`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, '2021-12-01 00:00:00', 'instgram開始', 'instgram公式アカウント始めました！', 'C:/xampp/htdocs/Light_Knitting/img/news_pic1.png', NULL, 0, '2022-02-08 02:37:52', '2022-02-08 06:21:51'),
-(2, '2021-11-01 00:00:00', 'socks追加', 'socks追加しました！', 'C:/xampp/htdocs/Light_Knitting/img/news_pic2.jpg', NULL, 0, '2022-02-08 03:13:40', '2022-02-08 06:22:05'),
-(3, '2021-10-01 00:00:00', 'bag追加', 'bag追加しました！', 'C:/xampp/htdocs/Light_Knitting/img/news_pic3.jpg', NULL, 0, '2022-02-08 03:26:09', '2022-02-08 06:22:20'),
-(4, '2021-09-01 00:00:00', 'gloves追加', 'gloves追加しました！', 'C:/xampp/htdocs/Light_Knitting/img/news_pic4.jpg', NULL, 0, '2022-02-08 03:29:26', '2022-02-08 06:22:35'),
-(5, '2021-08-01 00:00:00', 'knit hat追加', 'knit hat追加しました！', 'C:/xampp/htdocs/Light_Knitting/img/news_pic5.jpg', NULL, 0, '2022-02-08 03:31:47', '2022-02-08 06:23:05'),
-(6, '2021-07-01 00:00:00', 'twitter開始', 'Twitter公式アカウント始めました！', 'C:/xampp/htdocs/Light_Knitting/img/news_pic6.png', NULL, 0, '2022-02-08 03:31:47', '2022-02-08 06:23:21');
+(1, '2021-12-01 00:00:00', 'instgram開始', 'instgram公式アカウント始めました！', './img/news_pic1.png', NULL, 0, '2022-02-08 02:37:52', '2022-02-12 14:29:23'),
+(2, '2021-11-01 00:00:00', 'socks追加', 'socks追加しました！', './img/news_pic2.jpg', NULL, 0, '2022-02-08 03:13:40', '2022-02-12 14:29:34'),
+(3, '2021-10-01 00:00:00', 'bag追加', 'bag追加しました！', './img/news_pic3.jpg', NULL, 0, '2022-02-08 03:26:09', '2022-02-12 14:29:46'),
+(4, '2021-09-01 00:00:00', 'gloves追加', 'gloves追加しました！', './img/news_pic4.jpg', NULL, 0, '2022-02-08 03:29:26', '2022-02-12 14:29:57'),
+(5, '2021-08-01 00:00:00', 'knit hat追加', 'knit hat追加しました！', './img/news_pic5.jpg', NULL, 0, '2022-02-08 03:31:47', '2022-02-12 14:30:07'),
+(6, '2021-07-01 00:00:00', 'twitter開始', 'Twitter公式アカウント始めました！', './img/news_pic6.png', NULL, 0, '2022-02-08 03:31:47', '2022-02-12 14:30:17');
 
 -- --------------------------------------------------------
 
@@ -153,20 +153,20 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `name`, `price`, `category_id`, `image_path`, `description`, `is_line_up`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, 'red socks', 2000, 1, 'C:/xampp/htdocs/Light_Knitting/img/red_socks.jpg', '赤い靴下', 0, 0, '2022-02-08 05:03:10', '2022-02-08 06:17:04'),
-(2, ' border socks', 2000, 1, 'C:/xampp/htdocs/Light_Knitting/img/border_socks.jpg', 'ボーダー靴下', 0, 0, '2022-02-08 05:09:07', '2022-02-08 06:17:31'),
-(3, ' orange socks', 2000, 1, 'C:/xampp/htdocs/Light_Knitting/img/orange_socks.jpg', 'オレンジ色の靴下', 0, 0, '2022-02-08 05:18:33', '2022-02-08 06:17:50'),
-(4, ' chameleon socks', 2000, 1, 'C:/xampp/htdocs/Light_Knitting/img/chameleon_socks.jpg', '赤と青の靴下', 0, 0, '2022-02-08 05:18:33', '2022-02-08 06:18:09'),
-(5, ' blue socks', 2000, 1, 'C:/xampp/htdocs/Light_Knitting/img/blue_socks.jpg', '青の靴下', 0, 0, '2022-02-08 05:18:33', '2022-02-08 06:18:23'),
-(6, ' purple socks', 2000, 1, 'C:/xampp/htdocs/Light_Knitting/img/purple_socks.jpg', '紫の靴下', 0, 0, '2022-02-08 05:18:33', '2022-02-08 06:18:41'),
-(7, 'green&white knit hat', 4000, 2, 'C:/xampp/htdocs/Light_Knitting/img/green&white_knit_hat.jpg', '緑のニット帽と白のニット帽', 0, 0, '2022-02-08 05:37:50', '2022-02-08 06:18:56'),
-(8, 'Brown&purple gloves', 4000, 3, 'C:/xampp/htdocs/Light_Knitting/img/Brown&purple_gloves.jpg', '茶色の手袋と紫の手袋', 0, 0, '2022-02-08 05:42:25', '2022-02-08 06:19:11'),
-(9, 'green bag', 3000, 4, 'C:/xampp/htdocs/Light_Knitting/img/green_bag.jpg', '緑色のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-08 06:19:27'),
-(10, 'border bag', 3000, 4, 'C:/xampp/htdocs/Light_Knitting/img/border_bag.jpg', 'ボーダー柄のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-08 06:19:41'),
-(11, ' colorful bag', 3000, 4, 'C:/xampp/htdocs/Light_Knitting/img/colorful_bag.jpg', 'カラフル色のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-08 06:20:02'),
-(12, ' wood bag', 3000, 4, 'C:/xampp/htdocs/Light_Knitting/img/wood_bag.jpg', '麻のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-08 06:20:16'),
-(13, ' white bag', 3000, 4, 'C:/xampp/htdocs/Light_Knitting/img/white_bag.jpg', '白いカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-08 06:20:35'),
-(14, ' colorful stall', 3500, 5, 'C:/xampp/htdocs/Light_Knitting/img/colorful_stall.jpg', 'カラフル色のストール', 0, 0, '2022-02-08 05:50:38', '2022-02-08 06:20:47');
+(1, 'red socks', 2000, 1, './img/red_socks.jpg', '赤い靴下', 1, 0, '2022-02-08 05:03:10', '2022-02-12 02:21:38'),
+(2, ' border socks', 2000, 1, './img/border_socks.jpg', 'ボーダー靴下', 1, 0, '2022-02-08 05:09:07', '2022-02-12 10:03:48'),
+(3, ' orange socks', 2000, 1, './img/orange_socks.jpg', 'オレンジ色の靴下', 1, 0, '2022-02-08 05:18:33', '2022-02-12 10:04:05'),
+(4, ' chameleon socks', 2000, 1, './img/chameleon_socks.jpg', '赤と青の靴下', 0, 0, '2022-02-08 05:18:33', '2022-02-12 14:27:15'),
+(5, ' blue socks', 2000, 1, './img/blue_socks.jpg', '青の靴下', 0, 0, '2022-02-08 05:18:33', '2022-02-12 14:27:28'),
+(6, ' purple socks', 2000, 1, './img/purple_socks.jpg', '紫の靴下', 0, 0, '2022-02-08 05:18:33', '2022-02-12 14:27:39'),
+(7, 'green&white knit hat', 4000, 2, './img/green&white_knit_hat.jpg', '緑のニット帽と白のニット帽', 0, 0, '2022-02-08 05:37:50', '2022-02-12 14:27:50'),
+(8, 'Brown&purple gloves', 4000, 3, './img/Brown&purple_gloves.jpg', '茶色の手袋と紫の手袋', 0, 0, '2022-02-08 05:42:25', '2022-02-12 14:28:00'),
+(9, 'green bag', 3000, 4, './img/green_bag.jpg', '緑色のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-12 14:28:10'),
+(10, 'border bag', 3000, 4, './img/border_bag.jpg', 'ボーダー柄のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-12 14:28:20'),
+(11, ' colorful bag', 3000, 4, './img/colorful_bag.jpg', 'カラフル色のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-12 14:28:29'),
+(12, ' wood bag', 3000, 4, './img/wood_bag.jpg', '麻のカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-12 14:28:38'),
+(13, ' white bag', 3000, 4, './img/white_bag.jpg', '白いカバン', 0, 0, '2022-02-08 05:48:30', '2022-02-12 14:28:48'),
+(14, ' colorful stall', 3500, 5, './img/colorful_stall.jpg', 'カラフル色のストール', 0, 0, '2022-02-08 05:50:38', '2022-02-12 14:28:57');
 
 -- --------------------------------------------------------
 

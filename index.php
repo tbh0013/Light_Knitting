@@ -58,8 +58,10 @@ function lineup_list($lineup_code){
   全データ取得→新しい5件のみのデータを配列で取得
   →foreachで連想配列のdate(日付)とtext(内容)を取り出して表示
   ---------------------------------------------------------------------------------------------------------*/
+  $news_asc = $pdo->query("SELECT * FROM news ORDER BY date DESC");
+
   function news_list($news_list_code){
-    return "''.$news_list_code. '";
+    return "$news_list_code";
   }
   
   foreach($news_s as $news) {
@@ -69,5 +71,5 @@ function lineup_list($lineup_code){
   /*---------------------TODO:アイテムページ データベース連携メモ---------------------------------------------------
   ---------------------------------------------------------------------------------------------------------*/
 
-// require 'views/v_index.php';
+require 'views/v_index.php';
 ?>  
