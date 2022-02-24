@@ -37,12 +37,12 @@
                                         Items
                                         </a>
                                         <ul class="dropdown-menu border-0 p-0 text-center" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
-                                            <li><a class="dropdown-item" href="items.php">All</a></li>
-                                            <li><a class="dropdown-item" href="#">Knit hat</a></li>
-                                            <li><a class="dropdown-item" href="#">Socks</a></li>
-                                            <li><a class="dropdown-item" href="#">Gloves</a></li>
-                                            <li><a class="dropdown-item" href="#">Bag</a></li>
-                                            <li><a class="dropdown-item" href="#">Stall</a></li>
+                                            <li><a class="dropdown-item" href="items.php">ALL</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=1">socks</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=2">knit hat</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=3">gloves</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=4">bag</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=5">stall</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -118,7 +118,7 @@
                     </div>
                     <h2 id="top_about" class="container text-center border border-4 border-dark my-5 fs-4">
                         Light Knittingは編み物ハンドメイドの製品を紹介・販売しております。<br>
-                        <div class="text-center"><a class="top_detail" href="about.html">詳しくはこちら</a></div>
+                        <div class="text-center"><a class="top_detail" href="about.php">詳しくはこちら</a></div>
                     </h2>
 
 
@@ -126,14 +126,19 @@
                         <div class="jumbotron pb-5" style="background-image: url(img/top_bg.png);">
                             <h2 id="top_lineup" class="text-decoration-underline">LINE UP</h2>
                             <!---------------- jQUeryスライドショーver ------------------------->
+                            
                             <ul class="container lineup_slide slick-slider">
-                                <li><img class="img-fluid p-1" alt="画像1" src="img/top_lineup1.jpg" /></li>
-                                <li><img class="img-fluid p-1" alt="画像2" src="img/top_lineup2.jpg" /></li>
-                                <li><img class="img-fluid p-1" alt="画像3" src="img/top_lineup3.jpg" /></li>
-                                <li><img class="img-fluid p-1" alt="画像1" src="img/top_lineup1.jpg" /></li>
-                                <li><img class="img-fluid p-1" alt="画像2" src="img/top_lineup2.jpg" /></li>
-                                <li><img class="img-fluid p-1" alt="画像3" src="img/top_lineup3.jpg" /></li>
+                                <?php foreach($lineups as $lineup) { ?>    
+                                    <li>
+                                        <form action ="item_detail.php" method ="GET">
+                                            <div class="lineup_pic"><input type="image" class="img-fluid p-1" src="<?php echo $lineup['image_path']; ?>"></div>
+                                            <input type="hidden" name="product_id" value= "<?php echo $lineup['product_id'] ?>">
+                                        </form>
+                                    </li>
+                                <?php } ?>
+                                <!-- <li><img class="img-fluid p-1" alt="画像" src=""></li> -->
                             </ul>
+                            
                             <!-----------------スライドショー無しver-----------------------------
                             <div class=" container row mx-auto">
                                 <div class="col p-0 m-2">
@@ -154,20 +159,19 @@
                     <div id="top_news_container" class="container text-center my-5">
                         <h2 id="top_news" class="text-decoration-underline">NEWS</h2>
                         <ul class="top_news_article list-unstyled">
-                            <li class="border-top border-bottom border-dark p-3 fs-5">
-                                <a class="text-decoration-none text-dark" href="news_detail.html">2021/12/1 instgram始めました！</a>
-                            </li>
-                            <li class="border-top border-bottom border-dark p-3 fs-5">
-                                <a class="text-decoration-none text-dark" href="news_detail.html">2021/11/1 socks追加しました！</a>
-                            </li>
-                            <li class="border-top border-bottom border-dark p-3 fs-5">
-                                <a class="text-decoration-none text-dark" href="news_detail.html">2021/10/1 bag追加しました！</a>
-                            </li>
-                            <li class="border-top border-bottom border-dark p-3 fs-5">
-                                <a class="text-decoration-none text-dark" href="news_detail.html">2021/9/1 glovers追加しました！</a>
-                            </li>
+                            <?php foreach($top_news as $news) { ?>
+                                <li class="border-top border-bottom border-dark p-3 fs-5">
+                                <a class="text-decoration-none text-dark" href="<?php echo $news['url'] ?>"> 
+                                        <?php 
+                                        echo ($news["t_date"]);
+                                        echo ("<br>\n");
+                                        echo ($news["text"]);
+                                        ?>
+                                    </a>
+                                </li>
+                            <?php } ?>
                         </ul>
-                        <li class="list-unstyled p-3 fs-4"><a class="top_detail" href="news.html">詳しくはこちら</a></li>
+                        <li class="list-unstyled p-3 fs-4"><a class="top_detail" href="news.php">詳しくはこちら</a></li>
                     </div><!--#top_news_container-->
 
                     <div id="top_movie_container" class="container-fluid p-0 text-center my-5">

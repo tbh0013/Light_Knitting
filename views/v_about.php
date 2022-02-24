@@ -36,12 +36,12 @@
                                         Items
                                         </a>
                                         <ul class="dropdown-menu border-0 p-0 text-center" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
-                                            <li><a class="dropdown-item" href="items.php">All</a></li>
-                                            <li><a class="dropdown-item" href="#">Knit hat</a></li>
-                                            <li><a class="dropdown-item" href="#">Socks</a></li>
-                                            <li><a class="dropdown-item" href="#">Gloves</a></li>
-                                            <li><a class="dropdown-item" href="#">Bag</a></li>
-                                            <li><a class="dropdown-item" href="#">Stall</a></li>
+                                            <li><a class="dropdown-item" href="items.php">ALL</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=1">socks</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=2">knit hat</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=3">gloves</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=4">bag</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=5">stall</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">

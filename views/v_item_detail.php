@@ -35,12 +35,12 @@
                                         Items
                                         </a>
                                         <ul class="dropdown-menu border-0 p-0 text-center" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
-                                            <li><a class="dropdown-item" href="items.php">All</a></li>
-                                            <li><a class="dropdown-item" href="#">Knit hat</a></li>
-                                            <li><a class="dropdown-item" href="#">Socks</a></li>
-                                            <li><a class="dropdown-item" href="#">Gloves</a></li>
-                                            <li><a class="dropdown-item" href="#">Bag</a></li>
-                                            <li><a class="dropdown-item" href="#">Stall</a></li>
+                                            <li><a class="dropdown-item" href="items.php">ALL</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=1">socks</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=2">knit hat</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=3">gloves</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=4">bag</a></li>
+                                            <li><a class="dropdown-item" href="items.php?category_id=5">stall</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -59,69 +59,65 @@
 
             <main>
                 <div id="item_main_container">
+                    <?php foreach($products as $product) { ?>
+                        <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $category_name; ?></h2>
 
-                    <h2 id="item_heading" class="text-decoration-underline text-center p-3">ITEMS</h2>
+                        <div id="item_detail_container" class="container border-top border-bottom  d-flex flex-column align-items-center ">
+                            <h2 id="item_title" class="my-3"><?php echo $product['name']; ?></h2>
+                            <div id="item_pic_container">
+                                <div class="main_pic d-flex align-items-center justify-content-center">
+                                    <img class="img-fluid w-50" src="<?php echo $product['image_path']; ?>">
+                                </div>
+                                <div class="sub_pic">
+                                    <ul class="list-unstyled d-flex align-items-center justify-content-center mt-3">
+                                        <li class="d-flex w-25"><img src="<?php echo $product['image_path'] ?>" class="img-thumbnail"></li>
+                                        <li class="d-flex w-25"><img src="<?php echo $product['sub_image_path'] ?>" class="img-thumbnail"></li>
+                                    </ul>
+                                </div><!--.sub_pic"-->
+                            </div><!--#item_pic_container-->
 
-                    <div id="item_detail_container" class="container border-top border-bottom  d-flex flex-column align-items-center ">
-                        <h2 id="item_title" class="my-3">red socks</h2>
-                        <div id="item_pic_container">
-                            <img class="main_pic img-fluid" src="img/red_socks_main.jpg">
-                            <div class="sub_pic">
-                                <ul class="list-unstyled d-flex justify-content-center mt-3">
-                                    <li><img src="img/red_socks_sub1.jpg" class="img-thumbnail"></li></button>
-                                    <li><img src="img/red_socks_sub2.jpg" class="img-thumbnail"></li></button>
-                                </ul>
-                            </div><!--.sub_pic"-->
-                        </div><!--#item_pic_container-->
+                            <p><?php echo $product['description']; ?></p>
 
-                        <p>カラフルな柄に赤を編み込み、ポップな色合に仕上げました。ジーンズとの相性も抜群です。</p>
+                            <div id="item_information">
+                                <div class="item_detail_place text-center">
+                                    <p class="fw-bold">￥<?php echo $product['price']; ?></p>
+                                </div>
 
-                        <div id="item_information">
-                            <div class="item_detail_place text-center">
-                                <p class="fw-bold">¥3000</p>
-                            </div>
+                                <div class="item_detail_volume mb-3">
+                                    <span class="">数量</span>
+                                    <select name="volume" class="volume_option">
+                                        <option value="#">1</option>
+                                        <option value="#">2</option>
+                                        <option value="#">3</option>
+                                        <option value="#">4</option>
+                                        <option value="#">5</option>
+                                    </select>
+                                </div>
 
-                            <div class="item_detail_volume mb-3">
-                                <span class="">数量</span>
-                                <select name="volume" class="volume_option">
-                                    <option value="#">1</option>
-                                    <option value="#">2</option>
-                                    <option value="#">3</option>
-                                    <option value="#">4</option>
-                                    <option value="#">5</option>
-                                </select>
-                            </div>
-
-                            <div class="item_detail_size mb-3">
-                                <span class="size">サイズ</span>
-                                <select name="size" class="size_option">
-                                    <option value="#">23.0</option>
-                                    <option value="#">23.5</option>
-                                    <option value="#">24.0</option>
-                                    <option value="#">24.5</option>
-                                    <option value="#">25.0</option>
-                                    <option value="#">25.5</option>
-                                    <option value="#">26.0</option>
-                                    <option value="#">26.5</option>
-                                    <option value="#">27.0</option>
-                                    <option value="#">27.5</option>
-                                    <option value="#">28.0</option>
-                                </select>
-                            </div>
-
-                            <button type="button" class="cart_in_button mb-3 px-5">カートに入れる</button>
-                        </div><!--#item_information-->
-                    </div><!--#item_detail_container-->
-
+                                <div class="item_detail_size mb-3">
+                                    <?php if (isset($product_join_size[0]['size_name'])) { ?>
+                                        <span class="size">サイズ</span>
+                                        <select name="size" class="size_option">
+                                            <option value="#"></option>
+                                            <?php foreach($product_join_size as $product_size) { ?>
+                                                <option value="#"><?php echo $product_size['size_name'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    <?php } ?>
+                                </div>
+                                <button type="button" class="cart_in_button mb-3 px-5">カートに入れる</button>
+                            </div><!--#item_information-->
+                        </div><!--#item_detail_container-->
+                    <?php } ?>
                     <div id="sub_category" class="container border-bottom mb-3">
                         <h2>Category</h2>
                         <ul class="sub_category_menu list-unstyled fs-5">
                             <li><a class="text-decoration-none text-dark" href="items.php">All</a></li>
-                            <li><a class="text-decoration-none text-dark" href="#">knit hat</a></li>
-                            <li><a class="text-decoration-none text-dark" href="#">socks</a></li>
-                            <li><a class="text-decoration-none text-dark" href="#">gloves</a></li>
-                            <li><a class="text-decoration-none text-dark" href="#">bag</a></li>
-                            <li><a class="text-decoration-none text-dark" href="#">stall</a></li>
+                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=1">socks</a></li>
+                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=2">knit hat</a></li>
+                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=3">gloves</a></li>
+                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=4">bag</a></li>
+                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=5">stall</a></li>
                         </ul>
                     </div>
 
