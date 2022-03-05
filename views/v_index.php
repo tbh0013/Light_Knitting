@@ -11,7 +11,7 @@
 
     <body style="min-width: 300px;">
         <div id="wrapper">
-        <header style="background-color: #FFFFCC;">
+        <header class="sticky-top" style="background-color: #FFFFCC;">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
@@ -128,15 +128,13 @@
                             <!---------------- jQUeryスライドショーver ------------------------->
                             
                             <ul class="container lineup_slide slick-slider">
-                                <?php foreach($lineups as $lineup) { ?>    
+                                <?php foreach($lineups as $lineup) { ?>
                                     <li>
-                                        <form action ="item_detail.php" method ="GET">
-                                            <div class="lineup_pic"><input type="image" class="img-fluid p-1" src="<?php echo $lineup['image_path']; ?>"></div>
-                                            <input type="hidden" name="product_id" value= "<?php echo $lineup['product_id'] ?>">
-                                        </form>
+                                        <a href="item_detail.php?product_id=<?php echo $lineup['product_id'] ?>">
+                                            <img class="img-fluid p-1" alt="画像" src="<?php echo $lineup['image_path'] ?>">
+                                        </a>
                                     </li>
                                 <?php } ?>
-                                <!-- <li><img class="img-fluid p-1" alt="画像" src=""></li> -->
                             </ul>
                             
                             <!-----------------スライドショー無しver-----------------------------
@@ -161,7 +159,7 @@
                         <ul class="top_news_article list-unstyled">
                             <?php foreach($top_news as $news) { ?>
                                 <li class="border-top border-bottom border-dark p-3 fs-5">
-                                <a class="text-decoration-none text-dark" href="<?php echo $news['url'] ?>"> 
+                                <a class="text-decoration-none text-dark" href="news_detail.php?news_id=<?php echo $news['news_id']?>"> 
                                         <?php 
                                         echo ($news["t_date"]);
                                         echo ("<br>\n");

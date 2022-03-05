@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja" dir="ltr">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width",initial-scale="1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>詳細 - Light Knitting</title>
+
+        <title>送信完了 - Light Knitting</title>
     </head>
 
     <body style="min-width: 300px;">
         <div id="wrapper">
-        <header style="background-color: #FFFFCC;">
+            <header style="background-color: #FFFFCC;">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
@@ -56,58 +57,19 @@
                     </nav>
                 </div>
             </header><!--header-->
-
+            
             <main>
-                <div id="news_detail_main_container">
-
-                    <h2 id="news_notice" class="text-decoration-underline text-center p-3">お知らせ</h2>
-
-
-                    <div id="news_detail_container" class="container border-top border-bottom  d-flex flex-column align-items-center ">
-                        <?php foreach($newslist as $news) { ?>
-                            <h2 id="news_title" class="my-3"><?php echo $news['title'] ?></h2>
-                            <div id="news_detail_pic_container" class="container row">
-                                <div class="col">
-                                    <img class="main_pic img-fluid" src="<?php echo $news['image_path'] ?>">
-                                </div>
-                                <div class="col">
-                                    <img class="main_pic img-fluid" src="">
-                                </div>
-                            </div><!--#news_detail_pic_container-->
-
-                            <p class="text-center"><?php echo $news['text'] ?></p>
-
-                                <a class="item_detail_button text-decoration-none border border-dark border-2 mb-3 fs-3 text-dark" 
-                                    href="<?php if(isset($news['url'])) { ?>
-                                            <?php echo $news['url'] ?>
-                                    <?php } else {
-                                            echo "item_detail.php?product_id={$news['product_id']}";
-                                    }?>">
-                                    詳細ページへ
-                                </a>
-                        <?php }?>
-                    </div><!--#news_detail_container-->
-
-                    <div id="icons_container" class="container-fluid p-0 text-center">
-                        <div id="icons">
-                            <div class="row justify-content-center align-items-center m-0">
-                                <div class="col-3 p-0 m-2">
-                                    <a href="#"><img src="img/instagram_logo.png" class="img-fluid p-0"></a>
-                                </div>
-                                <div class="col-3 p-0 m-2">
-                                    <a href="#"><img src="img/twitter_logo.png" class="img-fluid p-0"></a>
-                                </div>
-                            </div>
-                            <div class="row mb-4 mx-0">
-                                <div class="col p-0 m-0 fs-3 link-dark">
-                                    <a href="index.php" class="text-decoration-none text-dark">Light Knitting</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div><!--icons_container-->
-
-            </main>
+                <div class='container align-items-center'>
+                    <p class="mx-auto">
+                    送信致しました。<br>
+                    お問い合わせいただきありがとうございます。
+                    </p>
+                    <div class="move">
+                        <a href="items.php">お買い物に戻る</a>
+                        <a href="cart.php">カートに戻る</a>
+                    </div>
+                </div>
+            </main> 
 
             <footer class="container-fluid" style="height:100px; background-color: #FFFFCC;">
                 <div class="d-flex justify-content-center align-items-center" style="height: 100px">

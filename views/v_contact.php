@@ -77,13 +77,13 @@
                                 <dd><input type="email" name="email" id="email" class="form-control" required></dd>
 
                                 <dt><label for="subject">件名</label><strong>(必須)</strong></dt>
-                                <dd><input type="text" name="subject" id="subject" class="form-control" required></dd>
+                                <dd><input type="text" name="title" id="title" class="form-control" required></dd>
 
                                 <dt><label for="message">お問い合わせ内容</label><strong>(必須)</strong></dt>
                                 <dd><textarea name="message" id="message" class="form-control" required></textarea></dd>
                             </dl>
 
-                            <p class="send_button text-center" ><input type="submit" value="確認する" class="p-2 bg-white border-light"></p>
+                            <p class="send_button text-center" ><input type="submit" name="submit" value="確認する" class="p-2 bg-white border-light"></p>
 
                         </form>
                     </div><!--#contact_form_container-->

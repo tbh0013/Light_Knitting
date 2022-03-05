@@ -79,12 +79,11 @@
                             <!-- category_nameも渡す予定-->
                             <?php foreach($products as $product) { ?>
                                 <li class="item_individual col-6 col-sm-3">
-                                    <form action ="item_detail.php" method ="GET">
-                                        <div class="item_pic"><input type="image" class="img-fluid" src="<?php echo $product['image_path']; ?>"></div>
-                                        <div class="item_name text-center"><?php echo ($product['name']); ?></div>
-                                        <div class="item_price text-center"><?php echo "￥".($product['price']); ?></div>
-                                        <input type="hidden" name="product_id" value= "<?php echo $product['product_id'] ?>">
-                                    </form>
+                                    <a href="item_detail.php?product_id=<?php echo $product['product_id'] ?>">
+                                        <div class="item_pic"><img class="img-fluid" src="<?php echo $product['image_path']; ?>"></div>
+                                    </a>
+                                    <div class="item_name text-center"><?php echo ($product['name']); ?></div>
+                                    <div class="item_price text-center"><?php echo "￥".($product['price']); ?></div>
                                 </li>
                             <?php } ?>
                             

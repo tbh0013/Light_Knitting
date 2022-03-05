@@ -1,6 +1,9 @@
 <?php
   session_start();
 
+  $products = array();
+  $categories = array();
+
   $pdo = new PDO("mysql:dbname=knit_shop", "root");
 
   if(isset($_GET['category_id'])) {
@@ -26,8 +29,9 @@
   require 'views/v_items.php';
 
 
-  // item_detailページの#item_headingで使用→AllItemがあるため、v_itemからGetでcategory_nameを送った方が良さそう
-  $_SESSION['category_name'] = $categories[0]['name'];
+  // item_detailページの#item_headingで使用→AllItemがあるため、
+  // v_itemからGetでcategory_nameを送った方が良さそう→GETで送った。いちおコメントアウト
+  // $_SESSION['category_name'] = $categories[0]['name'];
 
 ?>
 

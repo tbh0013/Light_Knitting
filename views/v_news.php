@@ -64,7 +64,17 @@
 
                     <div id="news_article_container" class="container mb-5">
                         <ul class="news_list row list-unstyled fs-5">
-                            <li class="news_item col-6 col-sm-4 my-3">
+                            <?php foreach($newslist as $news) { ?>
+                                <li class="news_item col-6 col-sm-4 my-3">
+                                    <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="news_detail.php?news_id=<?php echo $news['news_id'] ?>">
+                                        <div class="news_pic"><img class="img-fluid" src="<?php echo $news['image_path'] ?>"></div>
+                                        <div class="news_time"><?php echo $news['t_date'] ?></div>
+                                        <div class="news_detail"><?php echo $news['text'] ?></div>
+                                    </a>
+                                </li>
+                            <?php } ?>
+
+                            <!-- <li class="news_item col-6 col-sm-4 my-3">
                                 <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="news_detail.php">
                                     <div class="news_pic"><img class="img-fluid" src="img/news_pic1.png"></div>
                                     <div class="news_time"><time datetime="2021-12-01">2021/12/1</time></div>
@@ -105,7 +115,7 @@
                                     <div class="news_time"><time datetime="2021-07-01">2021/7/1</time></div>
                                     <div class="news_detail">Twitter公式アカウント始めました！</div>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div><!--#news_article_container-->
 

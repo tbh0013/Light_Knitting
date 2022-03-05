@@ -59,11 +59,11 @@
 
             <main>
                 <div id="item_main_container">
-                    <?php foreach($products as $product) { ?>
-                        <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $category_name; ?></h2>
+                    <?php foreach($product_join_size as $product) { ?>
+                        <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $product['c_name'] ?></h2>
 
                         <div id="item_detail_container" class="container border-top border-bottom  d-flex flex-column align-items-center ">
-                            <h2 id="item_title" class="my-3"><?php echo $product['name']; ?></h2>
+                            <h2 id="item_title" class="my-3"><?php echo $product['p_name']; ?></h2>
                             <div id="item_pic_container">
                                 <div class="main_pic d-flex align-items-center justify-content-center">
                                     <img class="img-fluid w-50" src="<?php echo $product['image_path']; ?>">
@@ -83,31 +83,41 @@
                                     <p class="fw-bold">￥<?php echo $product['price']; ?></p>
                                 </div>
 
-                                <div class="item_detail_volume mb-3">
-                                    <span class="">数量</span>
-                                    <select name="volume" class="volume_option">
-                                        <option value="#">1</option>
-                                        <option value="#">2</option>
-                                        <option value="#">3</option>
-                                        <option value="#">4</option>
-                                        <option value="#">5</option>
-                                    </select>
-                                </div>
+                                <form action ="cart.php" method="post">
+                                    <div class="item_detail_num mb-3">
+                                        <span class="">数量</span>
+                                            <select name="num" class="num_option">
+                                                <?php 
+                                                    for ($i = 0; $i <=5; $i++) {
+                                                        echo "<option>$i</option>";
+                                                    }
+                                                ?>
+                                                <!-- 一時的にコメントアウト -->
+                                                <!-- <option value="#">1</option>
+                                                <option value="#">2</option>
+                                                <option value="#">3</option>
+                                                <option value="#">4</option>
+                                                <option value="#">5</option> -->
+                                            </select>
+                                    </div>
 
-                                <div class="item_detail_size mb-3">
-                                    <?php if (isset($product_join_size[0]['size_name'])) { ?>
-                                        <span class="size">サイズ</span>
-                                        <select name="size" class="size_option">
-                                            <option value="#"></option>
-                                            <?php foreach($product_join_size as $product_size) { ?>
-                                                <option value="#"><?php echo $product_size['size_name'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    <?php } ?>
-                                </div>
-                                <button type="button" class="cart_in_button mb-3 px-5">カートに入れる</button>
+                                    <div class="item_detail_size mb-3">
+                                        <?php if (isset($size_array[0])) { ?>
+                                            <span class="size">サイズ</span>
+                                            <select name="size" class="size_option">
+                                                <option value="#"></option>
+                                                <?php foreach($size_array as $product_size) { ?>
+                                                    <option><?php echo $product_size ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        <?php } ?>
+                                    </div>
+                                    <input type="hidden" name="product_id" value="<?php echo $product['product_id'] ?>">
+                                    <input type="submit" name="submit" class="cart_in_button mb-3 px-5" value="カートに入れる">
+                                </form>
                             </div><!--#item_information-->
                         </div><!--#item_detail_container-->
+                        <?php break ?>
                     <?php } ?>
                     <div id="sub_category" class="container border-bottom mb-3">
                         <h2>Category</h2>
@@ -137,8 +147,8 @@
                                 </div>
                             </div>
                         </div>
-
-                    </div><!--icons_container-->
+                    </div> <!--#icons_container-->
+                </div> <!--#item_main_container -->
 
             </main>
 
