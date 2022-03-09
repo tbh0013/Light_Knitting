@@ -58,7 +58,7 @@
                 </div>
             </header><!--header-->
             
-            <main>
+            <main style="min-height: calc(100vh - 100px);">
                 <div>
                     <p>注文完了しました。ありがとうございました。</p>
                 </div>

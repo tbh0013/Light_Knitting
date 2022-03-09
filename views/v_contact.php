@@ -4,21 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width",initial-scale="1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
         <title>contact - Light Knitting</title>
     </head>
 
     <body style="min-width: 300px;">
         <div id="wrapper">
-        <header style="background-color: #FFFFCC;">
+            <header style="background-color: #FFFFCC;">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
                             <h1 class="d-flex align-items-center m-0 w-50"><a class="navbar-brand m-0" href="index.php"><img src="img/Light_Knitting_logo.png" alt="Light Knitting" class="img-fluid"></a></h1>
                             <li class="list-unstyled d-flex flex-row-reverse"><a class="nav-link p-0 d-lg-none" href="#"><img src="img/cart.png" class="rounded float-end m-2"></a>
-                            <button class="navbar-toggler p-0" style="border: 0;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                                <button class="navbar-toggler p-0" style="border: 0;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
                             </li>
                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                 <ul class="navbar-nav ms-auto align-items-center">
@@ -33,7 +32,7 @@
                                     </li>
                                     <li class="nav-item dropdown align-items-center text-center">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Items
+                                            Items
                                         </a>
                                         <ul class="dropdown-menu border-0 p-0 text-center" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
                                             <li><a class="dropdown-item" href="items.php">ALL</a></li>
@@ -53,41 +52,69 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="#"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
 
             <main>
                 <div id="contact_main_container" class="text-center">
-
                     <h2 id="contact_heading" class="text-decoration-underline">CONTACT</h2>
-                    <p>お問い合わせ内容をご入力ください。</p>
-
                     <div id="contact_form_container" class="container text-start p-lg-5">
-                        <form action="contact.php" method="post">
-                            <dl class="row">
-                                <dt><label for="name">お名前</label><strong>(必須)</strong></dt>
-                                <dd><input type="text" name="name" id="name" class="form-control" required></dd>
+                        <?php if($page_check == 1): ?>
+                            <p class="text-center">下記の通り送信致します。よろしいでしょか。</p>
+                            <form action="contact.php" method="post">
+                                <dl class="row">
+                                    <dt><label for="name">お名前</label></dt>
+                                    <dd><p><?php echo $posts['name']; ?></dd>
+                                    <input type="hidden" name="name" value="<?php echo $posts['name'] ?>">
 
-                                <dt><label for="tel">電話番号</label></dt>
-                                <dd><input type="tel" name="tel" id="tel" class="form-control"></dd>
+                                    <dt><label for="tel">電話番号</label></dt>
+                                    <dd><p><?php echo $posts['tel']; ?></dd>
+                                    <input type="hidden" name="tel" value="<?php echo $posts['tel'] ?>">
 
-                                <dt><label for="email">メールアドレス</label><strong>(必須)</strong></dt>
-                                <dd><input type="email" name="email" id="email" class="form-control" required></dd>
+                                    <dt><label for="email">メールアドレス</label></dt>
+                                    <dd><p><?php echo $posts['mail']; ?></dd>
+                                    <input type="hidden" name="mail" value="<?php echo $posts['mail'] ?>">
 
-                                <dt><label for="subject">件名</label><strong>(必須)</strong></dt>
-                                <dd><input type="text" name="title" id="title" class="form-control" required></dd>
+                                    <dt><label for="title">件名</label></dt>
+                                    <dd><p><?php echo $posts['title']; ?></dd>
+                                    <input type="hidden" name="title" value="<?php echo $posts['title'] ?>">
 
-                                <dt><label for="message">お問い合わせ内容</label><strong>(必須)</strong></dt>
-                                <dd><textarea name="message" id="message" class="form-control" required></textarea></dd>
-                            </dl>
+                                    <dt><label for="message">お問い合わせ内容</label></strong></dt>
+                                    <dd><p><?php echo $posts['message']; ?></dd>
+                                    <input type="hidden" name="message" value="<?php echo $posts['message'] ?>">
+                                </dl>
+                                <p class="send_button text-center" ><input type="submit" name="submit_check" value="送信する" class="p-2 bg-white border-light"></p>
+                            </form>
+                            <div class="move text-center">
+                                <a href="contact.php">contactページに戻る</a>
+                            </div>
+                        <?php else: ?>
+                            <p>お問い合わせ内容をご入力ください。</p>
+                                <form action="contact.php" method="post">
+                                    <dl class="row">
+                                        <dt><label for="name">お名前</label><strong>(必須)</strong></dt>
+                                        <dd><input type="text" name="name" id="name" class="form-control" required></dd>
 
-                            <p class="send_button text-center" ><input type="submit" name="submit" value="確認する" class="p-2 bg-white border-light"></p>
+                                        <dt><label for="tel">電話番号</label></dt>
+                                        <dd><input type="tel" name="tel" id="tel" class="form-control"></dd>
 
-                        </form>
+                                        <dt><label for="mail">メールアドレス</label><strong>(必須)</strong></dt>
+                                        <dd><input type="email" name="mail" id="mail" class="form-control" required></dd>
+
+                                        <dt><label for="subject">件名</label><strong>(必須)</strong></dt>
+                                        <dd><input type="text" name="title" id="title" class="form-control" required></dd>
+
+                                        <dt><label for="message">お問い合わせ内容</label><strong>(必須)</strong></dt>
+                                        <dd><textarea name="message" id="message" class="form-control" required></textarea></dd>
+                                    </dl>
+
+                                    <p class="send_button text-center" ><input type="submit" name="submit" value="確認する" class="p-2 bg-white border-light"></p>
+                                </form>
+                        <?php endif; ?>
+
                     </div><!--#contact_form_container-->
-
                 </div><!--#contact_main_container-->
             </main>
 

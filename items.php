@@ -1,41 +1,40 @@
 <?php
-  session_start();
+    session_start();
 
-  $products = array();
-  $categories = array();
+    $products = array();
+    $categories = array();
 
-  $pdo = new PDO("mysql:dbname=knit_shop", "root");
+    $pdo = new PDO("mysql:dbname=knit_shop", "root");
 
-  if(isset($_GET['category_id'])) {
-  // カテゴリーごとの表示で使用するDB
-  $categories_id = $_GET['category_id'];
-  $products_st = $pdo->query("SELECT * FROM products WHERE category_id=$categories_id");
-  $products_st->setFetchMode(PDO::FETCH_ASSOC);
-  $products = $products_st->fetchAll();
+    if(isset($_GET['category_id'])) {
+    // カテゴリーごとの表示で使用するDB
+        $categories_id = $_GET['category_id'];
+        $products_st = $pdo->query("SELECT * FROM products WHERE category_id=$categories_id");
+        $products_st->setFetchMode(PDO::FETCH_ASSOC);
+        $products = $products_st->fetchAll();
 
-  $categories_st = $pdo->query("SELECT category_id, name FROM categories WHERE category_id = $categories_id");
-  $categories_st->setFetchMode(PDO::FETCH_ASSOC);
-  $categories = $categories_st->fetchAll();
-
-  } else {
-    // 全てのアイテム表示で使用するDB
-    $categories[0]['name'] = "All Items";
-    $products_st = $pdo->query("SELECT * FROM products");
-    $products_st->setFetchMode(PDO::FETCH_ASSOC);
-    $products = $products_st->fetchAll();
-  }
-
-
-  require 'views/v_items.php';
-
-
-  // item_detailページの#item_headingで使用→AllItemがあるため、
-  // v_itemからGetでcategory_nameを送った方が良さそう→GETで送った。いちおコメントアウト
-  // $_SESSION['category_name'] = $categories[0]['name'];
-
+        $categories_st = $pdo->query("SELECT category_id, name FROM categories WHERE category_id = $categories_id");
+        $categories_st->setFetchMode(PDO::FETCH_ASSOC);
+        $categories = $categories_st->fetchAll();
+    } else {
+      // 全てのアイテム表示で使用するDB
+        $categories[0]['name'] = "All Items";
+        $products_st = $pdo->query("SELECT * FROM products");
+        $products_st->setFetchMode(PDO::FETCH_ASSOC);
+        $products = $products_st->fetchAll();
+    }
+    
+    require 'views/v_items.php';
 ?>
 
-<!------------ アイテムページ各種表示メモ
+
+<!-- 
+// item_detailページの#item_headingで使用→AllItemがあるため、
+    // v_itemからGetでcategory_nameを送った方が良さそう→GETで送った。いちおコメントアウト
+    // $_SESSION['category_name'] = $categories[0]['name']; -->
+
+<!------------
+アイテムページ各種表示メモ
 ・各種製品ページにidを付与 items.php?id=2
 ・&_GETでid取得
 

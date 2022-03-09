@@ -58,15 +58,14 @@
                 </div>
             </header><!--header-->
             
-            <main>
+            <main style="min-height: calc(100vh - 100px);">
                 <div class='container align-items-center'>
                     <p class="mx-auto">
                     送信致しました。<br>
                     お問い合わせいただきありがとうございます。
                     </p>
                     <div class="move">
-                        <a href="items.php">お買い物に戻る</a>
-                        <a href="cart.php">カートに戻る</a>
+                        <a href="index.php">トップページに戻る</a>
                     </div>
                 </div>
             </main> 

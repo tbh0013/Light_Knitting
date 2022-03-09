@@ -1,7 +1,7 @@
 <?php
-  session_start();
+    session_start();
 
-  $_SESSION['cart'] = array();
-  $_SESSION['size'] = array();
-  header('Location: cart.php');
+    $_SESSION['cart'] = array();
+    $_SESSION['size'] = array();
+    header('Location: cart.php');
 ?>

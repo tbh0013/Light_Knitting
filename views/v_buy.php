@@ -65,39 +65,95 @@
                             echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
                         }
                     } ?>
-
-                    <form action="buy.php" method="post" class="row d-flex flex-column">
-                        <p class="col-5 mx-auto">
-                        お名前<br>
-                        <input type="text" name="name" class="form-control" value="<?php echo $name ?>">
-                        </p>
-                        <p class="col-5 mx-auto">
-                        メールアドレス<br>
-                        <input type="text" name="email" class="form-control" value="<?php echo $email ?>">
-                        </p>
-                        <p class="col-5 mx-auto">
-                        郵便番号<br>
-                        <input type="text" name="code" class="form-control" value="<?php echo $code ?>">
-                        </p>
-                        <p class="col-5 mx-auto">
-                        ご住所<br>
-                        <input type="text" name="address" class="form-control" value="<?php echo $address ?>">
-                        </p>
-                        <p class="col-5 mx-auto">
-                        電話番号<br>
-                        <input type="text" name="tel" class="form-control" value="<?php echo $tel ?>">
-                        </p>
-                        <p class="col-5 mx-auto text-center">
-                        <input type="submit" name="submit" class="px-4" value="確認">
-                        </p>
-                    </form>
-
-                    <div class="move">
-                        <a href="items.php">お買い物に戻る</a>
-                        <a href="cart.php">カートに戻る</a>
-                    </div>
+                    <?php if($page_check == 1): ?>
+                        <p>下記の通り注文致します。よろしいでしょうか。</p>
+                        <form action="buy.php" method="post" class="row d-flex flex-column">
+                            <table class="table table-borderless d-flex justify-content-center mx-auto fs-6">
+                                <tr><th scope="col">商品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">サイズ</th><th scope="col">小計</th></tr>
+                                    <?php foreach($cart_rows as $cart) { ?>
+                                        <tr>
+                                            <td><?php echo $cart['p_name'] ?></td>
+                                            <input type="hidden" name="product_name" value="<?php echo $cart['p_name'] ?>">
+                                            <td><?php echo $cart['price'] ?></td>
+                                            <input type="hidden" name="price" value="<?php echo $cart['p_name'] ?>">
+                                            <td><?php echo $cart['num'] ?></td>
+                                            <input type="hidden" name="num" value="<?php echo $cart['num'] ?>">
+                                            <td><?php if(isset($cart['size'])) { ?>
+                                                    <?php echo $cart['size']?>
+                                                    <input type="hidden" name="product_size_id" value="<?php echo $cart['product_size_id'] ?>">
+                                                <?php }  else { ?>
+                                                    <?php echo 'FREE'; ?> 
+                                                    <input type="hidden" name="size" value="FREE">
+                                                <?php } ?>
+                                            </td>
+                                            <td><?php echo $cart['price'] * $cart['num'] ?> 円</td>
+                                        </tr>
+                                    <?php } ?>
+                                <tr style="line-height: 4rem;"><td colspan='3'> </td><td><strong>合計</strong></td><td><?php echo $cart['sum'] ?> 円</td></tr>
+                                <tr>
+                                    <td><?php echo 'お名前' ?></td>
+                                    <td><?php echo $posts['name'] ?></td>
+                                    <input type="hidden" name="customer_name" value="<?php echo $posts['name'] ?>">
+                                </tr>
+                                <tr>
+                                    <td><?php echo 'メールアドレス'?></td>
+                                    <td><?php echo  $posts['mail']?></td>
+                                    <input type="hidden" name="mail" value="<?php echo $posts['mail'] ?>">
+                                </tr>
+                                <tr>
+                                    <td><?php echo '郵便番号'?></td>
+                                    <td><?php echo  $posts['code']?></td>
+                                    <input type="hidden" name="code" value="<?php echo $posts['code'] ?>">
+                                </tr>
+                                <tr>
+                                    <td><?php echo 'ご住所'?></td>
+                                    <td><?php echo  $posts['address']?></td>
+                                    <input type="hidden" name="address" value="<?php echo $posts['address'] ?>">
+                                </tr>
+                                <tr>
+                                    <td><?php echo '電話番号'?></td>
+                                    <td><?php echo  $posts['tel']?></td>
+                                    <input type="hidden" name="tel" value="<?php echo $posts['tel'] ?>">
+                                </tr>
+                            </table>
+                            <input type="submit" name="submit_check" value="注文を確定">
+                        </form>
+                        <div class="move">
+                            <a href="items.php">お買い物に戻る</a>
+                            <a href="cart.php">カートに戻る</a>
+                        </div>
+                    <?php else: ?>
+                        <form action="buy.php" method="post" class="row d-flex flex-column">
+                            <p class="col-5 mx-auto">
+                                お名前<br>
+                                <input type="text" name="name" class="form-control" value="<?php echo $name ?>">
+                            </p>
+                            <p class="col-5 mx-auto">
+                                メールアドレス<br>
+                                <input type="text" name="mail" class="form-control" value="<?php echo $email ?>">
+                            </p>
+                            <p class="col-5 mx-auto">
+                                郵便番号<br>
+                                <input type="text" name="code" class="form-control" value="<?php echo $code ?>">
+                            </p>
+                            <p class="col-5 mx-auto">
+                                ご住所<br>
+                                <input type="text" name="address" class="form-control" value="<?php echo $address ?>">
+                            </p>
+                            <p class="col-5 mx-auto">
+                                電話番号<br>
+                                <input type="text" name="tel" class="form-control" value="<?php echo $tel ?>">
+                            </p>
+                            <p class="col-5 mx-auto text-center">
+                                <input type="submit" name="submit" class="px-4" value="確認">
+                            </p>
+                        </form>
+                        <div class="move">
+                            <a href="items.php">お買い物に戻る</a>
+                            <a href="cart.php">カートに戻る</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
-
             </main> 
 
             <footer class="container-fluid" style="height:100px; background-color: #FFFFCC;">

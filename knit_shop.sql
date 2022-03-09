@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-02-24 13:27:29
+-- 生成日時: 2022-03-09 10:22:41
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.0.11
 
@@ -64,6 +64,13 @@ CREATE TABLE `contacts` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '更新日付'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='お問い合わせ';
 
+--
+-- テーブルのデータのダンプ `contacts`
+--
+
+INSERT INTO `contacts` (`contact_id`, `name`, `tel`, `mail`, `title`, `message`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 'test', '0', '000@000', 'test', 'test', 0, '2022-03-06 08:38:00', '2022-03-06 08:38:00');
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +79,7 @@ CREATE TABLE `contacts` (
 
 CREATE TABLE `news` (
   `news_id` int(11) NOT NULL COMMENT 'ニュースID',
+  `product_id` int(11) NOT NULL COMMENT '商品ID',
   `date` datetime DEFAULT NULL COMMENT '日付',
   `title` varchar(255) DEFAULT NULL COMMENT 'タイトル',
   `text` text DEFAULT NULL COMMENT '内容',
@@ -86,13 +94,13 @@ CREATE TABLE `news` (
 -- テーブルのデータのダンプ `news`
 --
 
-INSERT INTO `news` (`news_id`, `date`, `title`, `text`, `image_path`, `url`, `is_deleted`, `created_at`, `updated_at`) VALUES
-(1, '2021-12-01 00:00:00', 'instgram開始', 'instgram公式アカウント始めました！', './img/news_pic1.png', 'news_detail.php', 0, '2022-02-08 02:37:52', '2022-02-15 05:13:02'),
-(2, '2021-11-01 00:00:00', 'socks追加', 'socks追加しました！', './img/news_pic2.jpg', NULL, 0, '2022-02-08 03:13:40', '2022-02-12 14:29:34'),
-(3, '2021-10-01 00:00:00', 'bag追加', 'bag追加しました！', './img/news_pic3.jpg', NULL, 0, '2022-02-08 03:26:09', '2022-02-12 14:29:46'),
-(4, '2021-09-01 00:00:00', 'gloves追加', 'gloves追加しました！', './img/news_pic4.jpg', NULL, 0, '2022-02-08 03:29:26', '2022-02-12 14:29:57'),
-(5, '2021-08-01 00:00:00', 'knit hat追加', 'knit hat追加しました！', './img/news_pic5.jpg', NULL, 0, '2022-02-08 03:31:47', '2022-02-12 14:30:07'),
-(6, '2021-07-01 00:00:00', 'twitter開始', 'Twitter公式アカウント始めました！', './img/news_pic6.png', NULL, 0, '2022-02-08 03:31:47', '2022-02-12 14:30:17');
+INSERT INTO `news` (`news_id`, `product_id`, `date`, `title`, `text`, `image_path`, `url`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 0, '2021-12-01 00:00:00', 'instgram開始', 'instgram公式アカウント始めました！', './img/news_pic1.png', 'https://www.instagram.com/', 0, '2022-02-08 02:37:52', '2022-03-03 08:19:04'),
+(2, 1, '2021-11-01 00:00:00', 'socks追加', 'socks追加しました！', './img/news_pic2.jpg', NULL, 0, '2022-02-08 03:13:40', '2022-03-03 06:41:48'),
+(3, 9, '2021-10-01 00:00:00', 'bag追加', 'bag追加しました！', './img/news_pic3.jpg', NULL, 0, '2022-02-08 03:26:09', '2022-03-03 06:42:23'),
+(4, 8, '2021-09-01 00:00:00', 'gloves追加', 'gloves追加しました！', './img/news_pic4.jpg', NULL, 0, '2022-02-08 03:29:26', '2022-03-03 06:42:51'),
+(5, 7, '2021-08-01 00:00:00', 'knit hat追加', 'knit hat追加しました！', './img/news_pic5.jpg', NULL, 0, '2022-02-08 03:31:47', '2022-03-03 06:43:24'),
+(6, 0, '2021-07-01 00:00:00', 'twitter開始', 'Twitter公式アカウント始めました！', './img/news_pic6.png', 'https://twitter.com/?lang=ja', 0, '2022-02-08 03:31:47', '2022-03-03 08:21:19');
 
 -- --------------------------------------------------------
 
@@ -105,12 +113,19 @@ CREATE TABLE `orders` (
   `customer_name` varchar(255) NOT NULL COMMENT 'お客様名',
   `mail` varchar(255) NOT NULL COMMENT 'メールアドレス',
   `post_code` int(11) DEFAULT NULL COMMENT '郵便番号',
-  `addres` varchar(255) DEFAULT NULL COMMENT '住所',
+  `address` varchar(255) DEFAULT NULL COMMENT '住所',
   `tel` varchar(255) DEFAULT NULL COMMENT '電話番号',
   `is_deleted` int(11) NOT NULL DEFAULT 0 COMMENT '削除フラグ',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT '登録日付',
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '更新日付'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='注文';
+
+--
+-- テーブルのデータのダンプ `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_name`, `mail`, `post_code`, `address`, `tel`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 'test', 'test@test', 111111, 'テスト', '10101', 0, '2022-03-09 09:21:23', '2022-03-09 09:21:23');
 
 -- --------------------------------------------------------
 
@@ -128,6 +143,15 @@ CREATE TABLE `order_details` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() COMMENT '登録日付',
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT '更新日付'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='注文明細';
+
+--
+-- テーブルのデータのダンプ `order_details`
+--
+
+INSERT INTO `order_details` (`order_detail_id`, `order_id`, `product_id`, `product_size_id`, `quantity`, `is_deleted`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1, 1, 0, '2022-03-09 09:21:23', '2022-03-09 09:21:23'),
+(2, 1, 2, 12, 3, 0, '2022-03-09 09:21:23', '2022-03-09 09:21:23'),
+(3, 1, 3, 23, 2, 0, '2022-03-09 09:21:23', '2022-03-09 09:21:23');
 
 -- --------------------------------------------------------
 
@@ -351,6 +375,24 @@ ALTER TABLE `sizes`
 --
 -- ダンプしたテーブルの AUTO_INCREMENT
 --
+
+--
+-- テーブルの AUTO_INCREMENT `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'お問い合わせID', AUTO_INCREMENT=2;
+
+--
+-- テーブルの AUTO_INCREMENT `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '注文ID', AUTO_INCREMENT=2;
+
+--
+-- テーブルの AUTO_INCREMENT `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `order_detail_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '注文明細ID', AUTO_INCREMENT=4;
 
 --
 -- テーブルの AUTO_INCREMENT `sizes`
