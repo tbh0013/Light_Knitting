@@ -53,13 +53,13 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="#"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
             
             <main style="min-height: calc(100vh - 100px);">
-                <div class="container">
+                <div class="container text-center">
                     <?php if(!empty($errors)) {
                         foreach($errors as $error) {
                             echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
@@ -97,7 +97,7 @@
                                 </tr>
                                 <tr>
                                     <td><?php echo 'メールアドレス'?></td>
-                                    <td><?php echo  $posts['mail']?></td>
+                                    <td><?php echo $posts['mail']?></td>
                                     <input type="hidden" name="mail" value="<?php echo $posts['mail'] ?>">
                                 </tr>
                                 <tr>
@@ -116,11 +116,14 @@
                                     <input type="hidden" name="tel" value="<?php echo $posts['tel'] ?>">
                                 </tr>
                             </table>
-                            <input type="submit" name="submit_check" value="注文を確定">
+                            <div class="text-center">
+                                <input type="submit" name="submit_check" value="注文を確定">
+                            </div>
                         </form>
-                        <div class="move">
-                            <a href="items.php">お買い物に戻る</a>
-                            <a href="cart.php">カートに戻る</a>
+                        <div class="move text-center">
+                            <a href="buy.php" class="text-decoration-none text-dark">購入者情報入力に戻る</a>
+                            <a href="items.php" class="text-decoration-none text-dark">お買い物に戻る</a>
+                            <a href="cart.php" class="text-decoration-none text-dark">カートに戻る</a>
                         </div>
                     <?php else: ?>
                         <form action="buy.php" method="post" class="row d-flex flex-column">

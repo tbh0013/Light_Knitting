@@ -17,19 +17,8 @@
         $_SESSION['cart'][$_POST['product_id']] = [$_POST['num']];
     }
     if(isset($_POST['size'])) {
-    array_push($_SESSION['cart'][$_POST['product_id']], $_POST['size']);
+        array_push($_SESSION['cart'][$_POST['product_id']], $_POST['size']);
     }
-
-
-
-    // if (isset($_POST['submit']) && $_POST['num'] >= 1) {
-    //   $_SESSION['cart'][$_POST['product_id']] = $_POST['num'];
-    // }
-    // if(isset($_POST['size'])){
-    //   $_SESSION['size'][$_POST['product_id']] = $_POST['size'];
-    // }
-
-
 
     // メモ：PDOオブジェクトを作成、DB接続→プリペアードステートメントのSQLをprepare関数を使って設定→execute関数でSQL文を実行
     //     :closeCursor() は、 他の SQL ステートメントを発行できるようにサーバーへの接続を解放しますが、 ステートメントは再実行可能な状態のまま残されます。

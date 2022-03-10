@@ -53,7 +53,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="#"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->

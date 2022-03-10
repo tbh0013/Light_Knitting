@@ -83,38 +83,40 @@
                                     <p class="fw-bold">￥<?php echo $product['price']; ?></p>
                                 </div>
 
-                                <form action ="cart.php" method="post">
+                                <?php if(!empty($errors)) { 
+                                    foreach($errors as $error) {
+                                        echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
+                                    } 
+                                    } ?>
+                                <form action ="item_detail.php" method="post">
                                     <div class="item_detail_num mb-3">
                                         <span class="">数量</span>
                                             <select name="num" class="num_option">
+                                                <option value="---">---</option>
                                                 <?php 
-                                                    for ($i = 0; $i <=5; $i++) {
+                                                    for ($i = 1; $i <=5; $i++) {
                                                         echo "<option>$i</option>";
                                                     }
                                                 ?>
-                                                <!-- 一時的にコメントアウト -->
-                                                <!-- <option value="#">1</option>
-                                                <option value="#">2</option>
-                                                <option value="#">3</option>
-                                                <option value="#">4</option>
-                                                <option value="#">5</option> -->
                                             </select>
                                     </div>
 
                                     <div class="item_detail_size mb-3">
-                                        <?php if (isset($size_array[0])) { ?>
+                                        <?php if (isset($size_array[0])) { ?> 
                                             <span class="size">サイズ</span>
                                             <select name="size" class="size_option">
-                                                <option value="#"></option>
+                                                <option value="---">---</option>
                                                 <?php foreach($size_array as $product_size) { ?>
                                                     <option><?php echo $product_size ?></option>
                                                 <?php } ?>
                                             </select>
+                                            <input type="hidden" name="size_exist" value="サイズ">
                                         <?php } ?>
                                     </div>
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id'] ?>">
                                     <input type="submit" name="submit" class="cart_in_button mb-3 px-5" value="カートに入れる">
                                 </form>
+                                
                             </div><!--#item_information-->
                         </div><!--#item_detail_container-->
                         <?php break ?>

@@ -55,7 +55,7 @@
         $to = "example@mail.com";
 
         // mb_send_mail($to, "購入メール", $body, "From: $from", $pfrom);
-            
+        
         $_SESSION['cart'] = null;
         require 'views/v_buy_complete.php';
         exit();
@@ -141,7 +141,7 @@
             
             $cart_row['num'] = $num_size[0];
             $sum = 0;
-            $sum += $num_size[0] * $cart_row['price']; 
+            $sum += $num_size[0] * $cart_row['price'];
             $cart_row['sum'] = $sum;
 
             if(isset($num_size[1])) {

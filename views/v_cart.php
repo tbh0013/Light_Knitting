@@ -52,7 +52,7 @@
                             </ul>
                         </div>
                     </div>
-                    <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="#"><img src="img/cart.png"></a></li>
+                    <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                 </nav>
             </div>
         </header><!--header-->
@@ -60,31 +60,33 @@
         <main style="min-height: calc(100vh - 100px);">
             <div id="cart_main_container" class="text-center">
                 <h2 id="item_heading" class="text-center p-3">カートを確認</h2>
-                <table class="table table-borderless d-flex justify-content-center mx-auto fs-6">
-                    <tr><th scope="col">商品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">サイズ</th><th scope="col">小計</th></tr>
-                    <?php foreach($cart_rows as $cart) { ?>
-                        <tr>
-                            <td><?php echo $cart['name'] ?></td>
-                            <td><?php echo $cart['price'] ?></td>
-                            <td><?php echo $cart['num'] ?></td>
-                            <td><?php if(isset($cart['size'])) { ?>
-                                <?php echo $cart['size']?>
-                                <?php }  else { 
-                                echo 'FREE';
-                                } ?>
-                            </td>
-                            <td><?php echo $cart['price'] * $cart['num'] ?> 円</td>
-                        </tr>
-                    <?php } ?>
-                    <tr style="line-height: 4rem;"><td colspan='3'> </td><td><strong>合計</strong></td><td><?php echo $sum ?> 円</td></tr>
-                </table>
+                <div class="container">
+                    <table class="table border-dark mx-auto fs-6">
+                        <tr><th scope="col">商品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">サイズ</th><th scope="col">小計</th></tr>
+                        <?php foreach($cart_rows as $cart) { ?>
+                            <tr>
+                                <td><?php echo $cart['name'] ?></td>
+                                <td>￥<?php echo $cart['price'] ?></td>
+                                <td><?php echo $cart['num'] ?></td>
+                                <td><?php if(isset($cart['size'])) { ?>
+                                    <?php echo $cart['size']?>
+                                    <?php }  else { 
+                                    echo 'FREE';
+                                    } ?>
+                                </td>
+                                <td><?php echo $cart['price'] * $cart['num'] ?> 円</td>
+                            </tr>
+                        <?php } ?>
+                        <tr style="line-height: 4rem;"><td colspan="4"> </td><td><strong>合計</strong> <?php echo $sum ?> 円</td></tr>
+                    </table>
 
-                <div class="move">
-                    <a href="items.php">お買い物に戻る</a>
-                    <a href="cart_empty.php">カートを空にする</a>
-                    <?php if($can_buy) {
-                        echo "<a href='buy.php'>注文する</a>";
-                    } ?>
+                    <div class="move d-flex flex-column ms-auto col-md-4">
+                        <?php if($can_buy) {
+                            echo "<a href='buy.php' class='btn btn-outline-dark text-decoration-none m-3'>注文する</a>";
+                        } ?>
+                        <a href="items.php" class="btn btn-outline-dark text-decoration-none m-3">お買い物に戻る</a>
+                        <a href="cart_empty.php" class="btn btn-outline-dark text-decoration-none m-3">カートを空にする</a>
+                    </div>
                 </div>
             </div>
         </main>
