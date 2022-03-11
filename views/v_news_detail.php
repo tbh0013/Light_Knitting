@@ -67,17 +67,14 @@
                         <?php foreach($newslist as $news) { ?>
                             <h2 id="news_title" class="my-3"><?php echo $news['title'] ?></h2>
                             <div id="news_detail_pic_container" class="container row">
-                                <div class="col">
+                                <div class="col-5 mx-auto">
                                     <img class="main_pic img-fluid" src="<?php echo $news['image_path'] ?>">
-                                </div>
-                                <div class="col">
-                                    <img class="main_pic img-fluid" src="">
                                 </div>
                             </div><!--#news_detail_pic_container-->
 
                             <p class="text-center"><?php echo $news['text'] ?></p>
 
-                                <a class="item_detail_button text-decoration-none border border-dark border-2 mb-3 fs-3 text-dark" 
+                                <a class="btn btn-outline-dark text-decoration-none m-3"
                                     href="<?php if(isset($news['url'])) { ?>
                                             <?php echo $news['url'] ?>
                                     <?php } else {

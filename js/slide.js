@@ -4,5 +4,7 @@ $('.lineup_slide').slick({
   autoplay: true,
   infinite : true,
   autoplaySpeed: 1500,
-  speed: 1500
+  speed: 1500,
+  arrows: true,
+  appendArrows: '.lineup_slide_nav_inner',
 });

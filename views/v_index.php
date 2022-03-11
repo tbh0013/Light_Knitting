@@ -116,9 +116,9 @@
                             </div>
                         </div>
                     </div>
-                    <h2 id="top_about" class="container text-center border border-4 border-dark my-5 fs-4">
+                    <h2 id="top_about" class="container text-center my-5 fs-4">
                         Light Knittingは編み物ハンドメイドの製品を紹介・販売しております。<br>
-                        <div class="text-center"><a class="top_detail" href="about.php">詳しくはこちら</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark text-decoration-none m-3" href="about.php">詳しくはこちら</a></div>
                     </h2>
 
 
@@ -126,17 +126,27 @@
                         <div class="jumbotron pb-5" style="background-image: url(img/top_bg.png);">
                             <h2 id="top_lineup" class="text-decoration-underline">LINE UP</h2>
                             <!---------------- jQUeryスライドショーver ------------------------->
-                            
-                            <ul class="container lineup_slide slick-slider">
-                                <?php foreach($lineups as $lineup) { ?>
-                                    <li>
-                                        <a href="item_detail.php?product_id=<?php echo $lineup['product_id'] ?>">
-                                            <img class="img-fluid p-1" alt="画像" src="<?php echo $lineup['image_path'] ?>">
-                                        </a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                            
+                                <ul class="container lineup_slide slick-slider list-unstyle">
+                                    <?php foreach($lineups as $lineup) { ?>
+                                        <li>
+                                            <a href="item_detail.php?product_id=<?php echo $lineup['product_id'] ?>">
+                                                <img class="img-fluid p-1" alt="画像" src="<?php echo $lineup['image_path'] ?>">
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                                <div class ="lineup_slide_nav">
+                                    <div class ="lineup_slide_nav_inner"></div>
+                                    <style>
+                                        .slick-next {
+                                            margin-left: 40px;
+                                        }
+
+                                        .slick-prev {
+                                            margin-right: 40px;
+                                        }
+                                    </style>
+                                </div>
                             <!-----------------スライドショー無しver-----------------------------
                             <div class=" container row mx-auto">
                                 <div class="col p-0 m-2">
@@ -169,12 +179,11 @@
                                 </li>
                             <?php } ?>
                         </ul>
-                        <li class="list-unstyled p-3 fs-4"><a class="top_detail" href="news.php">詳しくはこちら</a></li>
+                        <li class="list-unstyled p-3 fs-4"><a class="btn btn-outline-dark text-decoration-none m-3" href="news.php">詳しくはこちら</a></li>
                     </div><!--#top_news_container-->
 
-                    <div id="top_movie_container" class="container-fluid p-0 text-center my-5">
-                        <div class="pb-5" style="background-image: url(img/top_bg.png);">
-                            <h2 id="top_movie" class="text-decoration-underline">MOVIE</h2>
+                    <div id="top_movie_container" class="container-fluid p-0 text-center align-items-center">
+                        <div class="py-3" style="background-image: url(img/top_bg.png);">
                             <video src="img/knitting_movie.mp4" loop autoplay muted class="container w-75"></video>
                         </div>
                     </div><!--#top_movie_container-->

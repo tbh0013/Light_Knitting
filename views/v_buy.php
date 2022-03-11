@@ -59,101 +59,115 @@
             </header><!--header-->
             
             <main style="min-height: calc(100vh - 100px);">
-                <div class="container text-center">
+            <h2 id="item_heading" class="text-center p-3"> 
+                <?php if($page_check == 1): ?>
+                    入力内容確認
+                <?php else: ?>
+                    お客様情報入力
+                <?php endif; ?>
+                </h2>
+                <div class="container">
                     <?php if(!empty($errors)) {
                         foreach($errors as $error) {
                             echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
                         }
                     } ?>
                     <?php if($page_check == 1): ?>
-                        <p>下記の通り注文致します。よろしいでしょうか。</p>
+                        <p class="text-center">下記の通り注文致します。よろしいでしょうか。</p>
                         <form action="buy.php" method="post" class="row d-flex flex-column">
-                            <table class="table table-borderless d-flex justify-content-center mx-auto fs-6">
-                                <tr><th scope="col">商品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">サイズ</th><th scope="col">小計</th></tr>
-                                    <?php foreach($cart_rows as $cart) { ?>
-                                        <tr>
-                                            <td><?php echo $cart['p_name'] ?></td>
-                                            <input type="hidden" name="product_name" value="<?php echo $cart['p_name'] ?>">
-                                            <td><?php echo $cart['price'] ?></td>
-                                            <input type="hidden" name="price" value="<?php echo $cart['p_name'] ?>">
-                                            <td><?php echo $cart['num'] ?></td>
-                                            <input type="hidden" name="num" value="<?php echo $cart['num'] ?>">
-                                            <td><?php if(isset($cart['size'])) { ?>
-                                                    <?php echo $cart['size']?>
-                                                    <input type="hidden" name="product_size_id" value="<?php echo $cart['product_size_id'] ?>">
-                                                <?php }  else { ?>
-                                                    <?php echo 'FREE'; ?> 
-                                                    <input type="hidden" name="size" value="FREE">
-                                                <?php } ?>
-                                            </td>
-                                            <td><?php echo $cart['price'] * $cart['num'] ?> 円</td>
-                                        </tr>
-                                    <?php } ?>
-                                <tr style="line-height: 4rem;"><td colspan='3'> </td><td><strong>合計</strong></td><td><?php echo $cart['sum'] ?> 円</td></tr>
-                                <tr>
-                                    <td><?php echo 'お名前' ?></td>
-                                    <td><?php echo $posts['name'] ?></td>
-                                    <input type="hidden" name="customer_name" value="<?php echo $posts['name'] ?>">
-                                </tr>
-                                <tr>
-                                    <td><?php echo 'メールアドレス'?></td>
-                                    <td><?php echo $posts['mail']?></td>
-                                    <input type="hidden" name="mail" value="<?php echo $posts['mail'] ?>">
-                                </tr>
-                                <tr>
-                                    <td><?php echo '郵便番号'?></td>
-                                    <td><?php echo  $posts['code']?></td>
-                                    <input type="hidden" name="code" value="<?php echo $posts['code'] ?>">
-                                </tr>
-                                <tr>
-                                    <td><?php echo 'ご住所'?></td>
-                                    <td><?php echo  $posts['address']?></td>
-                                    <input type="hidden" name="address" value="<?php echo $posts['address'] ?>">
-                                </tr>
-                                <tr>
-                                    <td><?php echo '電話番号'?></td>
-                                    <td><?php echo  $posts['tel']?></td>
-                                    <input type="hidden" name="tel" value="<?php echo $posts['tel'] ?>">
-                                </tr>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table border-dark mx-auto text-center">
+                                    <thead class="table-light">
+                                    <tr class="d-md-none" style="white-space: nowrap;"><td class="fs-4"><strong><u>合計</strong> ￥<?php echo $sum ?> </u></td></tr>
+                                        <tr style="white-space: nowrap;"><th scope="col">商品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">サイズ</th><th scope="col">小計</th></tr>
+                                    </thead>
+                                        <?php foreach($cart_rows as $cart) { ?>
+                                            <tr>
+                                                <td><?php echo $cart['p_name'] ?></td>
+                                                <input type="hidden" name="product_name" value="<?php echo $cart['p_name'] ?>">
+                                                <td><?php echo $cart['price'] ?></td>
+                                                <input type="hidden" name="price" value="<?php echo $cart['p_name'] ?>">
+                                                <td><?php echo $cart['num'] ?></td>
+                                                <input type="hidden" name="num" value="<?php echo $cart['num'] ?>">
+                                                <td><?php if(isset($cart['size'])) { ?>
+                                                        <?php echo $cart['size']?>
+                                                        <input type="hidden" name="product_size_id" value="<?php echo $cart['product_size_id'] ?>">
+                                                    <?php }  else { ?>
+                                                        <?php echo 'FREE'; ?> 
+                                                        <input type="hidden" name="size" value="FREE">
+                                                    <?php } ?>
+                                                </td>
+                                                <td>￥<?php echo $cart['price'] * $cart['num'] ?> </td>
+                                            </tr>
+                                        <?php } ?>
+                                    <tr class="d-none d-md-table-row"><td colspan='4'> </td><td class="fs-4"><strong>合計</strong> ￥<?php echo $cart['sum'] ?> </td></tr>
+                                </table>
+                                <table class="table border-dark mx-auto mt-5">
+                                    <tr>
+                                        <td><?php echo 'お名前' ?></td>
+                                        <td><?php echo $posts['name'] ?></td>
+                                        <input type="hidden" name="customer_name" value="<?php echo $posts['name'] ?>">
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo 'メールアドレス'?></td>
+                                        <td><?php echo $posts['mail']?></td>
+                                        <input type="hidden" name="mail" value="<?php echo $posts['mail'] ?>">
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo '郵便番号'?></td>
+                                        <td><?php echo  $posts['code']?></td>
+                                        <input type="hidden" name="code" value="<?php echo $posts['code'] ?>">
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo 'ご住所'?></td>
+                                        <td><?php echo  $posts['address']?></td>
+                                        <input type="hidden" name="address" value="<?php echo $posts['address'] ?>">
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo '電話番号'?></td>
+                                        <td><?php echo  $posts['tel']?></td>
+                                        <input type="hidden" name="tel" value="<?php echo $posts['tel'] ?>">
+                                    </tr>
+                                </table>
+                            </div>
                             <div class="text-center">
                                 <input type="submit" name="submit_check" value="注文を確定">
                             </div>
                         </form>
-                        <div class="move text-center">
-                            <a href="buy.php" class="text-decoration-none text-dark">購入者情報入力に戻る</a>
-                            <a href="items.php" class="text-decoration-none text-dark">お買い物に戻る</a>
-                            <a href="cart.php" class="text-decoration-none text-dark">カートに戻る</a>
+                        <div class="move d-flex flex-md-row flex-column justify-content-center">
+                            <a href="buy.php" class="btn btn-outline-dark text-decoration-none m-3">購入者情報入力に戻る</a>
+                            <a href="items.php" class="btn btn-outline-dark text-decoration-none m-3">お買い物に戻る</a>
+                            <a href="cart_empty.php" class="btn btn-outline-dark text-decoration-none m-3">カートに戻る</a>
                         </div>
                     <?php else: ?>
                         <form action="buy.php" method="post" class="row d-flex flex-column">
-                            <p class="col-5 mx-auto">
+                            <p class= "col-md-7 mx-auto">
                                 お名前<br>
-                                <input type="text" name="name" class="form-control" value="<?php echo $name ?>">
+                                <input type="text" name="name" class="form-control" value="<?php echo $name ?>" required>
                             </p>
-                            <p class="col-5 mx-auto">
+                            <p class= "col-md-7 mx-auto">
                                 メールアドレス<br>
-                                <input type="text" name="mail" class="form-control" value="<?php echo $email ?>">
+                                <input type="email" name="mail" class="form-control" value="<?php echo $email ?>" required>
                             </p>
-                            <p class="col-5 mx-auto">
+                            <p class= "col-md-7 mx-auto">
                                 郵便番号<br>
-                                <input type="text" name="code" class="form-control" value="<?php echo $code ?>">
+                                <input type="text" name="code" class="form-control" value="<?php echo $code ?>" required>
                             </p>
-                            <p class="col-5 mx-auto">
+                            <p class= "col-md-7 mx-auto">
                                 ご住所<br>
-                                <input type="text" name="address" class="form-control" value="<?php echo $address ?>">
+                                <input type="text" name="address" class="form-control" value="<?php echo $address ?>" required>
                             </p>
-                            <p class="col-5 mx-auto">
+                            <p class= "col-md-7 mx-auto">
                                 電話番号<br>
-                                <input type="text" name="tel" class="form-control" value="<?php echo $tel ?>">
+                                <input type="text" name="tel" class="form-control" value="<?php echo $tel ?>" required>
                             </p>
-                            <p class="col-5 mx-auto text-center">
+                            <p class="mx-auto text-center">
                                 <input type="submit" name="submit" class="px-4" value="確認">
                             </p>
                         </form>
-                        <div class="move">
-                            <a href="items.php">お買い物に戻る</a>
-                            <a href="cart.php">カートに戻る</a>
+                        <div class="move text-center">
+                            <a href="items.php" class="btn btn-outline-dark text-decoration-none m-3">お買い物に戻る</a>
+                            <a href="cart.php" class="btn btn-outline-dark text-decoration-none m-3">カートに戻る</a>
                         </div>
                     <?php endif; ?>
                 </div>

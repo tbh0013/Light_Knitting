@@ -3,6 +3,7 @@
 
     $page_check = 0;
     $cart_rows = array();
+    $sum = 0;
 
     if(!isset($_POST['submit_check'])){
         $errors = [];
@@ -106,13 +107,15 @@
             $cart_rows = cart_detail();
             $page_check = 1;
             require 'views/v_buy.php';
-                exit();
+            exit();
         }
     }
 
     require 'views/v_buy.php';
 
     function cart_detail() {
+        global $sum;
+
         foreach($_SESSION['cart'] as $product_id => $num_size) {
             $cart_sql ="SELECT
             products.product_id,
@@ -140,7 +143,6 @@
             $cart_st->closeCursor();
             
             $cart_row['num'] = $num_size[0];
-            $sum = 0;
             $sum += $num_size[0] * $cart_row['price'];
             $cart_row['sum'] = $sum;
 

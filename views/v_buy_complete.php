@@ -59,12 +59,12 @@
             </header><!--header-->
             
             <main style="min-height: calc(100vh - 100px);">
-                <div>
+                <div class="text-center mt-3">
                     <p>注文完了しました。ありがとうございました。</p>
                 </div>
 
-                <div class="move">
-                    <a href="items.php">お買い物に戻る</a>
+                <div class="move d-flex flex-md-row justify-content-center">
+                    <a href="items.php" class="btn btn-outline-dark text-decoration-none m-3">お買い物に戻る</a>
                 </div>
             </main> 
 

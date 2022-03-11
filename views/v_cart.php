@@ -61,24 +61,29 @@
             <div id="cart_main_container" class="text-center">
                 <h2 id="item_heading" class="text-center p-3">カートを確認</h2>
                 <div class="container">
-                    <table class="table border-dark mx-auto fs-6">
-                        <tr><th scope="col">商品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">サイズ</th><th scope="col">小計</th></tr>
-                        <?php foreach($cart_rows as $cart) { ?>
-                            <tr>
-                                <td><?php echo $cart['name'] ?></td>
-                                <td>￥<?php echo $cart['price'] ?></td>
-                                <td><?php echo $cart['num'] ?></td>
-                                <td><?php if(isset($cart['size'])) { ?>
-                                    <?php echo $cart['size']?>
-                                    <?php }  else { 
-                                    echo 'FREE';
-                                    } ?>
-                                </td>
-                                <td><?php echo $cart['price'] * $cart['num'] ?> 円</td>
-                            </tr>
-                        <?php } ?>
-                        <tr style="line-height: 4rem;"><td colspan="4"> </td><td><strong>合計</strong> <?php echo $sum ?> 円</td></tr>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table border-dark mx-auto">
+                            <thead class="table-light">
+                                <tr class="d-md-none" style="white-space: nowrap;"><td class="fs-4"><strong><u>合計</strong> ￥<?php echo $sum ?> </u></td></tr>
+                                <tr style="white-space: nowrap;"><th scope="col">商品名</th><th scope="col">単価</th><th scope="col">数量</th><th scope="col">サイズ</th><th scope="col">小計</th></tr>
+                            </thead>
+                            <?php foreach($cart_rows as $cart) { ?>
+                                <tr>
+                                    <td><?php echo $cart['name'] ?></td>
+                                    <td>￥<?php echo $cart['price'] ?></td>
+                                    <td><?php echo $cart['num'] ?></td>
+                                    <td><?php if(isset($cart['size'])) { ?>
+                                        <?php echo $cart['size']?>
+                                        <?php }  else { 
+                                        echo 'FREE';
+                                        } ?>
+                                    </td>
+                                    <td>￥<?php echo $cart['price'] * $cart['num'] ?></td>
+                                </tr>
+                            <?php } ?>
+                            <tr class="d-none d-md-table-row"><td colspan="4"> </td><td class="fs-4"><strong>合計</strong> ￥<?php echo $sum ?></td></tr>
+                        </table>
+                    </div>
 
                     <div class="move d-flex flex-column ms-auto col-md-4">
                         <?php if($can_buy) {

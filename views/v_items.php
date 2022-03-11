@@ -76,7 +76,6 @@
 
                     <div id="item_article_container"  class="container border-top border-bottom my-3">
                         <ul class="item_list list-unstyled row my-2">
-                            <!-- category_nameも渡す予定-->
                             <?php foreach($products as $product) { ?>
                                 <li class="item_individual col-6 col-sm-3">
                                     <a href="item_detail.php?product_id=<?php echo $product['product_id'] ?>">
@@ -86,49 +85,6 @@
                                     <div class="item_price text-center"><?php echo "￥".($product['price']); ?></div>
                                 </li>
                             <?php } ?>
-                            
-                            <!-- <li class="item_individual col-6 col-sm-3">
-                                <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="item_detail.php">
-                                    <div class="item_pic"><img class="img-fluid" src="img/red_socks.jpg"></div>
-                                    <div class="item_name">red socks</div>
-                                    <div class="item_price">￥3000</div>
-                                </a>
-                            </li>
-                            <li class="item_individual col-6 col-sm-3">
-                                <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="item_detail.php">
-                                    <div class="news_pic"><img class="img-fluid" src="img/border_socks.jpg"></div>
-                                    <div class="item_name">border socks</div>
-                                    <div class="item_price">￥3000</div>
-                                </a>
-                            </li>
-                            <li class="item_individual col-6 col-sm-3">
-                                <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="item_detail.php">
-                                    <div class="news_pic"><img class="img-fluid" src="img/orange_socks.jpg"></div>
-                                    <div class="item_name">orange socks</div>
-                                    <div class="item_price">￥3000</div>
-                                </a>
-                            </li>
-                            <li class="item_individual col-6 col-sm-3">
-                                <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="item_detail.php">
-                                    <div class="news_pic"><img class="img-fluid" src="img/chameleon_socks.jpg"></div>
-                                    <div class="item_name">chameleon socks</div>
-                                    <div class="item_price">￥3000</div>
-                                </a>
-                            </li>
-                            <li class="item_individual col-6 col-sm-3">
-                                <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="item_detail.php">
-                                    <div class="news_pic"><img class="img-fluid" src="img/blue_soks.jpg"></div>
-                                    <div class="item_name">blue socks</div>
-                                    <div class="item_price">￥3000</div>
-                                </a>
-                            </li>
-                            <li class="item_individual col-6 col-sm-3">
-                                <a class="d-flex flex-column align-items-center text-decoration-none text-dark" href="item_detail.php">
-                                    <div class="news_pic"><img class="img-fluid" src="img/purple_socks.jpg"></div>
-                                    <div class="item_name">purple socks</div>
-                                    <div class="item_price">￥3000</div>
-                                </a>
-                            </li> -->
                         </ul>
                         <p class="more_item_button mt-5 text-center"><button type="button" class="bg-white border-3 px-5 py-2" style="border-radius: 5px;">more item</button></p>
                     </div><!--#item_article_containe-->

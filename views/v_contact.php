@@ -88,7 +88,7 @@
                                 <p class="send_button text-center" ><input type="submit" name="submit_check" value="送信する" class="p-2 bg-white border-light"></p>
                             </form>
                             <div class="move text-center">
-                                <a href="contact.php">contactページに戻る</a>
+                                <a href="contact.php" class="btn btn-outline-dark text-decoration-none m-3">contactページに戻る</a>
                             </div>
                         <?php else: ?>
                             <p>お問い合わせ内容をご入力ください。</p>

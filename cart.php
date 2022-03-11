@@ -20,10 +20,7 @@
         array_push($_SESSION['cart'][$_POST['product_id']], $_POST['size']);
     }
 
-    // メモ：PDOオブジェクトを作成、DB接続→プリペアードステートメントのSQLをprepare関数を使って設定→execute関数でSQL文を実行
-    //     :closeCursor() は、 他の SQL ステートメントを発行できるようにサーバーへの接続を解放しますが、 ステートメントは再実行可能な状態のまま残されます。
     foreach($_SESSION['cart'] as $product_id => $num_size) {
-    
         $cart_st = $pdo->prepare("SELECT * FROM products WHERE product_id = ?");
         $cart_st->execute(array($product_id));
         $cart_st->setFetchMode(PDO::FETCH_ASSOC);

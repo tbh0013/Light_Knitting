@@ -84,9 +84,9 @@
                                 </div>
 
                                 <?php if(!empty($errors)) { 
-                                    foreach($errors as $error) {
-                                        echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
-                                    } 
+                                        foreach($errors as $error) {
+                                            echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
+                                        } 
                                     } ?>
                                 <form action ="item_detail.php" method="post">
                                     <div class="item_detail_num mb-3">
