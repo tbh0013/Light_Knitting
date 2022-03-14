@@ -4,12 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width",initial-scale="1">
         <link href="css/slick.css" rel="stylesheet">
+        <link href="css/slick-theme.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/lazyload/lazyload.min.js"></script>
         <title>Light Knitting</title>
     </head>
 
-    <body style="min-width: 300px;">
+    <body style="">
         <div id="wrapper">
         <header class="sticky-top" style="background-color: #FFFFCC;">
                 <div class="container-fluid">
@@ -61,10 +64,30 @@
 
             <main>
                 <div id="top_main_container">
-
                     <div class="top_visual container-fluid p-0">
-                        <div class="top_visual container-fluid">
-                            <div class="row">
+                        <div class="top_slide slick-slider list-unstyle">
+                            <div><img src="img/top_pic_sm1.jpg" class="d-block w-100 test" alt="Knitting_pic"></div>
+                            <div><img src="img/top_pic_sm2.jpg" class="d-block w-100" alt="Knitting_pic"></div>
+                            <div><img data-src="img/top_pic_sm3.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
+                            <div><img data-src="img/top_pic_sm4.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
+                            <div><img data-src="img/top_pic_sm5.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
+                            <div><img data-src="img/top_pic_sm6.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
+                        </div>
+                        <div class ="top_slide_nav text-center">
+                            <div class ="top_slide_nav_inner"></div>
+                            <style>
+                                .top_slide_nav {
+                                    margin-top: 30px;
+                                }
+                                .slick-next {
+                                    margin-left: 40px;
+                                }
+                                .slick-prev {
+                                    margin-right: 40px;
+                                }
+                            </style>
+                        </div> 
+                            <!-- <div class="row">
                                 <div id="carouselExampleIndicators" class="carousel slide p-0 d-none d-sm-block" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
                                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -113,8 +136,7 @@
                                         <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
-                            </div>
-                        </div>
+                            </div> -->
                     </div>
                     <h2 id="top_about" class="container text-center my-5 fs-4">
                         Light Knittingは編み物ハンドメイドの製品を紹介・販売しております。<br>
@@ -122,27 +144,30 @@
                     </h2>
 
 
-                    <div id="top_lineup_container" class="container-fluid my-5  p-0 text-center">
-                        <div class="jumbotron pb-5" style="background-image: url(img/top_bg.png);">
+                    <div id="top_lineup_container" class="container-fluid my-5  p-0 text-center" style="background-image: url(img/top_bg.png);">
+                        <div class="jumbotron py-3 align-items-center">
                             <h2 id="top_lineup" class="text-decoration-underline">LINE UP</h2>
                             <!---------------- jQUeryスライドショーver ------------------------->
-                                <ul class="container lineup_slide slick-slider list-unstyle">
+                                <div class="lineup_slide slick-slider list-unstyle">
                                     <?php foreach($lineups as $lineup) { ?>
-                                        <li>
+                                        <div>
                                             <a href="item_detail.php?product_id=<?php echo $lineup['product_id'] ?>">
                                                 <img class="img-fluid p-1" alt="画像" src="<?php echo $lineup['image_path'] ?>">
                                             </a>
-                                        </li>
+                                        </div>
                                     <?php } ?>
-                                </ul>
+                                    </div>
                                 <div class ="lineup_slide_nav">
                                     <div class ="lineup_slide_nav_inner"></div>
                                     <style>
-                                        .slick-next {
+                                    .lineup_slide_nav {
+                                        margin-top: 30px;
+                                    }
+                                        .slick_next {
                                             margin-left: 40px;
                                         }
 
-                                        .slick-prev {
+                                        .slick_prev {
                                             margin-right: 40px;
                                         }
                                     </style>
@@ -220,5 +245,8 @@
         <script type="text/javascript" src="js/slick.min.js"></script>
         <script type="text/javascript" src="js/slide.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script>
+            lazyload();
+        </script>
     </body>
 </html>
