@@ -1,4 +1,51 @@
+@charset 'UTF-8';
+/*bootstrap sans-serif */
+
+/* 共通CSS */
 body {
-  font-family: Meiryo;
+  font-family:"Yu Gothic","YuGothic",sans-serif;
   min-width: 300px;
 }
+
+header {
+  background-color: #FFFFCC;
+}
+
+header, h2, .sub_category_menu {
+  font-family: 'Oswald', sans-serif;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+}
+
+footer {
+  height:100px; 
+  background-color: #FFFFCC;
+}
+
+
+
+/* v_indexビュー */
+.slick-prev {
+  left: 20px;
+  z-index: 1;
+}
+
+.slick-next {
+  right: 20px;
+  z-index: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+  font-size: 30px;
+}
+
+#top_lineup_container {
+  background-image: url(../img/top_bg.png);
+}
+
+#top_movie_container {
+  background-image: url(../img/top_bg.png);
+}
+

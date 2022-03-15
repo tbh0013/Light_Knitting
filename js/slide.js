@@ -4,12 +4,11 @@ $('.top_slide').slick({
   autoplay: true,
   infinite : true,
   autoplaySpeed: 1000,
-  speed: 1500,
+  speed: 1000,
   arrows: false,
   dots: true,
   pauseOnHover: false,
   pauseOnFocus: false,
-  centerMode: true,
   // appendArrows: '.top_slide_nav_inner',
   // prevArrow: '<img src="./img/left_arrow.png" class="slick-prev">',
   // nextArrow: '<img src="./img/right_arrow.png" class="slick-next">',
@@ -29,17 +28,16 @@ $('.lineup_slide').slick({
   autoplay: true,
   infinite : true,
   autoplaySpeed: 1000,
-  speed: 1500,
+  speed: 1000,
   arrows: true,
   centerMode: true,
-  appendArrows: '.lineup_slide_nav_inner',
-  prevArrow: '<img src="./img/left_arrow.png" class="slick_prev">',
-  nextArrow: '<img src="./img/right_arrow.png" class="slick_next">',
+  // prevArrow: '<img src="./img/left_arrow.png" class="lineup_prev">',
+  // nextArrow: '<img src="./img/right_arrow.png" class="lineup_next">',
   responsive: [{
     breakpoint: 576,
     settings: {
       slidesToShow: 1,
+      centerMode: true,
     }
   }]
 });
-

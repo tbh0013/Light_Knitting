@@ -3,18 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width",initial-scale="1">
-        <link href="css/slick.css" rel="stylesheet">
         <link href="css/slick-theme.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="css/slick.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">    
         <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
         <script src="js/lazyload/lazyload.min.js"></script>
         <title>Light Knitting</title>
     </head>
 
-    <body style="">
+    <body>
         <div id="wrapper">
-        <header class="sticky-top" style="background-color: #FFFFCC;">
+        <header class="sticky-top">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
@@ -66,27 +67,13 @@
                 <div id="top_main_container">
                     <div class="top_visual container-fluid p-0">
                         <div class="top_slide slick-slider list-unstyle">
-                            <div><img src="img/top_pic_sm1.jpg" class="d-block w-100 test" alt="Knitting_pic"></div>
+                            <div><img src="img/top_pic_sm1.jpg" class="d-block w-100" alt="Knitting_pic"></div>
                             <div><img src="img/top_pic_sm2.jpg" class="d-block w-100" alt="Knitting_pic"></div>
                             <div><img data-src="img/top_pic_sm3.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
                             <div><img data-src="img/top_pic_sm4.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
                             <div><img data-src="img/top_pic_sm5.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
                             <div><img data-src="img/top_pic_sm6.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
                         </div>
-                        <div class ="top_slide_nav text-center">
-                            <div class ="top_slide_nav_inner"></div>
-                            <style>
-                                .top_slide_nav {
-                                    margin-top: 30px;
-                                }
-                                .slick-next {
-                                    margin-left: 40px;
-                                }
-                                .slick-prev {
-                                    margin-right: 40px;
-                                }
-                            </style>
-                        </div> 
                             <!-- <div class="row">
                                 <div id="carouselExampleIndicators" class="carousel slide p-0 d-none d-sm-block" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
@@ -144,7 +131,7 @@
                     </h2>
 
 
-                    <div id="top_lineup_container" class="container-fluid my-5  p-0 text-center" style="background-image: url(img/top_bg.png);">
+                    <div id="top_lineup_container" class="container-fluid my-5  p-0 text-center">
                         <div class="jumbotron py-3 align-items-center">
                             <h2 id="top_lineup" class="text-decoration-underline">LINE UP</h2>
                             <!---------------- jQUeryスライドショーver ------------------------->
@@ -156,21 +143,6 @@
                                             </a>
                                         </div>
                                     <?php } ?>
-                                    </div>
-                                <div class ="lineup_slide_nav">
-                                    <div class ="lineup_slide_nav_inner"></div>
-                                    <style>
-                                    .lineup_slide_nav {
-                                        margin-top: 30px;
-                                    }
-                                        .slick_next {
-                                            margin-left: 40px;
-                                        }
-
-                                        .slick_prev {
-                                            margin-right: 40px;
-                                        }
-                                    </style>
                                 </div>
                             <!-----------------スライドショー無しver-----------------------------
                             <div class=" container row mx-auto">
@@ -208,7 +180,7 @@
                     </div><!--#top_news_container-->
 
                     <div id="top_movie_container" class="container-fluid p-0 text-center align-items-center">
-                        <div class="py-3" style="background-image: url(img/top_bg.png);">
+                        <div class="py-3">
                             <video src="img/knitting_movie.mp4" loop autoplay muted class="container w-75"></video>
                         </div>
                     </div><!--#top_movie_container-->
@@ -226,19 +198,17 @@
                                 <a href="#"><img src="img/twitter_logo.png" class="img-fluid p-0"></a>
                             </div>
                         </div>
-                        <div class="row mb-4 mx-0">
+                        <h2 class="row mb-4 mx-0">
                             <div class="col p-0 m-0 fs-3 link-dark">
                                 <a href="index.php" class="text-decoration-none text-dark">Light Knitting</a>
                             </div>
-                        </div>
+                        </h2>
                     </div>
                 </div><!--icons_container-->
             </main>
 
-            <footer class="container-fluid" style="height:100px; background-color: #FFFFCC;">
-                <div class="d-flex justify-content-center align-items-center" style="height: 100px">
-                    <p class="m-0">(C)2021 Light Knitting.</p>
-                </div>
+            <footer class="container-fluid d-flex justify-content-center align-items-center">
+                <p class="m-0">(C)2021 Light Knitting.</p>
             </footer>
         </div><!--#wrapper-->
 
