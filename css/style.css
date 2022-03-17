@@ -17,6 +17,17 @@ header, h2, .sub_category_menu {
 
 .navbar-light .navbar-nav .nav-link {
   color: black;
+  border-radius: 10px;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: white;
+  background-color: black;
+}
+
+.dropdown-item:hover {
+  color: white;
+  background-color: black
 }
 
 footer {
@@ -26,7 +37,7 @@ footer {
 
 
 
-/* v_indexビュー */
+/* indexビュー */
 .slick-prev {
   left: 20px;
   z-index: 1;
@@ -45,7 +56,39 @@ footer {
   background-image: url(../img/top_bg.png);
 }
 
+.lineup_product:hover {
+  transition: 0.3s;
+  opacity: 0.7;
+}
+
+.top_news_detail {
+  color: black;
+}
+
+.top_news_detail:hover {
+  transition: 0.3s;
+  color: white;
+  background-color: black;
+}
+
 #top_movie_container {
   background-image: url(../img/top_bg.png);
 }
 
+/* itemsビュー */
+.item_pic:hover {
+  transition: 0.3s;
+  opacity: 0.7;
+}
+
+.sub_category_text {
+  color: black;
+}
+
+.sub_category_text:hover {
+  transition: 0.3s;
+  color: white;
+  background-color: black;
+}
+
+/* item_detailビュー */

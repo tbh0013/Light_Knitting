@@ -11,18 +11,18 @@
 
     <body>
         <div id="wrapper">
-            <header>
+            <header class="sticky-top">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
-                            <h1 class="d-flex align-items-center m-0 w-50"><a class="navbar-brand m-0" href="index.php"><img src="img/Light_Knitting_logo.png" alt="Light Knitting" class="img-fluid"></a></h1>
-                            <li class="list-unstyled d-flex flex-row-reverse"><a class="nav-link p-0 d-lg-none" href="#"><img src="img/cart.png" class="rounded float-end m-2"></a>
+                            <h1 class="d-flex align-items-center m-0 w-50"><a class="navbar-brand m-0" href="index.php"><img src="img/Light_Knitting_logo.png" alt="Light Knitting" class=" img-fluid"></a></h1>
+                            <li class="list-unstyled d-flex flex-row-reverse"><a class="nav-link p-0 d-lg-none" href="cart.php"><img src="img/cart.png" class="rounded float-end m-2"></a>
                             <button class="navbar-toggler p-0" style="border: 0;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             </li>
                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                                <ul class="navbar-nav ms-auto align-items-center">
+                                <ul class="navbar-nav ms-auto align-items-center fs-4">
                                     <li class="nav-item">
                                         <a class="nav-link" href="about.php">About</a>
                                     </li>
@@ -36,7 +36,7 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Items
                                         </a>
-                                        <ul class="dropdown-menu border-0 p-0 text-center" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
+                                        <ul class="dropdown-menu border-0 p-0 text-center fs-5" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
                                             <li><a class="dropdown-item" href="items.php">ALL</a></li>
                                             <li><a class="dropdown-item" href="items.php?category_id=1">socks</a></li>
                                             <li><a class="dropdown-item" href="items.php?category_id=2">knit hat</a></li>
@@ -54,7 +54,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="#"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
@@ -64,74 +64,78 @@
                     <?php foreach($product_join_size as $product) { ?>
                         <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $product['c_name'] ?></h2>
 
-                        <div id="item_detail_container" class="container border-top border-bottom  d-flex flex-column align-items-center ">
-                            <h2 id="item_title" class="my-3"><?php echo $product['p_name']; ?></h2>
-                            <div id="item_pic_container">
-                                <div class="main_pic d-flex align-items-center justify-content-center">
-                                    <img class="img-fluid w-50" src="<?php echo $product['image_path']; ?>">
-                                </div>
-                                <div class="sub_pic">
-                                    <ul class="list-unstyled d-flex align-items-center justify-content-center mt-3">
-                                        <li class="d-flex w-25"><img src="<?php echo $product['image_path'] ?>" class="img-thumbnail"></li>
-                                        <li class="d-flex w-25"><img src="<?php echo $product['sub_image_path'] ?>" class="img-thumbnail"></li>
-                                    </ul>
-                                </div><!--.sub_pic"-->
-                            </div><!--#item_pic_container-->
-
-                            <p><?php echo $product['description']; ?></p>
-
-                            <div id="item_information">
-                                <div class="item_detail_place text-center">
-                                    <p class="fw-bold">￥<?php echo $product['price']; ?></p>
-                                </div>
-
-                                <?php if(!empty($errors)) { 
-                                        foreach($errors as $error) {
-                                            echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
-                                        } 
-                                    } ?>
-                                <form action ="item_detail.php" method="post">
-                                    <div class="item_detail_num mb-3">
-                                        <span class="">数量</span>
-                                            <select name="num" class="num_option">
-                                                <option value="---">---</option>
-                                                <?php 
-                                                    for ($i = 1; $i <=5; $i++) {
-                                                        echo "<option>$i</option>";
-                                                    }
-                                                ?>
-                                            </select>
+                        <div id="item_detail_container" class="container border-top border-bottom mx-auto">
+                            <h2 id="item_title" class="my-3 text-center"><?php echo $product['p_name']; ?></h2>
+                            <div class="d-flex flex-md-row flex-column row">
+                                <div class="pic_container text-center col">
+                                    <div class="main_pic">
+                                        <img class="img-fluid mh-100 w-75" src="<?php echo $product['image_path']; ?>">
                                     </div>
+                                    <div class="sub_pic">
+                                        <ul class="list-unstyled mt-3 d-flex justify-content-center">
+                                            <li class="w-25"><img src="<?php echo $product['image_path'] ?>" class="img-thumbnail"></li>
+                                            <li class="w-25"><img src="<?php echo $product['sub_image_path'] ?>" class="img-thumbnail"></li>
+                                        </ul>
+                                    </div><!--.sub_pic"-->
+                                </div><!--.pic_container-->
 
-                                    <div class="item_detail_size mb-3">
-                                        <?php if (isset($size_array[0])) { ?> 
-                                            <span class="size">サイズ</span>
-                                            <select name="size" class="size_option">
-                                                <option value="---">---</option>
-                                                <?php foreach($size_array as $product_size) { ?>
-                                                    <option><?php echo $product_size ?></option>
+                                <div class="detail_container col text-center">
+                                    <p><?php echo $product['description']; ?></p>
+
+                                    <div id="item_information">
+                                        <div class="item_detail_place">
+                                            <p class="fw-bold">￥<?php echo $product['price']; ?></p>
+                                        </div>
+
+                                        <?php if(!empty($errors)) { 
+                                                foreach($errors as $error) {
+                                                    echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
+                                                } 
+                                            } ?>
+                                        <form action ="item_detail.php" method="post">
+                                            <div class="item_detail_num mb-3">
+                                                <span class="">数量</span>
+                                                    <select name="num" class="num_option">
+                                                        <option value="---">---</option>
+                                                        <?php 
+                                                            for ($i = 1; $i <=5; $i++) {
+                                                                echo "<option>$i</option>";
+                                                            }
+                                                        ?>
+                                                    </select>
+                                            </div>
+
+                                            <div class="item_detail_size mb-3">
+                                                <?php if (isset($size_array[0])) { ?> 
+                                                    <span class="size">サイズ</span>
+                                                    <select name="size" class="size_option">
+                                                        <option value="---">---</option>
+                                                        <?php foreach($size_array as $product_size) { ?>
+                                                            <option><?php echo $product_size ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                    <input type="hidden" name="size_exist" value="サイズ">
                                                 <?php } ?>
-                                            </select>
-                                            <input type="hidden" name="size_exist" value="サイズ">
-                                        <?php } ?>
-                                    </div>
-                                    <input type="hidden" name="product_id" value="<?php echo $product['product_id'] ?>">
-                                    <input type="submit" name="submit" class="cart_in_button mb-3 px-5" value="カートに入れる">
-                                </form>
-                                
-                            </div><!--#item_information-->
+                                            </div>
+                                            <input type="hidden" name="product_id" value="<?php echo $product['product_id'] ?>">
+                                            <input type="submit" name="submit" class="cart_in_button mb-3 px-5" value="カートに入れる">
+                                        </form>
+                                        
+                                    </div><!--#item_information-->
+                                </div><!--.detail_container-->
+                            </div><!--.row-->
                         </div><!--#item_detail_container-->
                         <?php break ?>
                     <?php } ?>
                     <div id="sub_category" class="container border-bottom mb-3">
                         <h2>Category</h2>
                         <ul class="sub_category_menu list-unstyled fs-5">
-                            <li><a class="text-decoration-none text-dark" href="items.php">All</a></li>
-                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=1">socks</a></li>
-                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=2">knit hat</a></li>
-                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=3">gloves</a></li>
-                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=4">bag</a></li>
-                            <li><a class="text-decoration-none text-dark" href="items.php?category_id=5">stall</a></li>
+                            <li><a class="sub_category_text text-decoration-none" href="items.php">All</a></li>
+                            <li><a class="sub_category_text text-decoration-none" href="items.php?category_id=1">socks</a></li>
+                            <li><a class="sub_category_text text-decoration-none" href="items.php?category_id=2">knit hat</a></li>
+                            <li><a class="sub_category_text text-decoration-none" href="items.php?category_id=3">gloves</a></li>
+                            <li><a class="sub_category_text text-decoration-none" href="items.php?category_id=4">bag</a></li>
+                            <li><a class="sub_category_text text-decoration-none" href="items.php?category_id=5">stall</a></li>
                         </ul>
                     </div>
 

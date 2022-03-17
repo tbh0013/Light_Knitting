@@ -11,18 +11,18 @@
 
     <body>
         <div id="wrapper">
-            <header>
+            <header class="sticky-top">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
-                            <h1 class="d-flex align-items-center m-0 w-50"><a class="navbar-brand m-0" href="index.php"><img src="img/Light_Knitting_logo.png" alt="Light Knitting" class="img-fluid"></a></h1>
-                            <li class="list-unstyled d-flex flex-row-reverse"><a class="nav-link p-0 d-lg-none" href="#"><img src="img/cart.png" class="rounded float-end m-2"></a>
+                            <h1 class="d-flex align-items-center m-0 w-50"><a class="navbar-brand m-0" href="index.php"><img src="img/Light_Knitting_logo.png" alt="Light Knitting" class=" img-fluid"></a></h1>
+                            <li class="list-unstyled d-flex flex-row-reverse"><a class="nav-link p-0 d-lg-none" href="cart.php"><img src="img/cart.png" class="rounded float-end m-2"></a>
                             <button class="navbar-toggler p-0" style="border: 0;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             </li>
                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                                <ul class="navbar-nav ms-auto align-items-center">
+                                <ul class="navbar-nav ms-auto align-items-center fs-4">
                                     <li class="nav-item">
                                         <a class="nav-link" href="about.php">About</a>
                                     </li>
@@ -36,7 +36,7 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Items
                                         </a>
-                                        <ul class="dropdown-menu border-0 p-0 text-center" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
+                                        <ul class="dropdown-menu border-0 p-0 text-center fs-5" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
                                             <li><a class="dropdown-item" href="items.php">ALL</a></li>
                                             <li><a class="dropdown-item" href="items.php?category_id=1">socks</a></li>
                                             <li><a class="dropdown-item" href="items.php?category_id=2">knit hat</a></li>
