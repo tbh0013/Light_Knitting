@@ -1,3 +1,5 @@
+'use strict';
+
 $('.top_slide').slick({
   slidesToShow: 2,
   slidesToScroll: 1,
