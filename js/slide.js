@@ -38,7 +38,7 @@ $('.lineup_slide').slick({
   responsive: [{
     breakpoint: 576,
     settings: {
-      slidesToShow: 1,
+      slidesToShow: 2,
       centerMode: true,
     }
   }]
