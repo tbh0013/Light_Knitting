@@ -78,7 +78,7 @@
 
                     <div id="item_article_container"  class="container border-top border-bottom my-3">
                         <ul class="item_list list-unstyled row my-2">
-                            <?php foreach($products as $product) { ?>
+                            <?php foreach ($products as $product) { ?>
                                 <li class="item_individual col-6 col-sm-3">
                                     <a href="item_detail.php?product_id=<?php echo $product['product_id'] ?>">
                                         <div class="item_pic"><img class="img-fluid" src="<?php echo $product['image_path']; ?>"></div>

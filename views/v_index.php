@@ -7,7 +7,7 @@
         <link href="css/slick.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">    
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
         <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
         <script src="js/lazyload/lazyload.min.js"></script>
         <title>Light Knitting</title>
@@ -74,56 +74,6 @@
                             <div><img data-src="img/top_pic_sm5.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
                             <div><img data-src="img/top_pic_sm6.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
                         </div>
-                            <!-- <div class="row">
-                                <div id="carouselExampleIndicators" class="carousel slide p-0 d-none d-sm-block" data-bs-ride="carousel">
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic1.png" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic2.png" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic3.png" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="carouselExampleControls" class="carousel slide p-0 d-sm-none" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic_sm1.jpg" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic_sm2.jpg" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic_sm3.jpg" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic_sm4.jpg" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic_sm5.jpg" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                        <div class="carousel-item" data-bs-interval="1500" style="transition:2.0S ease;">
-                                            <img src="img/top_pic_sm6.jpg" class="d-block w-100" alt="Knitting_pic">
-                                        </div>
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                            </div> -->
                     </div>
                     <h2 id="top_about" class="container text-center my-5 fs-4">
                         Light Knittingは編み物ハンドメイドの製品を紹介・販売しております。<br>
@@ -131,32 +81,18 @@
                     </h2>
 
 
-                    <div id="top_lineup_container" class="container-fluid my-5  p-0 text-center">
+                    <div id="top_lineup_container" class="container-fluid my-5 p-0 text-center">
                         <div class="jumbotron py-3 align-items-center">
                             <h2 id="top_lineup" class="text-decoration-underline">LINE UP</h2>
-                            <!---------------- jQUeryスライドショーver ------------------------->
-                                <div class="lineup_slide slick-slider list-unstyle">
-                                    <?php foreach($lineups as $lineup) { ?>
-                                        <div class="lineup_product">
-                                            <a href="item_detail.php?product_id=<?php echo $lineup['product_id'] ?>">
-                                                <img class="img-fluid p-1" alt="画像" src="<?php echo $lineup['image_path'] ?>">
-                                            </a>
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                            <!-----------------スライドショー無しver-----------------------------
-                            <div class=" container row mx-auto">
-                                <div class="col p-0 m-2">
-                                    <a href="item_detail.html"><img src="img/top_lineup1.jpg" class="img-fluid p-0"></a>
-                                </div>
-                                <div class="col p-0 m-2">
-                                    <a href="item_detail.html"><img src="img/top_lineup2.jpg" class="img-fluid p-0"></a>
-                                </div>
-                                <div class="col p-0 m-2">
-                                    <a href="item_detail.html"><img src="img/top_lineup3.jpg" class="img-fluid p-0"></a>
-                                </div>
-                            </div> 
-                            --------------------------------------------------------------------->
+                            <div class="lineup_slide slick-slider list-unstyle">
+                                <?php foreach ($lineups as $lineup) { ?>
+                                    <div class="lineup_product">
+                                        <a href="item_detail.php?product_id=<?php echo $lineup['product_id']; ?>">
+                                            <img class="img-fluid p-1" alt="画像" src="<?php echo $lineup['image_path']; ?>">
+                                        </a>
+                                    </div>
+                                <?php } ?>
+                            </div>
                         </div>
                     </div><!--#top_lineUp_container-->
 
@@ -164,9 +100,9 @@
                     <div id="top_news_container" class="container text-center my-5">
                         <h2 id="top_news" class="text-decoration-underline">NEWS</h2>
                         <ul class="top_news_article list-unstyled">
-                            <?php foreach($top_news as $news) { ?>
+                            <?php foreach ($top_news as $news) : ?>
                                 <li class="top_news_list border-top border-bottom border-dark p-3 fs-5">
-                                <a class="top_news_detail text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']?>"> 
+                                <a class="top_news_detail text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>"> 
                                         <?php 
                                         echo ($news["t_date"]);
                                         echo ("<br>\n");
@@ -174,7 +110,7 @@
                                         ?>
                                     </a>
                                 </li>
-                            <?php } ?>
+                            <?php endforeach; ?>
                         </ul>
                         <li class="list-unstyled p-3 fs-4"><a class="btn btn-outline-dark text-decoration-none m-3" href="news.php">詳しくはこちら</a></li>
                     </div><!--#top_news_container-->

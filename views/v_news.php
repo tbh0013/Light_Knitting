@@ -66,12 +66,12 @@
 
                     <div id="news_article_container" class="container mb-5">
                         <ul class="news_list row list-unstyled fs-5">
-                            <?php foreach($newslist as $news) { ?>
+                            <?php foreach ($newslist as $news) { ?>
                                 <li class="news_item col-6 col-sm-4 my-3 d-flex align-items-end">
-                                    <a class="d-block text-decoration-none text-dark" href="news_detail.php?news_id=<?php echo $news['news_id'] ?>">
-                                        <div class="news_pic"><img class="img-fluid" src="<?php echo $news['image_path'] ?>"></div>
-                                        <div class="news_time"><?php echo $news['t_date'] ?></div>
-                                        <div class="news_detail"><?php echo $news['text'] ?></div>
+                                    <a class="d-block text-decoration-none text-dark" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
+                                        <div class="news_pic"><img class="img-fluid" src="<?php echo $news['image_path']; ?>"></div>
+                                        <div class="news_time"><?php echo $news['t_date']; ?></div>
+                                        <div class="news_detail"><?php echo $news['text']; ?></div>
                                     </a>
                                 </li>
                             <?php } ?>

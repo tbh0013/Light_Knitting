@@ -1,4 +1,3 @@
 <?php
 
-require 'views/v_about.php';
-?>
+require_once 'views/v_about.php';

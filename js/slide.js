@@ -11,9 +11,6 @@ $('.top_slide').slick({
   dots: true,
   pauseOnHover: false,
   pauseOnFocus: false,
-  // appendArrows: '.top_slide_nav_inner',
-  // prevArrow: '<img src="./img/left_arrow.png" class="slick-prev">',
-  // nextArrow: '<img src="./img/right_arrow.png" class="slick-next">',
   responsive: [{
     breakpoint: 576,
     settings: {
@@ -33,8 +30,6 @@ $('.lineup_slide').slick({
   speed: 1000,
   arrows: true,
   centerMode: true,
-  // prevArrow: '<img src="./img/left_arrow.png" class="lineup_prev">',
-  // nextArrow: '<img src="./img/right_arrow.png" class="lineup_next">',
   responsive: [{
     breakpoint: 576,
     settings: {

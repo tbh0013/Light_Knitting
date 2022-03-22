@@ -62,8 +62,8 @@
 
             <main>
                 <div id="item_main_container">
-                    <?php foreach($product_join_size as $product) { ?>
-                        <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $product['c_name'] ?></h2>
+                    <?php foreach ($product_join_size as $product) : ?>
+                        <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $product['c_name']; ?></h2>
 
                         <div id="item_detail_container" class="container border-top border-bottom mx-auto">
                             <h2 id="item_title" class="my-3 text-center"><?php echo $product['p_name']; ?></h2>
@@ -74,8 +74,8 @@
                                     </div>
                                     <div class="sub_pic">
                                         <ul class="list-unstyled mt-3 d-flex justify-content-center">
-                                            <li class="current w-25"><img src="<?php echo $product['image_path'] ?>" class="img-thumbnail"></li>
-                                            <li class="w-25"><img src="<?php echo $product['sub_image_path'] ?>" class="img-thumbnail"></li>
+                                            <li class="current w-25"><img src="<?php echo $product['image_path']; ?>" class="img-thumbnail"></li>
+                                            <li class="w-25"><img src="<?php echo $product['sub_image_path']; ?>" class="img-thumbnail"></li>
                                         </ul>
                                     </div><!--.sub_pic"-->
                                 </div><!--.pic_container-->
@@ -88,46 +88,46 @@
                                             <p class="fw-bold">￥<?php echo $product['price']; ?></p>
                                         </div>
 
-                                        <?php if(!empty($errors)) { 
-                                                foreach($errors as $error) {
-                                                    echo "<span class=\"error\" style=\"color: red;\">$error</span><br>";
-                                                } 
-                                            } ?>
-                                        <form action ="item_detail.php" method="post">
+                                        <?php if (!empty($errors)) : ?>
+                                            <?php foreach ($errors as $error) : ?>
+                                                <?php echo "<span class=\"error\" style=\"color: red;\">{$error}</span><br>"; ?>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                        <form action ="item_check.php" method="post">
                                             <div class="item_detail_num mb-3">
                                                 <span class="">数量</span>
                                                     <select name="num" class="num_option">
                                                         <option value="---">---</option>
-                                                        <?php 
+                                                        <?php
                                                             for ($i = 1; $i <=5; $i++) {
-                                                                echo "<option>$i</option>";
+                                                                echo "<option>{$i}</option>";
                                                             }
                                                         ?>
                                                     </select>
                                             </div>
 
                                             <div class="item_detail_size mb-3">
-                                                <?php if (isset($size_array[0])) { ?> 
+                                                <?php if (isset($size_array[0])) : ?>
                                                     <span class="size">サイズ</span>
                                                     <select name="size" class="size_option">
                                                         <option value="---">---</option>
-                                                        <?php foreach($size_array as $product_size) { ?>
-                                                            <option><?php echo $product_size ?></option>
-                                                        <?php } ?>
+                                                        <?php foreach ($size_array as $product_size) : ?>
+                                                            <option><?php echo $product_size; ?></option>
+                                                        <?php endforeach; ?>
                                                     </select>
                                                     <input type="hidden" name="size_exist" value="サイズ">
-                                                <?php } ?>
+                                                <?php endif; ?>
                                             </div>
-                                            <input type="hidden" name="product_id" value="<?php echo $product['product_id'] ?>">
+                                            <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                             <input type="submit" name="submit" class="cart_in_button mb-3 px-5" value="カートに入れる">
                                         </form>
-                                        
+
                                     </div><!--#item_information-->
                                 </div><!--.detail_container-->
                             </div><!--.row-->
                         </div><!--#item_detail_container-->
                         <?php break ?>
-                    <?php } ?>
+                    <?php endforeach; ?>
                     <div id="sub_category" class="container border-bottom mb-3">
                         <h2>Category</h2>
                         <ul class="sub_category_menu list-unstyled fs-5">

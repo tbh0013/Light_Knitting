@@ -66,25 +66,25 @@
 
 
                     <div id="news_detail_container" class="container border-top border-bottom  d-flex flex-column align-items-center ">
-                        <?php foreach($newslist as $news) { ?>
-                            <h2 id="news_title" class="my-3"><?php echo $news['title'] ?></h2>
+                        <?php foreach ($newslist as $news) : ?>
+                            <h2 id="news_title" class="my-3"><?php echo $news['title']; ?></h2>
                             <div id="news_detail_pic_container" class="container row">
                                 <div class="col-5 mx-auto">
-                                    <img class="main_pic img-fluid" src="<?php echo $news['image_path'] ?>">
+                                    <img class="main_pic img-fluid" src="<?php echo $news['image_path']; ?>">
                                 </div>
                             </div><!--#news_detail_pic_container-->
 
-                            <p class="text-center"><?php echo $news['text'] ?></p>
+                            <p class="text-center"><?php echo $news['text']; ?></p>
 
                                 <a class="btn btn-outline-dark text-decoration-none m-3"
-                                    href="<?php if(isset($news['url'])) { ?>
-                                            <?php echo $news['url'] ?>
-                                    <?php } else {
-                                            echo "item_detail.php?product_id={$news['product_id']}";
-                                    }?>">
-                                    詳細ページへ
+                                    href="<?php if (isset($news['url'])) : ?>
+                                            <?php echo $news['url']; ?>
+                                        <?php else : ?>
+                                            <?php echo "item_detail.php?product_id={$news['product_id']}"; ?>
+                                        <?php endif; ?>">
+                                    <?php echo "詳細ページへ"; ?>
                                 </a>
-                        <?php }?>
+                        <?php endforeach; ?>
                     </div><!--#news_detail_container-->
 
                     <div id="icons_container" class="container-fluid p-0 text-center">
