@@ -54,7 +54,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0 d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
@@ -94,6 +94,11 @@
                             </div>
                         <?php else: ?>
                             <p>お問い合わせ内容をご入力ください。</p>
+                            <?php if(!empty($errors)) : ?>
+                                <?php foreach ($errors as $error) : ?>
+                                    <?php echo "<span class=\"error\" style=\"color: red;\">{$error}</span><br>"; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                                 <form action="contact.php" method="post">
                                     <dl class="row">
                                         <dt><label for="name">お名前</label><strong>(必須)</strong></dt>

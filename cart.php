@@ -1,10 +1,9 @@
 <?php
-session_start();
+require_once 'initiallization.php';
 
 $cart_rows = array();
 $sum = 0;
 $can_buy = false;
-$pdo = new PDO("mysql:dbname=knit_shop", "root");
 $i = 0;
 
 // カートの中身を確認
@@ -19,12 +18,20 @@ foreach ($_SESSION['cart'] as $product_id => $products) {
         $cart_row = $cart_st->fetch();
         $cart_st->closeCursor();
 
-        $cart_row['num'] = $num_size[0];
-        $sum += $num_size[0] * $cart_row['price'];
-
-        if (isset($num_size[1])) {
-            $cart_row['size'] = $num_size[1];
+        // 数量とサイズのキー変更
+        if(isset($num_size[1])) {
+            $num_size_keys = ["num", "size"];
+            $num_size_array = array_combine($num_size_keys, $num_size);
+            $cart_row['size'] = $num_size_array['size'];
+            $cart_row['num'] = $num_size_array["num"];
+            $sum += $cart_row['num'] * $cart_row['price'];
+        } else {
+            $num_keys = ["num"];
+            $num_array = array_combine($num_keys, $num_size);
+            $cart_row['num'] = $num_array["num"];
+            $sum += $cart_row['num'] * $cart_row['price'];
         }
+        $cart_row['sum'] = $sum;
 
         $cart_rows[] = $cart_row;
     }

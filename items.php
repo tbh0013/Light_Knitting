@@ -1,10 +1,8 @@
 <?php
-session_start();
+require_once 'initiallization.php';
 
 $products = array();
 $categories = array();
-
-$pdo = new PDO("mysql:dbname=knit_shop", "root");
 
 if (isset($_GET['category_id'])) {
     $categories_id = $_GET['category_id'];

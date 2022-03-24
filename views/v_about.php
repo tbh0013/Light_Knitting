@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width",initial-scale="1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">    
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
         <title>about - Light Knitting</title>
     </head>
 
@@ -54,11 +54,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0 d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
-            
+
             <main>
                 <div id="about_main_container">
 
@@ -70,7 +70,7 @@
                             <img src="img/about_pic2.JPG" class="img-fluid p-0">
                         </div>
                     </div>
-                        
+
 
                     <div class="container-fluid" style="background-image: url(img/top_bg.png);">
                         <h2 id="about_heading" class="text-center p-4">毛糸の個性を大切に。<br>一編み一編み丁寧に。</h2>
@@ -83,7 +83,7 @@
                             <p class="p-5"></p>
                         </div><!--#about_article_container-->
                     </div>
-                    
+
                 </div><!--#about_main_container-->
 
                 <div id="icons_container" class="container-fluid p-0 text-center">
@@ -104,7 +104,7 @@
                     </div>
                 </div><!--icons_container-->
 
-            </main> 
+            </main>
 
             <footer class="container-fluid d-flex justify-content-center align-items-center">
                 <p class="m-0">(C)2021 Light Knitting.</p>

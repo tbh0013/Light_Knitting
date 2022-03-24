@@ -54,7 +54,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0 d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
@@ -83,7 +83,11 @@
                                     <td>￥<?php echo "{$cart['price']}" * "{$cart['num']}"; ?></td>
                                 </tr>
                             <?php endforeach; ?>
-                            <tr class="d-none d-md-table-row"><td colspan="4"> </td><td class="fs-4"><strong>合計</strong> ￥<?php echo $sum; ?></td></tr>
+                            <?php if(isset($cart['sum'])) : ?>
+                                <tr class="d-none d-md-table-row"><td colspan="4"> </td><td class="fs-4"><strong>合計</strong> ￥<?php echo $cart['sum']; ?></td></tr>
+                            <?php else : ?>
+                                <p class="fw-bold mt-3" >カートに商品がありません。</p>
+                            <?php endif; ?>
                         </table>
                     </div>
 
@@ -97,7 +101,7 @@
                 </div>
             </div>
         </main>
-    
+
         <footer class="container-fluid d-flex justify-content-center align-items-center">
             <p class="m-0">(C)2021 Light Knitting.</p>
         </footer>

@@ -58,7 +58,7 @@
                     </nav>
                 </div>
             </header><!--header-->
-            
+
             <main style="min-height: calc(100vh - 100px);">
             <h2 id="item_heading" class="text-center p-3">
                 <?php if ($page_check == 1) : ?>
@@ -94,7 +94,7 @@
                                                         <?php echo $cart['size']; ?>
                                                         <input type="hidden" name="product_size_id" value="<?php echo $cart['product_size_id']; ?>">
                                                     <?php else : ?>
-                                                        <?php echo 'FREE'; ?> 
+                                                        <?php echo 'FREE'; ?>
                                                         <input type="hidden" name="size" value="FREE">
                                                     <?php endif; ?>
                                                 </td>
@@ -116,17 +116,17 @@
                                     </tr>
                                     <tr>
                                         <td><?php echo '郵便番号'; ?></td>
-                                        <td><?php echo  $posts['code']; ?></td>
+                                        <td><?php echo $posts['code']; ?></td>
                                         <input type="hidden" name="code" value="<?php echo $posts['code']; ?>">
                                     </tr>
                                     <tr>
                                         <td><?php echo 'ご住所'; ?></td>
-                                        <td><?php echo  $posts['address']; ?></td>
+                                        <td><?php echo $posts['address']; ?></td>
                                         <input type="hidden" name="address" value="<?php echo $posts['address']; ?>">
                                     </tr>
                                     <tr>
                                         <td><?php echo '電話番号'; ?></td>
-                                        <td><?php echo  $posts['tel']; ?></td>
+                                        <td><?php echo $posts['tel']; ?></td>
                                         <input type="hidden" name="tel" value="<?php echo $posts['tel']; ?>">
                                     </tr>
                                 </table>
@@ -138,7 +138,7 @@
                         <div class="move d-flex flex-md-row flex-column justify-content-center">
                             <a href="buy.php" class="btn btn-outline-dark text-decoration-none m-3">購入者情報入力に戻る</a>
                             <a href="items.php" class="btn btn-outline-dark text-decoration-none m-3">お買い物に戻る</a>
-                            <a href="cart_empty.php" class="btn btn-outline-dark text-decoration-none m-3">カートに戻る</a>
+                            <a href="cart.php" class="btn btn-outline-dark text-decoration-none m-3">カートに戻る</a>
                         </div>
                     <?php else : ?>
                         <form action="buy.php" method="post" class="row d-flex flex-column">
@@ -173,7 +173,7 @@
                     <?php endif; ?>
                 </div>
             </main>
-            
+
             <footer class="container-fluid d-flex justify-content-center align-items-center">
                 <p class="m-0">(C)2021 Light Knitting.</p>
             </footer>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'initiallization.php';
 
 $_SESSION['cart'] = array();
 $_SESSION['size'] = array();

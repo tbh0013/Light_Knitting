@@ -54,7 +54,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0 d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
@@ -76,7 +76,7 @@
                     </div><!--#category_menu-->
 
 
-                    <div id="item_article_container"  class="container border-top border-bottom my-3">
+                    <div id="item_article_container" class="container border-top border-bottom my-3">
                         <ul class="item_list list-unstyled row my-2">
                             <?php foreach ($products as $product) { ?>
                                 <li class="item_individual col-6 col-sm-3">

@@ -1,7 +1,5 @@
 <?php
-session_start();
-$errors = [];
-$pdo = new PDO("mysql:dbname=knit_shop", "root");
+require_once 'initiallization.php';
 
 $errors = isset($_SESSION['flash']['errors'])
             ? $_SESSION['flash']['errors']

@@ -54,7 +54,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0 d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
@@ -65,7 +65,7 @@
                     <h2 id="news_notice" class="text-decoration-underline text-center p-3">お知らせ</h2>
 
 
-                    <div id="news_detail_container" class="container border-top border-bottom  d-flex flex-column align-items-center ">
+                    <div id="news_detail_container" class="container border-top border-bottom d-flex flex-column align-items-center ">
                         <?php foreach ($newslist as $news) : ?>
                             <h2 id="news_title" class="my-3"><?php echo $news['title']; ?></h2>
                             <div id="news_detail_pic_container" class="container row">

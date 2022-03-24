@@ -1,12 +1,10 @@
 <?php
-session_start();
+require_once 'initiallization.php';
 
 $page_check = 0;
 $cart_rows = array();
-$sum = 0;
 
 if (!isset($_POST['submit_check'])) {
-    $errors = [];
     $name = '';
     $email = '';
     $code = '';
@@ -16,7 +14,6 @@ if (!isset($_POST['submit_check'])) {
 
 if (isset($_POST['submit_check'])) {
     $cart_rows = cart_detail();
-    $pdo = new PDO("mysql:dbname=knit_shop", "root");
 
     $posts['customer_name'] = htmlspecialchars($_POST['customer_name']);
     $posts['mail'] = htmlspecialchars($_POST['mail']);
@@ -116,7 +113,17 @@ function cart_detail() {
 
     foreach ($_SESSION['cart'] as $product_id => $products) {
         foreach ($products as $num_size) {
-            if (isset($num_size[1])) {
+
+            // 数量とサイズのキー変更
+            if(isset($num_size[1])) {
+                $num_size_keys = ["num", "size"];
+                $num_size_array = array_combine($num_size_keys, $num_size);
+            } else {
+                $num_keys = ["num"];
+                $num_array = array_combine($num_keys, $num_size);
+            }
+
+            if (isset($num_size_array)) {
                 $cart_sql ="SELECT
                 products.product_id,
                 products.name AS p_name,
@@ -135,7 +142,7 @@ function cart_detail() {
                 LEFT JOIN categories
                 ON products.category_id = categories.category_id
                 WHERE products.product_id = {$product_id}
-                AND sizes.size_name = {$num_size[1]}";
+                AND sizes.size_name = {$num_size_array['size']}";
             } else {
                 $cart_sql ="SELECT
                 products.product_id,
@@ -157,22 +164,25 @@ function cart_detail() {
                 WHERE products.product_id = {$product_id}";
             }
 
-            $pdo = new PDO("mysql:dbname=knit_shop", "root");
+            global $pdo;
             $cart_st = $pdo->query($cart_sql);
             $cart_st->setFetchMode(PDO::FETCH_ASSOC);
-            // $cart_row = $cart_st->fetch();
             $cart_row = $cart_st->fetch();
             $cart_st->closeCursor();
-            $cart_row['num'] = $num_size[0];
-            $sum += $num_size[0] * $cart_row['price'];
+
+            if(isset($num_size_array)) {
+                $cart_row['size'] = $num_size_array['size'];
+                $cart_row['num'] = $num_size_array['num'];
+                $sum += $cart_row['num'] * $cart_row['price'];
+            } else {
+                $cart_row['num'] = $num_array["num"];
+                $sum += $cart_row['num'] * $cart_row['price'];
+            }
             $cart_row['sum'] = $sum;
 
-            
-            if (isset($num_size[1])) {
-                $cart_row['size'] = $num_size[1];
-            }
-
             $cart_rows[] = $cart_row;
+            $num_size_array = null;
+            $num_array = null;
         }
     }
     return $cart_rows;

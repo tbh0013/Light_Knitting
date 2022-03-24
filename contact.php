@@ -1,7 +1,6 @@
 <?php
-session_start();
+require_once 'initiallization.php';
 
-$errors = [];
 $page_check = 0;
 
 if (isset($_POST['submit_check'])){

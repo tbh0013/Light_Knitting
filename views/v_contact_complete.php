@@ -54,11 +54,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <li class="list-unstyled"><a class="nav-link p-0  d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
+                        <li class="list-unstyled"><a class="nav-link p-0 d-none d-lg-block" href="cart.php"><img src="img/cart.png"></a></li>
                     </nav>
                 </div>
             </header><!--header-->
-            
+
             <main style="min-height: calc(100vh - 100px);">
                 <div class='container align-items-center'>
                     <p class="mx-auto">
@@ -69,7 +69,7 @@
                         <a href="index.php">トップページに戻る</a>
                     </div>
                 </div>
-            </main> 
+            </main>
 
             <footer class="container-fluid d-flex justify-content-center align-items-center">
                 <p class="m-0">(C)2021 Light Knitting.</p>
