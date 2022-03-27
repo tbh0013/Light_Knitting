@@ -9,7 +9,6 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
         <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/lazyload/lazyload.min.js"></script>
         <title>Light Knitting</title>
     </head>
 
@@ -42,11 +41,9 @@
                                         </a>
                                         <ul class="dropdown-menu border-0 p-0 text-center fs-5" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
                                             <li><a class="dropdown-item" href="items.php">ALL</a></li>
-                                            <li><a class="dropdown-item" href="items.php?category_id=1">socks</a></li>
-                                            <li><a class="dropdown-item" href="items.php?category_id=2">knit hat</a></li>
-                                            <li><a class="dropdown-item" href="items.php?category_id=3">gloves</a></li>
-                                            <li><a class="dropdown-item" href="items.php?category_id=4">bag</a></li>
-                                            <li><a class="dropdown-item" href="items.php?category_id=5">stall</a></li>
+                                        <?php foreach($categories as $category) : ?>
+                                            <li><a class="dropdown-item" href="items.php?category_id=<?php echo $category['category_id'] ?>"><?php echo $category['name'] ?></a></li>
+                                        <?php endforeach; ?>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
@@ -69,10 +66,10 @@
                         <div class="top_slide slick-slider list-unstyle">
                             <div><img src="img/top_pic_sm1.jpg" class="d-block w-100" alt="Knitting_pic"></div>
                             <div><img src="img/top_pic_sm2.jpg" class="d-block w-100" alt="Knitting_pic"></div>
-                            <div><img data-src="img/top_pic_sm3.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
-                            <div><img data-src="img/top_pic_sm4.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
-                            <div><img data-src="img/top_pic_sm5.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
-                            <div><img data-src="img/top_pic_sm6.jpg" class="d-block w-100 lazyload" alt="Knitting_pic"></div>
+                            <div><img src="img/top_pic_sm3.jpg" class="d-block w-100" alt="Knitting_pic"></div>
+                            <div><img src="img/top_pic_sm4.jpg" class="d-block w-100" alt="Knitting_pic"></div>
+                            <div><img src="img/top_pic_sm5.jpg" class="d-block w-100" alt="Knitting_pic"></div>
+                            <div><img src="img/top_pic_sm6.jpg" class="d-block w-100" alt="Knitting_pic"></div>
                         </div>
                     </div>
                     <h2 id="top_about" class="container text-center my-5 fs-4">
@@ -151,8 +148,5 @@
         <script type="text/javascript" src="js/slick.min.js"></script>
         <script type="text/javascript" src="js/slide.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <script>
-            lazyload();
-        </script>
     </body>
 </html>
