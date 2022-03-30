@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width",initial-scale="1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <title>news - Light Knitting</title>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <?php require_once("views/v_header.php"); ?>
+            <main>
+                <div id="news_main_container">
+
+                    <h2 id="news_heading" class="text-decoration-underline text-center p-3">NEWS</h2>
+
+                    <div id="news_article_container" class="container mb-5">
+                        <ul class="news_list row list-unstyled fs-5">
+                            <?php foreach ($newslist as $news) { ?>
+                                <li class="news_item col-6 col-sm-4 my-3 d-flex align-items-end">
+                                    <a class="d-block text-decoration-none text-dark" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
+                                        <div class="news_pic">
+                                            <img class="img-fluid" src="<?php if (isset($news['image_path'])) : ?>
+                                                                            <?php echo "./../admin/img/{$news['image_path']}"; ?>
+                                                                        <?php else : ?>
+                                                                            <?php echo "./../admin/img/no_image.png"; ?>
+                                                                        <?php endif; ?>">
+                                        </div>
+                                        <div class="news_time"><?php echo $news['t_date']; ?></div>
+                                        <div class="news_detail"><?php echo $news['text']; ?></div>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div><!--#news_article_container-->
+
+                </div><!--#news_main_container-->
+
+                <div id="icons_container" class="container-fluid p-0 text-center">
+                    <div id="icons">
+                        <div class="row justify-content-center align-items-center m-0">
+                            <div class="col-3 p-0 m-2">
+                                <a href="#"><img src="img/instagram_logo.png" class="img-fluid p-0"></a>
+                            </div>
+                            <div class="col-3 p-0 m-2">
+                                <a href="#"><img src="img/twitter_logo.png" class="img-fluid p-0"></a>
+                            </div>
+                        </div>
+                        <div class="row mb-4 mx-0">
+                            <h2 class="col p-0 m-0 fs-3 link-dark">
+                                <a href="index.php" class="text-decoration-none text-dark">Light Knitting</a>
+                            </h2>
+                        </div>
+                    </div>
+                </div><!--icons_container-->
+            </main>
+
+            <footer class="container-fluid d-flex justify-content-center align-items-center">
+                <p class="m-0">(C)2021 Light Knitting.</p>
+            </footer>
+        </div><!--#wrapper-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
