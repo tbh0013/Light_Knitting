@@ -8,7 +8,7 @@ unset($_SESSION['flash']['errors']);
 
 $product_id = $_GET['product_id'];
 
-$product_join_size_sql ="SELECT
+$products_sql ="SELECT
                         products.product_id,
                         products.name AS p_name,
                         products.price,
@@ -16,6 +16,7 @@ $product_join_size_sql ="SELECT
                         products.image_path,
                         products.sub_image_path,
                         product_sizes.product_id,
+                        products.is_deleted,
                         sizes.size_name,
                         categories.name AS c_name
                         FROM products
@@ -25,12 +26,18 @@ $product_join_size_sql ="SELECT
                         ON product_sizes.size_id = sizes.size_id
                         LEFT JOIN categories
                         ON products.category_id = categories.category_id
-                        WHERE products.product_id = {$product_id}";
-$product_join_size_st = $pdo->query($product_join_size_sql);
-$product_join_size_st->setFetchMode(PDO::FETCH_ASSOC);
-$product_join_size = $product_join_size_st->fetchAll();
+                        WHERE products.product_id = {$product_id}
+                        AND products.is_deleted = 0";
+$products_st = $pdo->query($products_sql);
+$products_st->setFetchMode(PDO::FETCH_ASSOC);
+$products = $products_st->fetchAll();
 
-$size_array = array_column($product_join_size, 'size_name');
+if($products === array()) {
+    header('location: no_page.php');
+    exit();
+}
+
+$size_array = array_column($products, 'size_name');
 
 
 require_once 'views/v_item_detail.php';

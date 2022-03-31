@@ -20,9 +20,9 @@
                         <select name="category" onchange="location.href=value;">
                             <?php foreach($category_list as $category) : ?>
                                 <?php if($category['category_id'] === "All") : ?>
-                                    <option value="items.php" <?php if($categories_id == null) { echo 'selected'; } ?>><?php echo $category['name'] ?></option>
+                                    <option value="items.php" <?php if($categories_id === null) { echo 'selected'; } ?>><?php echo $category['name'] ?></option>
                                 <?php else : ?>
-                                    <option value="items.php?category_id=<?php echo $category['category_id'] ?>" <?php if($categories_id == $category['category_id']) { echo 'selected'; } ?>>
+                                    <option value="items.php?category_id=<?php echo $category['category_id'] ?>" <?php if($categories_id === $category['category_id']) { echo 'selected'; } ?>>
                                         <?php echo $category['name'] ?>
                                     </option>
                                 <?php endif; ?>

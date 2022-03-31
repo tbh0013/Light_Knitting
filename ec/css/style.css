@@ -30,6 +30,11 @@ header, h2, .sub_category_menu {
   background-color: black
 }
 
+main {
+  min-height: 100vh;
+  /* min-height: calc(100vh - 100px); */
+}
+
 footer {
   height:100px;
   background-color: #FFFFCC;

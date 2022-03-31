@@ -17,7 +17,7 @@
 
         <main style="min-height: 100vh;">
             <div class="wrapper">
-                <div class="container d-flex flex-column justify-content-center col-md-5">
+                <div class="container d-flex flex-column justify-content-center col-md-4">
                     <button onclick="location.href = 'product/product_list.php'" class="m-3">商品一覧</button>
                     <button onclick="location.href = 'news/news_list.php'" class="m-3">お知らせ一覧</button>
                     <button onclick="location.href = 'category/category_list.php'" class="m-3">カテゴリ一覧</button>

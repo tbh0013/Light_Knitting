@@ -54,7 +54,7 @@
                         <ul class="top_news_article list-unstyled">
                             <?php foreach ($top_news as $news) : ?>
                                 <li class="top_news_list border-top border-bottom border-dark p-3 fs-5">
-                                <a class="top_news_detail text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
+                                    <a class="top_news_detail text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
                                         <?php
                                             echo ($news["t_date"]);
                                             echo ("<br>\n");

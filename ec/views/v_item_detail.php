@@ -15,20 +15,35 @@
             <?php require_once("views/v_header.php"); ?>
             <main>
                 <div id="item_main_container">
-                    <?php foreach ($product_join_size as $product) : ?>
+                    <?php foreach ($products as $product) : ?>
                         <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $product['c_name']; ?></h2>
-                        <?php echo var_dump($product['image_path']) ?>
                         <div id="item_detail_container" class="container border-top border-bottom mx-auto">
                             <h2 id="item_title" class="my-3 text-center"><?php echo $product['p_name']; ?></h2>
                             <div class="d-flex flex-md-row flex-column row">
                                 <div class="pic_container text-center col">
                                     <div class="main_pic">
-                                        <img class="img-fluid mh-100 w-75" src="<?php echo "./../admin/img/{$product['image_path']}";; ?>">
+                                    <img class="img-fluid" src="<?php if (isset($product['image_path'])) : ?>
+                                                                    <?php echo "./../admin/img/{$product['image_path']}"; ?>
+                                                                <?php else : ?>
+                                                                    <?php echo "./../admin/img/no_image.png"; ?>
+                                                                <?php endif; ?>">
                                     </div>
                                     <div class="sub_pic">
                                         <ul class="list-unstyled mt-3 d-flex justify-content-center">
-                                            <li class="current w-25"><img src="<?php echo "./../admin/img/{$product['image_path']}"; ?>" class="img-thumbnail"></li>
-                                            <li class="w-25"><img src="<?php echo "./../admin/img/{$product['sub_image_path']}"; ?>" class="img-thumbnail"></li>
+                                            <li class="current w-25">
+                                                <img class="img-fluid img-thumbnail" src="<?php if (isset($product['image_path'])) : ?>
+                                                                                <?php echo "./../admin/img/{$product['image_path']}"; ?>
+                                                                            <?php else : ?>
+                                                                                <?php echo "./../admin/img/no_image.png"; ?>
+                                                                            <?php endif; ?>">
+                                            </li>
+                                            <li class="current  w-25">
+                                                <img class="img-fluid img-thumbnail" src="<?php if (isset($product['sub_image_path'])) : ?>
+                                                                                <?php echo "./../admin/img/{$product['sub_image_path']}"; ?>
+                                                                            <?php else : ?>
+                                                                                <?php echo "./../admin/img/no_image.png"; ?>
+                                                                            <?php endif; ?>">
+                                            </li>
                                         </ul>
                                     </div><!--.sub_pic"-->
                                 </div><!--.pic_container-->

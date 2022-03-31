@@ -13,14 +13,12 @@
         <div id="wrapper">
             <?php require_once("views/v_header.php"); ?>
             <main style="min-height: calc(100vh - 100px);">
-                <div class='container align-items-center'>
-                    <p class="mx-auto">
+                <div class='container align-items-center text-center'>
+                    <p class="fs-5 m-5">
                     送信致しました。<br>
                     お問い合わせいただきありがとうございます。
                     </p>
-                    <div class="move">
-                        <a href="index.php">トップページに戻る</a>
-                    </div>
+                    <a class="btn btn-outline-dark text-decoration-none m-3" href="index.php">TOPへ戻る</a>
                 </div>
             </main>
 

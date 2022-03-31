@@ -7,7 +7,7 @@ $errors = isset($_SESSION['flash']['errors'])
             : array();
 unset($_SESSION['flash']['errors']);
 
-$product_id = htmlspecialchars($_GET['product_id'], ENT_QUOTES, 'utf-8');
+$product_id = $_GET['product_id'];
 
 $product_st = $pdo->prepare("SELECT * FROM products WHERE product_id = $product_id");
 $product_st->execute();
