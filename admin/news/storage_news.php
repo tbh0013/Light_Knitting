@@ -42,7 +42,7 @@ if($text_limit < $text_length) {
     array_push($errors, '※本文は50文字以内で入力してください');
 }
 
-$_SESSION['flash']['errors'] = $errors;
+
 if (empty($errors)) {
     $news_st = $pdo->prepare("INSERT INTO news(product_id, date, title, text, image_path, url)VALUES(:product_id, :date, :title, :text, :image_path, :url)");
     $news_st->bindParam(':product_id', $posts['product_id']);
@@ -55,6 +55,7 @@ if (empty($errors)) {
     header('location: news_list.php');
     exit();
 } else {
+    $_SESSION['flash']['errors'] = $errors;
     header('location: create_news.php');
     exit();
 }

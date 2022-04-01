@@ -10,6 +10,18 @@ $posts['sub_image_path'] = htmlspecialchars($_POST['sub_image_path'], ENT_QUOTES
 $posts['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES, 'utf-8');
 $posts['is_line_up'] = htmlspecialchars($_POST['is_line_up'], ENT_QUOTES, 'utf-8');
 
+$category_check_st =  $pdo->query("SELECT category_id FROM categories WHERE category_id = {$posts['category']} AND is_deleted = 0");
+$category_check_st->setFetchMode(PDO::FETCH_ASSOC);
+$category_check = $category_check_st->fetchAll();
+if($category_check === array()) {
+    array_push($errors, '※カテゴリーIDを正しく入力してください');
+}
+
+$name_limit = 20;
+$name_length = strlen($posts['name']);
+if ($name_limit < $name_length) {
+    array_push($errors, '※商品名は20文字以内で入力してください');
+}
 
 if($_FILES['image_path']['name'] !== ""){
     if (is_uploaded_file($_FILES["image_path"]["tmp_name"])) {
@@ -49,12 +61,6 @@ if($_FILES['sub_image_path']['name'] !== ""){
     }
 }
 
-$name_limit = 20;
-$name_length = strlen($posts['name']);
-
-if ($name_limit < $name_length) {
-    array_push($errors, '※商品名は20文字以内で入力してください');
-}
 
 $description_limit = 50;
 $description_length = strlen($posts['description']);
@@ -65,7 +71,8 @@ if ($description_limit < $description_length) {
 if (!preg_match('/^([0-1]{1})$/',$posts['is_line_up'])) {
     array_push($errors, '※ラインナップフラグを正しく入力してください');
 }
-$_SESSION['flash']['errors'] = $errors;
+
+
 if (empty($errors)) {
     $product_st = $pdo->prepare("INSERT INTO products(name, price, category_id, image_path, sub_image_path, description, is_line_up)VALUES(:name, :price, :category, :image_path, :sub_image_path, :description, :is_line_up)");
     $product_st->bindParam(':name', $posts['name']);
@@ -79,6 +86,7 @@ if (empty($errors)) {
     header('location: product_list.php');
     exit();
 } else {
+    $_SESSION['flash']['errors'] = $errors;
     header("location: create_product.php");
     exit();
 }

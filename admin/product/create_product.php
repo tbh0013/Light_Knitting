@@ -50,7 +50,13 @@ unset($_SESSION['flash']['errors']);
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">カテゴリーID</p>
-                            <input type="text" name="category" class="w-100" required>
+                            <select name="category" class="w-100" required>
+                                <?php foreach($category_list as $category) : ?>
+                                    <option value="<?php echo $category['category_id'] ?>">
+                                    <?php echo $category['category_id'].' : ('.$category['name'].')'; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">メイン画像ファイル</p>

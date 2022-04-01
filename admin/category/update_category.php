@@ -14,20 +14,22 @@ if($name_limit < $name_length) {
     $_SESSION['flash']['errors'] = $errors;
 }
 
-if(isset($_SESSION['flash']['errors'])) {
+
+if (empty($errors)) {
+    $update_sql = "UPDATE categories SET
+                    name=:name,
+                    is_deleted = :is_deleted
+                    WHERE category_id = {$posts['category_id']}";
+
+    $category_st = $pdo->prepare($update_sql);
+    $category_st->bindParam(':name', $posts['name']);
+    $category_st->bindParam(':is_deleted', $posts['is_deleted']);
+    $category_st->execute();
+
+    header('location: category_list.php');
+    exit();
+} else {
+    $_SESSION['flash']['errors'] = $errors;
     header("location: edit_category.php?category_id={$posts['category_id']}");
     exit();
 }
-
-
-$update_sql = "UPDATE categories SET
-                name=:name,
-                is_deleted = :is_deleted
-                WHERE category_id = {$posts['category_id']}";
-
-$category_st = $pdo->prepare($update_sql);
-$category_st->bindParam(':name', $posts['name']);
-$category_st->bindParam(':is_deleted', $posts['is_deleted']);
-$category_st->execute();
-
-header('location: category_list.php');

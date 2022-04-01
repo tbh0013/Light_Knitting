@@ -8,9 +8,31 @@ $posts['product_id'] = htmlspecialchars($_POST['product_id'], ENT_QUOTES, 'utf-8
 $posts['date'] = htmlspecialchars($_POST['date'], ENT_QUOTES, 'utf-8');
 $posts['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8');
 $posts['text'] = htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf-8');
-$posts['image_path'] = htmlspecialchars($_POST['image_path'], ENT_QUOTES, 'utf-8');
 $posts['url'] = htmlspecialchars($_POST['url'], ENT_QUOTES, 'utf-8');
 $posts['is_deleted'] = htmlspecialchars($_POST['is_deleted'], ENT_QUOTES, 'utf-8');
+$main_file_name = $_FILES['image_path']['name'];
+
+if($main_file_name !== ""){
+    if (is_uploaded_file($_FILES["image_path"]["tmp_name"])) {
+        $main_file_name = date('YmdHis')."_".$_FILES["image_path"]["name"];
+
+        if (pathinfo($main_file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($main_file_name, PATHINFO_EXTENSION) == 'png') {
+            $main_file_tmp_name = $_FILES["image_path"]["tmp_name"];
+                if (move_uploaded_file($main_file_tmp_name, "../img/" .$main_file_name)) {
+                    echo "メイン画像アップロード完了";
+                } else {
+                    array_push($errors, '※メイン画像をアップロードできませんでした。');
+                }
+            } else {
+                array_push($errors,'※メイン画像のファイル形式はjpg/pngのみです。');
+            }
+    } else {
+        array_push($errors, '※メイン画像の登録ができませんでした。');
+    }
+} else {
+    $main_file_name = null;
+}
+
 
 $title_limit = 20;
 $title_length = strlen($posts['title']);
@@ -26,29 +48,34 @@ if($text_limit < $text_length) {
     $_SESSION['flash']['errors'] = $errors;
 }
 
-if(isset($_SESSION['flash']['errors'])) {
+if (empty($errors)) {
+    $update_sql = "UPDATE news SET
+                    product_id=:product_id,
+                    date=:date,
+                    title=:title,
+                    text=:text,
+                    -- image_path = CASE
+                    --                         WHEN image_path IS NOT NULL THEN :image_path
+                    --                         ELSE image_path
+                    --             END,
+                    image_path=:image_path,
+                    url=:url,
+                    is_deleted = :is_deleted
+                    WHERE news_id = {$posts['news_id']}";
+                    // AND image_path IS NOT NUL
+
+    $news_st = $pdo->prepare($update_sql);
+    $news_st->bindParam(':product_id', $posts['product_id']);
+    $news_st->bindParam(':date', $posts['date']);
+    $news_st->bindParam(':title', $posts['title']);
+    $news_st->bindParam(':text', $posts['text']);
+    $news_st->bindParam(':url', $posts['url']);
+    $news_st->bindParam(':is_deleted', $posts['is_deleted']);
+    $news_st->bindParam(':image_path', $main_file_name);
+    $news_st->execute();
+    header('location: news_list.php');
+} else {
+    $_SESSION['flash']['errors'] = $errors;
     header("location: edit_news.php?news_id={$posts['news_id']}");
     exit();
 }
-
-$update_sql = "UPDATE news SET
-                product_id=:product_id,
-                date=:date,
-                title=:title,
-                text=:text,
-                image_path=:image_path,
-                url=:url,
-                is_deleted = :is_deleted
-                WHERE news_id = {$posts['news_id']}";
-
-$news_st = $pdo->prepare($update_sql);
-$news_st->bindParam(':product_id', $posts['product_id']);
-$news_st->bindParam(':date', $posts['date']);
-$news_st->bindParam(':title', $posts['title']);
-$news_st->bindParam(':text', $posts['text']);
-$news_st->bindParam(':image_path', $posts['image_path']);
-$news_st->bindParam(':url', $posts['url']);
-$news_st->bindParam(':is_deleted', $posts['is_deleted']);
-$news_st->execute();
-
-header('location: news_list.php');

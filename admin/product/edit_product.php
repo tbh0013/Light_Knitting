@@ -45,7 +45,7 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                             <?php echo "<span class=\"error\" style=\"color: red;\">{$error}</span><br>"; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
-                    <form action="update_product.php" method="POST">
+                    <form action="update_product.php" method="POST" enctype="multipart/form-data">
                         <?php foreach($products as $product) : ?>
                             <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                             <div class="form_item mb-3">
@@ -62,11 +62,11 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">画像パス</p>
-                                <input type="text" name="image_path" class="w-100" value="<?php echo $product['image_path']; ?>">
+                                <input type="file" name="image_path" class="w-100" value="<?php echo $product['image_path']; ?>">
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">サブ画像パス</p>
-                                <input type="text" name="sub_image_path" class="w-100" value="<?php echo $product['sub_image_path']; ?>">
+                                <input type="file" name="sub_image_path" class="w-100" value="<?php echo $product['sub_image_path']; ?>">
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">商品説明</p>

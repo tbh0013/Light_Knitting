@@ -7,16 +7,54 @@ $posts['product_id'] = htmlspecialchars($_POST['product_id'], ENT_QUOTES, 'utf-8
 $posts['name'] = htmlspecialchars($_POST['name'], ENT_QUOTES, 'utf-8');
 $posts['price'] = htmlspecialchars($_POST['price'], ENT_QUOTES, 'utf-8');
 $posts['category'] = htmlspecialchars($_POST['category'], ENT_QUOTES, 'utf-8');
-$posts['image_path'] = htmlspecialchars($_POST['image_path'], ENT_QUOTES, 'utf-8');
-$posts['sub_image_path'] = htmlspecialchars($_POST['sub_image_path'], ENT_QUOTES, 'utf-8');
 $posts['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES, 'utf-8');
 $posts['is_line_up'] = htmlspecialchars($_POST['is_line_up'], ENT_QUOTES, 'utf-8');
+$main_file_name = $_FILES['image_path']['name'];
+$sub_file_name = $_FILES['image_path']['name'];
 
 $name_limit = 20;
 $name_length = strlen($posts['name']);
 if($name_limit < $name_length) {
     array_push($errors, '※商品名は20文字以内で入力してください');
     $_SESSION['flash']['errors'] = $errors;
+}
+
+if($main_file_name !== ""){
+    if (is_uploaded_file($_FILES["image_path"]["tmp_name"])) {
+        $main_file_name = date('YmdHis')."_".$_FILES["image_path"]["name"];
+
+        if (pathinfo($main_file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($main_file_name, PATHINFO_EXTENSION) == 'png') {
+            $main_file_tmp_name = $_FILES["image_path"]["tmp_name"];
+                if (move_uploaded_file($main_file_tmp_name, "../img/" .$main_file_name)) {
+                    echo "メイン画像アップロード完了";
+                } else {
+                    array_push($errors, '※メイン画像をアップロードできませんでした。');
+                }
+            } else {
+                array_push($errors,'※メイン画像のファイル形式はjpg/pngのみです。');
+            }
+    } else {
+        array_push($errors, '※メイン画像の登録ができませんでした。');
+    }
+}
+
+if($sub_file_name !== ""){
+    if (is_uploaded_file($_FILES["sub_image_path"]["tmp_name"])) {
+        $sub_file_name = date('YmdHis')."_".$_FILES["sub_image_path"]["name"];
+
+        if (pathinfo($sub_file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($sub_file_name, PATHINFO_EXTENSION) == 'png') {
+            $sub_file_tmp_name = $_FILES["sub_image_path"]["tmp_name"];
+            if (move_uploaded_file($sub_file_tmp_name, "../img/" .$sub_file_name)) {
+                echo "サブ画像アップロード完了";
+            } else {
+                array_push($errors, '※サブ画像をアップロードできませんでした。');
+            }
+        } else {
+            array_push($errors, '※サブ画像のファイル形式はjpg/pngのみです。');
+        }
+    } else {
+        array_push($errors, '※サブ画像の登録ができませんでした。');
+    }
 }
 
 $description_limit = 50;
@@ -31,7 +69,8 @@ if(isset($_SESSION['flash']['errors'])) {
     exit();
 }
 
-$update_sql = "UPDATE products SET
+if (empty($errors)) {
+    $update_sql = "UPDATE products SET
                 name=:name,
                 price=:price,
                 category_id=:category,
@@ -42,15 +81,22 @@ $update_sql = "UPDATE products SET
                 is_deleted = :is_deleted
                 WHERE product_id = {$posts['product_id']}";
 
-$product_st = $pdo->prepare($update_sql);
-$product_st->bindParam(':name', $posts['name']);
-$product_st->bindParam(':price', $posts['price']);
-$product_st->bindParam(':category', $posts['category']);
-$product_st->bindParam(':image_path', $posts['image_path']);
-$product_st->bindParam(':sub_image_path', $posts['sub_image_path']);
-$product_st->bindParam(':description', $posts['description']);
-$product_st->bindParam(':is_line_up', $posts['is_line_up']);
-$product_st->bindParam(':is_deleted', $posts['is_deleted']);
-$product_st->execute();
+    $product_st = $pdo->prepare($update_sql);
+    $product_st->bindParam(':name', $posts['name']);
+    $product_st->bindParam(':price', $posts['price']);
+    $product_st->bindParam(':category', $posts['category']);
+    $product_st->bindParam(':image_path', $main_file_name);
+    $product_st->bindParam(':sub_image_path', $sub_file_name);
+    $product_st->bindParam(':description', $posts['description']);
+    $product_st->bindParam(':is_line_up', $posts['is_line_up']);
+    $product_st->bindParam(':is_deleted', $posts['is_deleted']);
+    $product_st->execute();
+    header('location: product_list.php');
+    exit();
+} else {
+    $_SESSION['flash']['errors'] = $errors;
+    header("location: edit_product.php?product_id={$posts['product_id']}");
+    exit();
+}
 
-header('location: product_list.php');
+

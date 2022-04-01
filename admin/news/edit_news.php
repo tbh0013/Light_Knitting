@@ -45,7 +45,7 @@ $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
                             <?php echo "<span class=\"error\" style=\"color: red;\">{$error}</span><br>"; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
-                    <form action="update_news.php" method="POST">
+                    <form action="update_news.php" method="POST" enctype="multipart/form-data">
                         <?php foreach($news_list as $news) : ?>
                             <input type="hidden" name="news_id" value="<?php echo $news['news_id']; ?>">
                             <div class="form_item mb-3">
@@ -54,7 +54,7 @@ $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">お知らせ日</p>
-                                <input type="text" name="date" class="w-100" value="<?php echo $news['date']; ?>" required>
+                                <input type="date" name="date" class="w-100" value="<?php echo $news['date']; ?>" required>
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">タイトル</p>
@@ -65,17 +65,13 @@ $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
                                 <textarea name="text" class="w-100"><?php echo ($news['text']); ?></textarea>
                             </div>
                             <div class="form_item mb-3">
-                                <p class="mb-0">画像パス</p>
-                                <input type="text" name="image_path" class="w-100" value="<?php echo $news['image_path']; ?>">
+                                <p class="mb-0">画像ファイル</p>
+                                <input type="file" name="image_path" class="w-100">
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">url</p>
-                                <input type="text" name="url" class="w-100" value="<?php echo $news['url']; ?>" >
+                                <input type="url" name="url" class="w-100" value="<?php echo $news['url']; ?>" >
                             </div>
-                            <!-- <div class="form_item mb-3">
-                                <p class="mb-0">削除フラグ</p>
-                                <input type="text" name="is_deleted" class="w-100" value="<?php echo $news['is_deleted']; ?>">
-                            </div> -->
                             <div class="form_item mb-3">
                                 <p class="mb-0">作成日</p>
                                 <p><?php echo $news['created_at']; ?></p>

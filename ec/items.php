@@ -9,6 +9,11 @@ if(isset($_GET['category_id'])) {
     $categories_id = $_GET['category_id'];
 }
 
+if(!is_numeric($categories_id) && ($categories_id !== null)) {
+    header('location: no_page.php');
+    exit();
+}
+
 
 if (isset($categories_id)) {
     $categories_st = $pdo->query("SELECT category_id, name FROM categories WHERE category_id = $categories_id AND is_deleted = 0");

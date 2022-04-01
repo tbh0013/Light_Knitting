@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+$errors = isset($_SESSION['flash']['errors'])
+            ? $_SESSION['flash']['errors']
+            : array();
+unset($_SESSION['flash']['errors']);
+
 ?>
 
 <html>
@@ -29,6 +34,11 @@ require_once '../initiallization.php';
                         <button onclick="location.href = 'category_list.php'" class="mt-3">カテゴリー一覧に戻る</button>
                     </div>
 
+                    <?php if (!empty($errors)) : ?>
+                        <?php foreach ($errors as $error) : ?>
+                            <?php echo "<span class=\"error\" style=\"color: red;\">{$error}</span><br>"; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                     <form action="storage_category.php" method="POST">
                         <div class="form_item mb-3">
                             <p class="mb-0">カテゴリー名</p>

@@ -39,11 +39,7 @@ $news_list = $news_st->fetchAll();
                                 <th>更新日</th>
                                 <th>ニュースid</th>
                                 <th>商品id</th>
-                                <!-- <th>お知らせ日</th> -->
                                 <th>タイトル</th>
-                                <!-- <th>本文</th> -->
-                                <!-- <th>画像</th> -->
-                                <!-- <th>URL</th> -->
                                 <th>削除フラグ</th>
                                 <th>作成日</th>
                                 <th></th>
@@ -57,11 +53,7 @@ $news_list = $news_st->fetchAll();
                                     <td><?php echo $news['updated_at']; ?></td>
                                     <td><?php echo $news['news_id']; ?></td>
                                     <td><?php echo $news['product_id']; ?></td>
-                                    <!-- <td><?php /*echo $news['date'];*/ ?></td> -->
                                     <td><?php echo $news['title']; ?></td>
-                                    <!-- <td><?php /*echo $news['text'];*/ ?></td> -->
-                                    <!-- <td><?php /*echo $news['image_path'];*/ ?></td> -->
-                                    <!-- <td><?php /*echo $news['url'];*/ ?></td> -->
                                     <td><?php echo $news['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $news['created_at']; ?></td>
                                     <td><button onclick="location.href = 'edit_news.php?news_id=<?php echo $news['news_id']; ?>'">詳細・編集</button></td>

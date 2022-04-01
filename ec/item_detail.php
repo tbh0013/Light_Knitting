@@ -8,6 +8,11 @@ unset($_SESSION['flash']['errors']);
 
 $product_id = $_GET['product_id'];
 
+if(!is_numeric($product_id)) {
+    header('location: no_page.php');
+    exit();
+}
+
 $products_sql ="SELECT
                         products.product_id,
                         products.name AS p_name,
