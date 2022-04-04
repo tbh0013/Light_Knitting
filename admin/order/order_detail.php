@@ -5,7 +5,16 @@ require_once '../initiallization.php';
 $order_id = htmlspecialchars($_GET['order_id'], ENT_QUOTES, 'utf-8');
 
 $order_sql = "SELECT
-                *
+                order_details.order_id,
+                order_details.order_detail_id,
+                order_details.product_id,
+                order_details.product_size_id,
+                order_details.quantity,
+                order_details.created_at,
+                order_details.updated_at,
+                products.name,
+                sizes.size_id,
+                sizes.size_name
                 FROM order_details
                 LEFT JOIN products
                 ON order_details.product_id = products.product_id
@@ -54,11 +63,8 @@ $order_list = $order_st->fetchAll();
                                 <th>商品ID</th>
                                 <th>商品サイズID</th>
                                 <th>数量</th>
-                                <th>削除フラグ</th>
                                 <th>作成日</th>
                                 <th>更新日</th>
-                                <th></th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,7 +75,6 @@ $order_list = $order_st->fetchAll();
                                     <td><?php echo $order['product_id'].' : ('.$order['name'].')'; ?></td>
                                     <td><?php echo $order['product_size_id']?> <?php echo $order['size_name'] != null ? ": (".$order['size_name'].")" : ": (FREE)"; ?></td>
                                     <td><?php echo $order['quantity']; ?></td>
-                                    <td><?php echo $order['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $order['created_at']; ?></td>
                                     <td><?php echo $order['updated_at']; ?></td>
                                 <tr>
@@ -84,16 +89,5 @@ $order_list = $order_st->fetchAll();
             <p class="m-0">(C)2021 Light Knitting.</p>
         </footer>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script>
-            $(".delete").click(function(){
-                var order_id = this.dataset.id;
-                if(confirm("ニュースID:"+order_id+"に削除フラグを有効にします。よろしいでしょうか？")) {
-                    window.location.href = "delete_flag_order.php?order_id="+order_id;
-                }else{
-                    return false;
-                }
-            })
-        </script>
     </body>
 </html>

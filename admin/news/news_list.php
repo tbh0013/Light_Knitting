@@ -57,8 +57,12 @@ $news_list = $news_st->fetchAll();
                                     <td><?php echo $news['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $news['created_at']; ?></td>
                                     <td><button onclick="location.href = 'edit_news.php?news_id=<?php echo $news['news_id']; ?>'">詳細・編集</button></td>
-                                    <td><button class="delete" data-id=<?php echo $news['news_id']; ?>>削除</button></td>
-                                    <td><button class="cancel" data-id=<?php echo $news['news_id']; ?>>削除キャンセル</button></td>
+                                    <td><?php if ($news['is_deleted'] === '0') : ?>
+                                            <button class="delete" data-id="<?php echo $news['news_id']; ?>">削除</button>
+                                        <?php elseif ($news['is_deleted'] === '1') : ?>
+                                            <button class="cancel" data-id="<?php echo $news['news_id']; ?>">削除キャンセル</button>
+                                        <?php endif; ?>
+                                    </td>
                                 <tr>
                             <?php endforeach; ?>
                         </tbody>

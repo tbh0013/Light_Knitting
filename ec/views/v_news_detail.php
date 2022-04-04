@@ -27,7 +27,7 @@ require_once 'initiallization.php';
                             <h2 id="news_title" class="my-3"><?php echo $news['title']; ?></h2>
                             <div id="news_detail_pic_container" class="container row">
                                 <div class="col-5 mx-auto">
-                                    <img class="img-fluid" src="<?php if (isset($news['image_path'])) : ?>
+                                    <img class="img-fluid" src="<?php if ($news['image_path'] !== "") : ?>
                                                                                 <?php echo "./../admin/img/{$news['image_path']}"; ?>
                                                                             <?php else : ?>
                                                                                 <?php echo "./../admin/img/no_image.png"; ?>

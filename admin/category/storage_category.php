@@ -5,7 +5,7 @@ require_once '../initiallization.php';
 $posts['name'] = htmlspecialchars($_POST['name'], ENT_QUOTES, 'utf-8');
 
 $name_limit = 20;
-$name_length = strlen($posts['name']);
+$name_length = mb_strlen($posts['name']);
 if($name_limit < $name_length) {
     array_push($errors, '※カテゴリー名は20文字以内で入力してください');
 }

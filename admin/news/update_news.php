@@ -9,10 +9,10 @@ $posts['date'] = htmlspecialchars($_POST['date'], ENT_QUOTES, 'utf-8');
 $posts['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8');
 $posts['text'] = htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf-8');
 $posts['url'] = htmlspecialchars($_POST['url'], ENT_QUOTES, 'utf-8');
-$posts['is_deleted'] = htmlspecialchars($_POST['is_deleted'], ENT_QUOTES, 'utf-8');
 $main_file_name = $_FILES['image_path']['name'];
 
-if($main_file_name !== ""){
+$is_changed_main = ($main_file_name !== "");
+if ($is_changed_main) {
     if (is_uploaded_file($_FILES["image_path"]["tmp_name"])) {
         $main_file_name = date('YmdHis')."_".$_FILES["image_path"]["name"];
 
@@ -29,51 +29,46 @@ if($main_file_name !== ""){
     } else {
         array_push($errors, '※メイン画像の登録ができませんでした。');
     }
-} else {
-    $main_file_name = null;
 }
+
 
 
 $title_limit = 20;
-$title_length = strlen($posts['title']);
+$title_length = mb_strlen($posts['title']);
 if($title_limit < $title_length) {
     array_push($errors, '※タイトルは20文字以内で入力してください');
-    $_SESSION['flash']['errors'] = $errors;
 }
 
 $text_limit = 50;
-$text_length = strlen($posts['text']);
+$text_length = mb_strlen($posts['text']);
 if($text_limit < $text_length) {
     array_push($errors, '※本文は50文字以内で入力してください');
-    $_SESSION['flash']['errors'] = $errors;
 }
 
 if (empty($errors)) {
-    $update_sql = "UPDATE news SET
-                    product_id=:product_id,
-                    date=:date,
-                    title=:title,
-                    text=:text,
-                    -- image_path = CASE
-                    --                         WHEN image_path IS NOT NULL THEN :image_path
-                    --                         ELSE image_path
-                    --             END,
-                    image_path=:image_path,
-                    url=:url,
-                    is_deleted = :is_deleted
-                    WHERE news_id = {$posts['news_id']}";
-                    // AND image_path IS NOT NUL
+    $img_query = ($is_changed_main) ? "image_path=:image_path," : "";
+    $query = "UPDATE news SET
+            product_id=:product_id,
+            date=:date,
+            title=:title,
+            text=:text,
+            {$img_query}
+            url=:url,
+            is_deleted = :is_deleted
+            WHERE news_id = {$posts['news_id']}";
 
+    $update_sql = $query;
     $news_st = $pdo->prepare($update_sql);
+    if ($is_changed_main) $news_st->bindParam(':image_path', $main_file_name);
     $news_st->bindParam(':product_id', $posts['product_id']);
     $news_st->bindParam(':date', $posts['date']);
     $news_st->bindParam(':title', $posts['title']);
     $news_st->bindParam(':text', $posts['text']);
     $news_st->bindParam(':url', $posts['url']);
     $news_st->bindParam(':is_deleted', $posts['is_deleted']);
-    $news_st->bindParam(':image_path', $main_file_name);
     $news_st->execute();
     header('location: news_list.php');
+    exit();
 } else {
     $_SESSION['flash']['errors'] = $errors;
     header("location: edit_news.php?news_id={$posts['news_id']}");

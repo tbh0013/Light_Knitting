@@ -61,6 +61,7 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                                 <input type="text" name="category" class="w-100" value="<?php echo $product['category_id']; ?>" required>
                             </div>
                             <div class="form_item mb-3">
+                                <?php echo $product['image_path']; ?>
                                 <p class="mb-0">画像パス</p>
                                 <input type="file" name="image_path" class="w-100" value="<?php echo $product['image_path']; ?>">
                             </div>

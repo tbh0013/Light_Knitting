@@ -49,10 +49,6 @@ $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
                         <?php foreach($news_list as $news) : ?>
                             <input type="hidden" name="news_id" value="<?php echo $news['news_id']; ?>">
                             <div class="form_item mb-3">
-                                <p class="mb-0">商品ID</p>
-                                <input type="text" name="product_id" class="w-100" value="<?php echo $news['product_id']; ?>" required>
-                            </div>
-                            <div class="form_item mb-3">
                                 <p class="mb-0">お知らせ日</p>
                                 <input type="date" name="date" class="w-100" value="<?php echo $news['date']; ?>" required>
                             </div>
@@ -67,6 +63,10 @@ $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
                             <div class="form_item mb-3">
                                 <p class="mb-0">画像ファイル</p>
                                 <input type="file" name="image_path" class="w-100">
+                            </div>
+                            <div class="form_item mb-3">
+                                <p class="mb-0">商品ID</p>
+                                <input type="text" name="product_id" class="w-100" value="<?php echo $news['product_id']; ?>" required>
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">url</p>

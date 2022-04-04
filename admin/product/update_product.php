@@ -10,16 +10,23 @@ $posts['category'] = htmlspecialchars($_POST['category'], ENT_QUOTES, 'utf-8');
 $posts['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES, 'utf-8');
 $posts['is_line_up'] = htmlspecialchars($_POST['is_line_up'], ENT_QUOTES, 'utf-8');
 $main_file_name = $_FILES['image_path']['name'];
-$sub_file_name = $_FILES['image_path']['name'];
+$sub_file_name = $_FILES['sub_image_path']['name'];
 
-$name_limit = 20;
-$name_length = strlen($posts['name']);
-if($name_limit < $name_length) {
-    array_push($errors, '※商品名は20文字以内で入力してください');
-    $_SESSION['flash']['errors'] = $errors;
+$category_check_st =  $pdo->query("SELECT category_id FROM categories WHERE category_id = {$posts['category']} AND is_deleted = 0");
+$category_check_st->setFetchMode(PDO::FETCH_ASSOC);
+$category_check = $category_check_st->fetchAll();
+if($category_check === array()) {
+    array_push($errors, '※カテゴリーIDを正しく入力してください');
 }
 
-if($main_file_name !== ""){
+$name_limit = 20;
+$name_length = mb_strlen($posts['name']);
+if ($name_limit < $name_length) {
+    array_push($errors, '※商品名は20文字以内で入力してください');
+}
+
+$is_changed_main = ($main_file_name !== "");
+if ($is_changed_main) {
     if (is_uploaded_file($_FILES["image_path"]["tmp_name"])) {
         $main_file_name = date('YmdHis')."_".$_FILES["image_path"]["name"];
 
@@ -38,7 +45,8 @@ if($main_file_name !== ""){
     }
 }
 
-if($sub_file_name !== ""){
+$is_changed_sub = ($sub_file_name !== "");
+if($is_changed_sub){
     if (is_uploaded_file($_FILES["sub_image_path"]["tmp_name"])) {
         $sub_file_name = date('YmdHis')."_".$_FILES["sub_image_path"]["name"];
 
@@ -58,35 +66,38 @@ if($sub_file_name !== ""){
 }
 
 $description_limit = 50;
-$description_length = strlen($posts['description']);
-if($description_limit < $description_length) {
+$description_length = mb_strlen($posts['description']);
+if ($description_limit < $description_length) {
     array_push($errors, '※商品説明は50文字以内で入力してください');
-    $_SESSION['flash']['errors'] = $errors;
 }
 
-if(isset($_SESSION['flash']['errors'])) {
-    header("location: edit_product.php?product_id={$posts['product_id']}");
-    exit();
+if (!preg_match('/^([0-1]{1})$/',$posts['is_line_up'])) {
+    array_push($errors, '※ラインナップフラグを正しく入力してください');
 }
 
 if (empty($errors)) {
-    $update_sql = "UPDATE products SET
-                name=:name,
-                price=:price,
-                category_id=:category,
-                image_path=:image_path,
-                sub_image_path=:sub_image_path,
-                description=:description,
-                is_line_up=:is_line_up,
-                is_deleted = :is_deleted
-                WHERE product_id = {$posts['product_id']}";
 
+    $img_query = ($is_changed_main) ? "image_path=:image_path," : "";
+    $sub_img_query = ($is_changed_sub) ? "sub_image_path=:sub_image_path," : "";
+
+    $query = "UPDATE products SET
+        name=:name,
+        price=:price,
+        category_id=:category,
+        {$img_query}
+        {$sub_img_query}
+        description=:description,
+        is_line_up=:is_line_up,
+        is_deleted = :is_deleted
+        WHERE product_id = {$posts['product_id']}";
+
+    $update_sql = $query;
     $product_st = $pdo->prepare($update_sql);
+    if ($is_changed_main) $product_st->bindParam(':image_path', $main_file_name);
+    if ($is_changed_sub) $product_st->bindParam(':sub_image_path', $sub_file_name);
     $product_st->bindParam(':name', $posts['name']);
     $product_st->bindParam(':price', $posts['price']);
     $product_st->bindParam(':category', $posts['category']);
-    $product_st->bindParam(':image_path', $main_file_name);
-    $product_st->bindParam(':sub_image_path', $sub_file_name);
     $product_st->bindParam(':description', $posts['description']);
     $product_st->bindParam(':is_line_up', $posts['is_line_up']);
     $product_st->bindParam(':is_deleted', $posts['is_deleted']);
@@ -98,5 +109,3 @@ if (empty($errors)) {
     header("location: edit_product.php?product_id={$posts['product_id']}");
     exit();
 }
-
-

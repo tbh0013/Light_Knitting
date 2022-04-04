@@ -32,5 +32,6 @@ foreach($checks as $check) {
         $deleted_st->bindParam(':is_deleted', $flag, PDO::PARAM_INT);
         $deleted_st->execute();
         header('location: product_list.php');
+        exit();
     }
 }

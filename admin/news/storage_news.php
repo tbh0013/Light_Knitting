@@ -6,10 +6,9 @@ $posts['product_id'] = htmlspecialchars($_POST['product_id'], ENT_QUOTES, 'utf-8
 $posts['date'] = htmlspecialchars($_POST['date'], ENT_QUOTES, 'utf-8');
 $posts['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8');
 $posts['text'] = htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf-8');
-$posts['image_path'] = htmlspecialchars($_POST['image_path'], ENT_QUOTES, 'utf-8');
 $posts['url'] = htmlspecialchars($_POST['url'], ENT_QUOTES, 'utf-8');
-
-if($_FILES['image_path']['name'] !== ""){
+$main_file_name = $_FILES['image_path']['name'];
+if($main_file_name !== ""){
     if (is_uploaded_file($_FILES["image_path"]["tmp_name"])) {
         $main_file_name = date('YmdHis')."_".$_FILES["image_path"]["name"];
 
@@ -31,17 +30,16 @@ if($_FILES['image_path']['name'] !== ""){
 
 
 $title_limit = 20;
-$title_length = strlen($posts['title']);
+$title_length = mb_strlen($posts['title']);
 if($title_limit < $title_length) {
     array_push($errors, '※タイトルは20文字以内で入力してください');
 }
 
 $text_limit = 50;
-$text_length = strlen($posts['text']);
+$text_length = mb_strlen($posts['text']);
 if($text_limit < $text_length) {
     array_push($errors, '※本文は50文字以内で入力してください');
 }
-
 
 if (empty($errors)) {
     $news_st = $pdo->prepare("INSERT INTO news(product_id, date, title, text, image_path, url)VALUES(:product_id, :date, :title, :text, :image_path, :url)");

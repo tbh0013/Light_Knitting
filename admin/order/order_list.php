@@ -62,8 +62,12 @@ $order_list = $order_st->fetchAll();
                                     <td><?php echo $order['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $order['created_at']; ?></td>
                                     <td><button onclick="location.href = 'order_detail.php?order_id=<?php echo $order['order_id']; ?>'">詳細</button></td>
-                                    <td><button class="delete" data-id=<?php echo $order['order_id']; ?>>削除</button></td>
-                                    <td><button class="cancel" data-id=<?php echo $order['order_id']; ?>>削除キャンセル</button></td>
+                                    <td><?php if ($order['is_deleted'] === '0') : ?>
+                                            <button class="delete" data-id="<?php echo $order['order_id']; ?>">削除</button>
+                                        <?php elseif ($order['is_deleted'] === '1') : ?>
+                                            <button class="cancel" data-id="<?php echo $order['order_id']; ?>">削除キャンセル</button>
+                                        <?php endif; ?>
+                                    </td>
                                 <tr>
                             <?php endforeach; ?>
                         </tbody>

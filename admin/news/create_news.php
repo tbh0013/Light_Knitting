@@ -41,10 +41,6 @@ unset($_SESSION['flash']['errors']);
                     <?php endif; ?>
                     <form action="storage_news.php" method="POST" enctype="multipart/form-data">
                         <div class="form_item mb-3">
-                            <p class="mb-0">商品ID</p>
-                            <input type="text" name="product_id" class="w-100">
-                        </div>
-                        <div class="form_item mb-3">
                             <p class="mb-0">お知らせ日</p>
                             <input type="date" name="date" class="w-100">
                         </div>
@@ -59,6 +55,10 @@ unset($_SESSION['flash']['errors']);
                         <div class="form_item mb-3">
                             <p class="mb-0">画像ファイル</p>
                             <input type="file" name="image_path">
+                        </div>
+                        <div class="form_item mb-3">
+                            <p class="mb-0">商品ID</p>
+                            <input type="text" name="product_id" class="w-100">
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">URL</p>
