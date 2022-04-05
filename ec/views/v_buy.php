@@ -105,7 +105,7 @@
                             </p>
                             <p class= "col-md-7 mx-auto">
                                 郵便番号<br>
-                                <input type="text" name="code" class="form-control" value="<?php echo $code; ?>" required>
+                                <input type="text" name="code" pattern="^\d{7}$" placeholder="ハイフンなし7文字の半角数字を入力して下さい" class="form-control" value="<?php echo $code; ?>" required>
                             </p>
                             <p class= "col-md-7 mx-auto">
                                 ご住所<br>
@@ -113,7 +113,7 @@
                             </p>
                             <p class= "col-md-7 mx-auto">
                                 電話番号<br>
-                                <input type="text" name="tel" class="form-control" value="<?php echo $tel; ?>" required>
+                                <input type="tel" name="tel" pattern="^0\d{9,10}$" placeholder="ハイフンなし0から始まる半角数字10桁或いは11桁を入力して下さい" class="form-control" value="<?php echo $tel; ?>" required>
                             </p>
                             <p class="mx-auto text-center">
                                 <input type="submit" name="submit" class="px-4" value="確認">

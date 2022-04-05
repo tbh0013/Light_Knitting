@@ -58,7 +58,8 @@
                                         <dd><input type="text" name="name" id="name" class="form-control" required></dd>
 
                                         <dt><label for="tel">電話番号</label></dt>
-                                        <dd><input type="tel" name="tel" id="tel" class="form-control"></dd>
+                                        <dd><input type="tel" name="tel" id="tel" pattern="^0\d{9,10}$" placeholder="ハイフンなし0から始まる半角数字10桁或いは11桁を入力して下さい" class="form-control" required></dd>
+                                        <!-- <dd><input type="tel" name="tel" id="tel" class="form-control"></dd> -->
 
                                         <dt><label for="mail">メールアドレス</label><strong>(必須)</strong></dt>
                                         <dd><input type="email" name="mail" id="mail" class="form-control" required></dd>

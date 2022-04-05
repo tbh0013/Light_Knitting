@@ -40,7 +40,11 @@
                                 <?php foreach ($lineups as $lineup) { ?>
                                     <div class="lineup_product">
                                         <a href="item_detail.php?product_id=<?php echo $lineup['product_id']; ?>">
-                                            <img class="img-fluid p-1" alt="画像" src="<?php echo "./../admin/img/{$lineup['image_path']}"; ?>">
+                                            <img class="img-fluid p-1" onerror="this.src='./../admin/img/no_image.png'" src="<?php if (isset($lineup['image_path']) && $lineup['image_path'] !== "") : ?>
+                                                                                    <?php echo "./../admin/img/{$lineup['image_path']}"; ?>
+                                                                                <?php else : ?>
+                                                                                    <?php echo "./../admin/img/no_image.png"; ?>
+                                                                                <?php endif; ?>">
                                         </a>
                                     </div>
                                 <?php } ?>

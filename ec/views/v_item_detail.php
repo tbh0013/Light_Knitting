@@ -22,27 +22,27 @@
                             <div class="d-flex flex-md-row flex-column row">
                                 <div class="pic_container text-center col">
                                     <div class="main_pic">
-                                    <img class="img-fluid" src="<?php if ($product['image_path'] !== "") : ?>
-                                                                    <?php echo "./../admin/img/{$product['image_path']}"; ?>
-                                                                <?php else : ?>
-                                                                    <?php echo "./../admin/img/no_image.png"; ?>
-                                                                <?php endif; ?>">
+                                    <img class="img-fluid" onerror="this.src='./../admin/img/no_image.png'" src="<?php if (isset($product['image_path']) && $product['image_path'] !== "") : ?>
+                                                                                    <?php echo "./../admin/img/{$product['image_path']}"; ?>
+                                                                                <?php else : ?>
+                                                                                    <?php echo "./../admin/img/no_image.png"; ?>
+                                                                                <?php endif; ?>">
                                     </div>
                                     <div class="sub_pic">
                                         <ul class="list-unstyled mt-3 d-flex justify-content-center">
                                             <li class="current w-25">
-                                                <img class="img-fluid img-thumbnail" src="<?php if ($product['image_path'] !== "") : ?>
-                                                                                <?php echo "./../admin/img/{$product['image_path']}"; ?>
-                                                                            <?php else : ?>
-                                                                                <?php echo "./../admin/img/no_image.png"; ?>
-                                                                            <?php endif; ?>">
+                                                <img class="img-thumbnail" onerror="this.src='./../admin/img/no_image.png'" src="<?php if (isset($product['image_path']) && $product['image_path'] !== "") : ?>
+                                                                                    <?php echo "./../admin/img/{$product['image_path']}"; ?>
+                                                                                <?php else : ?>
+                                                                                    <?php echo "./../admin/img/no_image.png"; ?>
+                                                                                <?php endif; ?>">
                                             </li>
-                                            <li class="current  w-25">
-                                                <img class="img-fluid img-thumbnail" src="<?php if ($product['sub_image_path'] !== "") : ?>
-                                                                                <?php echo "./../admin/img/{$product['sub_image_path']}"; ?>
-                                                                            <?php else : ?>
-                                                                                <?php echo "./../admin/img/no_image.png"; ?>
-                                                                            <?php endif; ?>">
+                                            <li class="current w-25">
+                                                <img class="img-thumbnail" onerror="this.src='./../admin/img/no_image.png'" src="<?php if (isset($product['sub_image_path']) && $product['sub_image_path'] !== "") : ?>
+                                                                                    <?php echo "./../admin/img/{$product['sub_image_path']}"; ?>
+                                                                                <?php else : ?>
+                                                                                    <?php echo "./../admin/img/no_image.png"; ?>
+                                                                                <?php endif; ?>">
                                             </li>
                                         </ul>
                                     </div><!--.sub_pic"-->

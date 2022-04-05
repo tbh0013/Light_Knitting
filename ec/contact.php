@@ -56,8 +56,8 @@ if (isset($_POST['submit'])) {
         }
 
         if ($key == 'tel') {
-            if (preg_match('/[^\d-]/', $val)) {
-                array_push($errors, '電話番号が正しくありません。');
+            if (!preg_match("/^0[0-9]{9,10}\z/", $val)) {
+                array_push($errors, '※電話番号が正しくありません。ハイフンなし0から始まる半角数字10桁或いは11桁を入力して下さい');
             }
         }
     }

@@ -86,15 +86,30 @@ if (isset($_POST['submit'])) {
         }
 
         if ($key == 'tel') {
-            if (preg_match('/[^\d-]/', $val)) {
-            array_push($errors, '※電話番号が正しくありません。');
+            if (!preg_match("/^0[0-9]{9,10}\z/", $val)) {
+            array_push($errors, '※電話番号が正しくありません。ハイフンなし0から始まる半角数字10桁或いは11桁を入力して下さい');
             }
         }
 
         if ($key == 'code') {
-            if (preg_match('/[^\d-]/', $val)) {
-            array_push($errors, '※郵便番号が正しくありません。');
+            $code_fixed_value = 7;
+            $code_string = (string) $val;
+            $code_length = mb_strlen($val);
+            // !preg_match("^\d{7}$", $code_string
+
+            if (!is_numeric($val) || $code_fixed_value != $code_length || !preg_match("/^[0-9]{7}+$/", $code_string)) {
+                array_push($errors, '※郵便番号が正しくありません。ハイフンなし7文字の半角数字を入力して下さい');
             }
+
+            // if ($code_fixed_value != $code_length) {
+            //     array_push($errors, '※郵便番号が正しくありません。ハイフンなし7文字の数字を入力して下さい');
+            // }
+            //         if (!is_numeric($val)) {
+            //             array_push($errors, '※郵便番号が正しくありません。ハイフンなし半角7文字の数字を入力して下さい');
+            //         }
+            //             if(!preg_match("/^[0-9]{7}+$/", $code_string)) {
+            //                 array_push($errors, '※郵便番号が正しくありません。ハイフンなし半角7文字の数字を入力して下さい');
+            //             }
         }
     }
 
