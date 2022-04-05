@@ -56,8 +56,8 @@ $product_list = $product_st->fetchAll();
                                     <td><?php echo $product['is_line_up'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $product['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $product['created_at']; ?></td>
-                                    <td><button onclick="location.href = 'edit_product.php?product_id=<?php echo $product['product_id']; ?>'">詳細・編集</button></td>
-                                    <td><?php if ($product['is_deleted'] === '0') : ?>
+                                    <td class="text-nowrap"><button onclick="location.href = 'edit_product.php?product_id=<?php echo $product['product_id']; ?>'">詳細・編集</button></td>
+                                    <td class="text-nowrap"><?php if ($product['is_deleted'] === '0') : ?>
                                             <button class="delete" data-id="<?php echo $product['product_id']; ?>">削除</button>
                                         <?php elseif ($product['is_deleted'] === '1') : ?>
                                             <button class="cancel" data-id="<?php echo $product['product_id']; ?>">削除キャンセル</button>

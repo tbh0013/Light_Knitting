@@ -60,9 +60,21 @@ $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
                                 <p class="mb-0">本文</p>
                                 <textarea name="text" class="w-100"><?php echo ($news['text']); ?></textarea>
                             </div>
-                            <div class="form_item mb-3">
-                                <p class="mb-0">画像ファイル</p>
-                                <input type="file" name="image_path" class="w-100">
+                            <div class="main_img_edit d-flex flex-wrap my-3 text-break">
+                                <div class="main_img_view">
+                                    <p>現在登録しているメイン画像<br>
+                                        <?php echo $news['image_path']; ?>
+                                    </p>
+                                    <img  class="col-6 col-sm-4 col-md-4" onerror="this.src='./../img/no_image.png'" src="<?php if (isset($news['image_path']) && $news['image_path'] !== "") : ?>
+                                                                                    <?php echo "./../img/{$news['image_path']}"; ?>
+                                                                                <?php else : ?>
+                                                                                    <?php echo "./../img/no_image.png"; ?>
+                                                                                <?php endif; ?>">
+                                </div>
+                                <div class="form_item mt-3">
+                                    <p class="mb-0">画像パス</p>
+                                    <input type="file" name="image_path" class="w-100 text-center" value="<?php echo $product['image_path']; ?>">
+                                </div>
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">商品ID</p>

@@ -60,14 +60,39 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                                 <p class="mb-0">カテゴリーID</p>
                                 <input type="text" name="category" class="w-100" value="<?php echo $product['category_id']; ?>" required>
                             </div>
-                            <div class="form_item mb-3">
-                                <?php echo $product['image_path']; ?>
-                                <p class="mb-0">画像パス</p>
-                                <input type="file" name="image_path" class="w-100" value="<?php echo $product['image_path']; ?>">
-                            </div>
-                            <div class="form_item mb-3">
-                                <p class="mb-0">サブ画像パス</p>
-                                <input type="file" name="sub_image_path" class="w-100" value="<?php echo $product['sub_image_path']; ?>">
+                            <div class="edit_img d-flex flex-column flex-md-row text-center text-break">
+                                <div class="main_img_edit d-flex flex-wrap my-3">
+                                    <div class="main_img_view">
+                                        <p class="m-0">現在登録しているメイン画像<br>
+                                            <?php echo $product['image_path']; ?>
+                                        </p>
+                                        <img  class="col-6 col-sm-4 col-md-5" onerror="this.src='./../img/no_image.png'" src="<?php if (isset($product['image_path']) && $product['image_path'] !== "") : ?>
+                                                                                        <?php echo "./../img/{$product['image_path']}"; ?>
+                                                                                    <?php else : ?>
+                                                                                        <?php echo "./../img/no_image.png"; ?>
+                                                                                    <?php endif; ?>">
+                                    </div>
+                                    <div class="form_item mt-3 mx-auto">
+                                        <p class="mb-0">画像パス</p>
+                                        <input type="file" name="image_path" class="w-100 text-center" value="<?php echo $product['image_path']; ?>">
+                                    </div>
+                                </div>
+                                <div class="sub_img_edit d-flex flex-wrap my-3">
+                                    <div class="sub_img_view">
+                                        <p>現在登録しているサブ画像<br>
+                                            <?php echo $product['sub_image_path']; ?>
+                                        </p>
+                                        <img  class="col-6 col-sm-4 col-md-5" onerror="this.src='./../img/no_image.png'" src="<?php if (isset($product['sub_image_path']) && $product['sub_image_path'] !== "") : ?>
+                                                                                        <?php echo "./../img/{$product['sub_image_path']}"; ?>
+                                                                                    <?php else : ?>
+                                                                                        <?php echo "./../img/no_image.png"; ?>
+                                                                                    <?php endif; ?>">
+                                    </div>
+                                    <div class="form_item mt-3 mx-auto">
+                                        <p class="mb-0">サブ画像パス</p>
+                                        <input type="file" name="sub_image_path" class="w-100" value="<?php echo $product['sub_image_path']; ?>">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">商品説明</p>

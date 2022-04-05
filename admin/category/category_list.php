@@ -53,8 +53,8 @@ $category_list = $category_st->fetchAll();
                                     <td><?php echo $category['name']; ?></td>
                                     <td><?php echo $category['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $category['created_at']; ?></td>
-                                    <td><button onclick="location.href = 'edit_category.php?category_id=<?php echo $category['category_id']; ?>'">編集</button></td>
-                                    <td><?php if ($category['is_deleted'] === '0') : ?>
+                                    <td class="text-nowrap"><button onclick="location.href = 'edit_category.php?category_id=<?php echo $category['category_id']; ?>'">編集</button></td>
+                                    <td class="text-nowrap"><?php if ($category['is_deleted'] === '0') : ?>
                                             <button class="delete" data-id="<?php echo $category['category_id']; ?>">削除</button>
                                         <?php elseif ($category['is_deleted'] === '1') : ?>
                                             <button class="cancel" data-id="<?php echo $category['category_id']; ?>">削除キャンセル</button>

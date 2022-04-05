@@ -55,8 +55,8 @@ $contact_list = $contact_st->fetchAll();
                                     <td><?php echo $contact['title']; ?></td>
                                     <td><?php echo $contact['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $contact['created_at']; ?></td>
-                                    <td><button onclick="location.href = 'contact_detail.php?contact_id=<?php echo $contact['contact_id']; ?>'">詳細</button></td>
-                                    <td><?php if ($contact['is_deleted'] === '0') : ?>
+                                    <td class="text-nowrap"><button onclick="location.href = 'contact_detail.php?contact_id=<?php echo $contact['contact_id']; ?>'">詳細</button></td>
+                                    <td class="text-nowrap"><?php if ($contact['is_deleted'] === '0') : ?>
                                             <button class="delete" data-id="<?php echo $contact['contact_id']; ?>">削除</button>
                                         <?php elseif ($contact['is_deleted'] === '1') : ?>
                                             <button class="cancel" data-id="<?php echo $contact['contact_id']; ?>">削除キャンセル</button>
