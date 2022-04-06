@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $contact_id = htmlspecialchars($_GET['contact_id'], ENT_QUOTES, 'utf-8');
 
 $check_sql = "SELECT is_deleted FROM contacts WHERE contact_id = $contact_id";

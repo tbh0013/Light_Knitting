@@ -6,6 +6,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+        <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
         <title>購入者情報入力 - Light Knitting</title>
     </head>
 
@@ -74,10 +75,10 @@
                                     </tr>
                                     <tr>
                                         <td><?php echo 'ご住所'; ?></td>
-                                        <td><?php echo $posts['address']; ?></td>
+                                        <td><?php echo $posts['address'].$posts['address_after']; ?></td>
                                         <input type="hidden" name="address" value="<?php echo $posts['address']; ?>">
+                                        <input type="hidden" name="address_after" value="<?php echo $posts['address_after']; ?>">
                                     </tr>
-                                    <tr>
                                         <td><?php echo '電話番号'; ?></td>
                                         <td><?php echo $posts['tel']; ?></td>
                                         <input type="hidden" name="tel" value="<?php echo $posts['tel']; ?>">
@@ -104,12 +105,18 @@
                                 <input type="email" name="mail" class="form-control" value="<?php echo $email; ?>" required>
                             </p>
                             <p class= "col-md-7 mx-auto">
-                                郵便番号<br>
-                                <input type="text" name="code" pattern="^\d{7}$" placeholder="ハイフンなし7文字の半角数字を入力して下さい" class="form-control" value="<?php echo $code; ?>" required>
+                                郵便番号 ※住所は郵便番号から自動検索されます。<br>
+                                <input type="text" name="code" pattern="^\d{7}$" placeholder="ハイフンなし7文字の半角数字を入力して下さい"
+                                        class="form-control" value="<?php echo $code; ?>" onKeyUp="AjaxZip3.zip2addr(this,'','address','address_after');" required
+                                >
                             </p>
                             <p class= "col-md-7 mx-auto">
-                                ご住所<br>
+                                ご住所（都道府県）<br>
                                 <input type="text" name="address" class="form-control" value="<?php echo $address; ?>" required>
+                            </p>
+                            <p class= "col-md-7 mx-auto">
+                                ご住所（都道府県以降）<br>
+                                <input type="text" name="address_after" class="form-control" value="<?php echo $address; ?>" required>
                             </p>
                             <p class= "col-md-7 mx-auto">
                                 電話番号<br>

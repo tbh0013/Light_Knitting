@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $category_st = $pdo->query('SELECT * FROM categories ORDER BY updated_at DESC');
 $category_st->setFetchMode(PDO::FETCH_ASSOC);
 $category_list = $category_st->fetchAll();
@@ -29,7 +34,7 @@ $category_list = $category_st->fetchAll();
                 <div class="container table-responsive">
                     <h2 class="text-center mt-3">カテゴリ一覧</h2>
                     <div class="container d-flex justify-content-between">
-                        <button onclick="location.href = '../index.php'" class="mt-3">ページトップ</button>
+                        <button onclick="location.href = './../menu.php'" class="mt-3">メニューに戻る</button>
                         <button onclick="location.href = 'create_category.php'" class="mt-3">追加する</button>
                     </div>
                         <table class="table border-dark mx-auto">

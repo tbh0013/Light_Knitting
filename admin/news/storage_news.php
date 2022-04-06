@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $posts['product_id'] = htmlspecialchars($_POST['product_id'], ENT_QUOTES, 'utf-8');
 $posts['date'] = htmlspecialchars($_POST['date'], ENT_QUOTES, 'utf-8');
 $posts['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8');

@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $news_id = htmlspecialchars($_GET['news_id'], ENT_QUOTES, 'utf-8');
 
 $check_sql = "SELECT is_deleted FROM news WHERE news_id = $news_id";

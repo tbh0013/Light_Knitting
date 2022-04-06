@@ -2,13 +2,17 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
 
 $posts['category_id'] = htmlspecialchars($_POST['category_id'], ENT_QUOTES, 'utf-8');
 $posts['name'] = htmlspecialchars($_POST['name'], ENT_QUOTES, 'utf-8');
 $posts['is_deleted'] = htmlspecialchars($_POST['is_deleted'], ENT_QUOTES, 'utf-8');
 
 $name_limit = 20;
-$name_length = mb_mb_strlen($posts['name']);
+$name_length = mb_strlen($posts['name']);
 if($name_limit < $name_length) {
     array_push($errors, '※カテゴリー名は20文字以内で入力してください');
     $_SESSION['flash']['errors'] = $errors;

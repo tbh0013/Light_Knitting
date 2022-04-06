@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $order_id = htmlspecialchars($_GET['order_id'], ENT_QUOTES, 'utf-8');
 
 $check_sql = "SELECT is_deleted FROM orders WHERE order_id = $order_id";

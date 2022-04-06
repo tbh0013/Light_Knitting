@@ -5,25 +5,29 @@
         <meta name="viewport" content="width=device-width",initial-scale="1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="css/style.css" rel="stylesheet">
-        <title>管理画面</title>
+        <title>管理画面ログイン</title>
     </head>
 
     <body>
         <header>
             <div class="container">
-                <h1 class="text-center">管理画面</h1>
+                <h1 class="text-center">管理画面ログイン</h1>
             </div>
         </header>
 
         <main style="min-height: 100vh;">
-            <div class="wrapper">
-                <div class="container d-flex flex-column justify-content-center col-md-4">
-                    <button onclick="location.href = 'product/product_list.php'" class="m-3">商品一覧</button>
-                    <button onclick="location.href = 'news/news_list.php'" class="m-3">お知らせ一覧</button>
-                    <button onclick="location.href = 'category/category_list.php'" class="m-3">カテゴリ一覧</button>
-                    <button onclick="location.href = 'contact/contact_list.php'" class="m-3">お問い合わせ一覧</button>
-                    <button onclick="location.href = 'order/order_list.php'" class="m-3">購入履歴一覧</button>
-                </div>
+            <div class="wrapper text-center">
+                <form class="login-form mt-5" action="login_check.php" method="POST">
+                    <div class="form-item mb-4">
+                        <p class="m-0">メールアドレス</p>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-item">
+                        <p class="m-0">パスワード</p>
+                        <input type="password" name="password" required>
+                    </div>
+                    <button type="submit" class="button mt-4">ログイン</button>
+                </form>
             </div>
         </main>
 

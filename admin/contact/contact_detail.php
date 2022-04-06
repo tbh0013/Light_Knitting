@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $contact_id = htmlspecialchars($_GET['contact_id'], ENT_QUOTES, 'utf-8');
 
 $contact_st = $pdo->query("SELECT * FROM contacts WHERE contact_id = $contact_id");
@@ -32,7 +37,7 @@ $contact_list = $contact_st->fetchAll();
                 <div class="container table-responsive">
                     <h2 class="text-center mt-3">お問い合わせ一覧</h2>
                     <div class="container d-flex justify-content-between">
-                        <button onclick="location.href = '../index.php'" class="mt-3">ページトップ</button>
+                        <button onclick="location.href = '../menu.php'" class="mt-3">メニューに戻る</button>
                         <button onclick="location.href = 'contact_list.php'" class="mt-3">お問い合わせ一覧に戻る</button>
                     </div>
                     <table class="table border-dark mx-auto">

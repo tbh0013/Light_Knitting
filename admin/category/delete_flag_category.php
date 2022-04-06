@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $category_id = htmlspecialchars($_GET['category_id'], ENT_QUOTES, 'utf-8');
 
 $check_sql = "SELECT is_deleted FROM categories WHERE category_id = $category_id";

@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $news_st = $pdo->query('SELECT * FROM news ORDER BY updated_at DESC');
 $news_st->setFetchMode(PDO::FETCH_ASSOC);
 $news_list = $news_st->fetchAll();
@@ -30,7 +35,7 @@ $news_list = $news_st->fetchAll();
                 <div class="container table-responsive">
                     <h2 class="text-center mt-3">ニュース一覧</h2>
                     <div class="container d-flex justify-content-between">
-                        <button onclick="location.href = '../index.php'" class="mt-3">ページトップ</button>
+                        <button onclick="location.href = '../menu.php'" class="mt-3">メニューに戻る</button>
                         <button onclick="location.href = 'create_news.php'" class="mt-3">追加する</button>
                     </div>
                     <table class="table border-dark mx-auto">

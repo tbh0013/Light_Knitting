@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $order_id = htmlspecialchars($_GET['order_id'], ENT_QUOTES, 'utf-8');
 
 $order_sql = "SELECT
@@ -52,7 +57,7 @@ $order_list = $order_st->fetchAll();
                 <div class="container table-responsive">
                     <h2 class="text-center mt-3">購入詳細</h2>
                     <div class="container d-flex justify-content-between">
-                        <button onclick="location.href = '../index.php'" class="mt-3">ページトップ</button>
+                        <button onclick="location.href = '../menu.php'" class="mt-3">メニューに戻る</button>
                         <button onclick="location.href = 'order_list.php'" class="mt-3">購入一覧に戻る</button>
                     </div>
                     <table class="table border-dark mx-auto">

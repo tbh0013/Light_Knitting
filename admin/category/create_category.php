@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../menu.php");
+    exit();
+}
+
 $errors = isset($_SESSION['flash']['errors'])
             ? $_SESSION['flash']['errors']
             : array();
@@ -30,7 +35,7 @@ unset($_SESSION['flash']['errors']);
                 <div class="container">
                     <h2 class="text-center mt-3">カテゴリー追加</h2>
                     <div class="container d-flex justify-content-between">
-                        <button onclick="location.href = '../index.php'" class="mt-3">ページトップ</button>
+                        <button onclick="location.href = '../menu.php'" class="mt-3">メニューに戻る</button>
                         <button onclick="location.href = 'category_list.php'" class="mt-3">カテゴリー一覧に戻る</button>
                     </div>
 

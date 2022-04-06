@@ -97,3 +97,12 @@ footer {
 }
 
 /* item_detailビュー */
+
+/* newsビュー */
+
+.news_detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  width: 100px;
+}

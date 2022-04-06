@@ -2,6 +2,11 @@
 
 require_once '../initiallization.php';
 
+if ($_SESSION['admin_login'] === false) {
+    header("Location: ./../index.php");
+    exit();
+}
+
 $product_id = htmlspecialchars($_GET['product_id'], ENT_QUOTES, 'utf-8');
 
 $check_sql = "SELECT is_deleted FROM products WHERE product_id = $product_id";

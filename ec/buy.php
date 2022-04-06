@@ -19,7 +19,10 @@ if (isset($_POST['submit_check'])) {
     $posts['mail'] = htmlspecialchars($_POST['mail']);
     $posts['code'] = htmlspecialchars($_POST['code']);
     $posts['address'] = htmlspecialchars($_POST['address']);
+    $posts['address_after'] = htmlspecialchars($_POST['address_after']);
     $posts['tel'] = htmlspecialchars($_POST['tel']);
+    $posts['address'] = $posts['address'].$posts['address_after'];
+
 
     $order_st = $pdo->prepare("INSERT INTO orders(customer_name, mail, post_code, address, tel)VALUES(:customer_name, :mail, :post_code, :address, :tel)");
     $order_st->bindParam(':customer_name', $posts['customer_name'], PDO::PARAM_STR);
@@ -63,6 +66,7 @@ if (isset($_POST['submit'])) {
     $posts['mail'] = htmlspecialchars($_POST['mail']);
     $posts['code'] = htmlspecialchars($_POST['code']);
     $posts['address'] = htmlspecialchars($_POST['address']);
+    $posts['address_after'] = htmlspecialchars($_POST['address_after']);
     $posts['tel'] = htmlspecialchars($_POST['tel']);
     foreach ($posts as $key => $val) {
         if (!$val) {
