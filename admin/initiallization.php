@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$pdo = new PDO("mysql:dbname=knit_shop", "root");
+$pdo = new PDO("mysql:dbname=light_knitting", "root");
 $errors = array();
 
 $category_list_st = $pdo->query("SELECT category_id, name FROM categories WHERE is_deleted = 0");

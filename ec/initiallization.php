@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$pdo = new PDO("mysql:dbname=knit_shop", "root");
+$pdo = new PDO("mysql:dbname=light_knitting", "root");
 $errors = array();
 $all = array();
 $all += array('category_id' => 'All','name' => 'All');

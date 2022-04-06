@@ -1,6 +1,7 @@
 <?php
 
-$pdo = new PDO("mysql:dbname=knit_shop", "root");
+require_once 'initiallization.php';
+
 $news_id = $_GET['news_id'];
 
 if (!is_numeric($news_id)) {
