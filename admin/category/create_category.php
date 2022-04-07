@@ -47,7 +47,7 @@ unset($_SESSION['flash']['errors']);
                     <form action="storage_category.php" method="POST">
                         <div class="form_item mb-3">
                             <p class="mb-0">カテゴリー名</p>
-                            <input type="text" name="name" class="w-100">
+                            <input type="text" name="name" class="w-100" placeholder="20文字以内で入力してください。">
                         </div>
                         <button type="submit" class="mt-3">更新する</button>
                     </form>

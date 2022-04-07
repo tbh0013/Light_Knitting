@@ -40,10 +40,10 @@ if($title_limit < $title_length) {
     array_push($errors, '※タイトルは20文字以内で入力してください');
 }
 
-$text_limit = 50;
+$text_limit = 100;
 $text_length = mb_strlen($posts['text']);
 if($text_limit < $text_length) {
-    array_push($errors, '※本文は50文字以内で入力してください');
+    array_push($errors, '※本文は100文字以内で入力してください');
 }
 
 if (empty($errors)) {

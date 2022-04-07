@@ -18,19 +18,12 @@
                     <h2 id="news_heading" class="text-decoration-underline text-center p-3">NEWS</h2>
 
                     <div id="news_article_container" class="container mb-5">
-                        <ul class="news_list row list-unstyled fs-5">
+                        <ul class="news_list list-unstyled fs-5 text-center col-6 mx-auto">
                             <?php foreach ($newslist as $news) { ?>
-                                <li class="news_item col-6 col-sm-4 my-3 d-flex align-items-end">
-                                    <a class="d-block text-decoration-none text-dark" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
-                                        <div class="news_pic">
-                                            <img class="img-fluid" onerror="this.src='./../admin/img/no_image.png'" src="<?php if (isset($news['image_path']) && $news['image_path'] !== "") : ?>
-                                                                            <?php echo "./../admin/img/{$news['image_path']}"; ?>
-                                                                        <?php else : ?>
-                                                                            <?php echo "./../admin/img/no_image.png"; ?>
-                                                                        <?php endif; ?>">
-                                        </div>
-                                        <div class="news_time"><?php echo $news['t_date']; ?></div>
-                                        <div class="news_detail"><?php echo $news['text']; ?></div>
+                                <li class="news_item my-3 text-start">
+                                    <a class="news_detail d-inline-block text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
+                                            <p class="d-inline-block fw-bold m-0"><?php echo $news['t_date']; ?></p>
+                                            <p><?php echo $news['title']; ?></p>
                                     </a>
                                 </li>
                             <?php } ?>

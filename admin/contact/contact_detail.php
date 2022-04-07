@@ -35,40 +35,45 @@ $contact_list = $contact_st->fetchAll();
         <main style="min-height: 100vh;">
             <div class="wrapper">
                 <div class="container table-responsive">
-                    <h2 class="text-center mt-3">お問い合わせ一覧</h2>
+                    <h2 class="text-center mt-3">お問い合わせ詳細</h2>
                     <div class="container d-flex justify-content-between">
                         <button onclick="location.href = '../menu.php'" class="mt-3">メニューに戻る</button>
                         <button onclick="location.href = 'contact_list.php'" class="mt-3">お問い合わせ一覧に戻る</button>
                     </div>
-                    <table class="table border-dark mx-auto">
-                        <thead>
-                            <tr class="text-nowrap">
-                                <th>お問い合わせID</th>
-                                <th>名前</th>
-                                <th>電話番号</th>
-                                <th>メールアドレス</th>
-                                <th>タイトル</th>
-                                <th>お問い合わせ内容</th>
-                                <th>削除フラグ</th>
-                                <th>作成日</th>
-                                <th>更新日</th>
+                    <table class="table table-resposive border-dark mx-auto mt-5">
+                        <?php foreach($contact_list as $contact) : ?>
+                            <tr>
+                                <td><?php echo 'お問い合わせID'; ?></td>
+                                <td><?php echo $contact['contact_id']; ?></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($contact_list as $contact) : ?>
-                                <tr>
-                                    <td><?php echo $contact['contact_id']; ?></td>
-                                    <td><?php echo $contact['name']; ?></td>
-                                    <td><?php echo $contact['tel']; ?></td>
-                                    <td><?php echo $contact['mail']; ?></td>
-                                    <td><?php echo $contact['title']; ?></td>
-                                    <td><?php echo $contact['message']; ?></td>
-                                    <td><?php echo $contact['is_deleted'];?></td>
-                                    <td><?php echo $contact['created_at']; ?></td>
-                                    <td><?php echo $contact['updated_at']; ?></td>
-                                <tr>
-                            <?php endforeach; ?>
-                        </tbody>
+                            <tr>
+                                <td><?php echo '名前'; ?></td>
+                                <td><?php echo $contact['name']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '電話番号'; ?></td>
+                                <td><?php echo $contact['tel']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo 'メールアドレス'; ?></td>
+                                <td><?php echo $contact['mail'] ?></td>
+                            </tr>
+                                <td><?php echo 'タイトル'; ?></td>
+                                <td><?php echo $contact['title'] ?></td>
+                            </tr>
+                                <td class="text-nowrap"><?php echo 'お問い合わせ内容'; ?></td>
+                                <td><?php echo $contact['message'] ?></td>
+                            </tr>
+                                <td><?php echo '削除フラグ'; ?></td>
+                                <td><?php echo $contact['is_deleted'] ?></td>
+                            </tr>
+                                <td><?php echo '作成日'; ?></td>
+                                <td><?php echo $contact['created_at'] ?></td>
+                            </tr>
+                                <td><?php echo '更新日'; ?></td>
+                                <td><?php echo $contact['updated_at'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>

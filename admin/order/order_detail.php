@@ -9,7 +9,12 @@ if ($_SESSION['admin_login'] === false) {
 
 $order_id = htmlspecialchars($_GET['order_id'], ENT_QUOTES, 'utf-8');
 
-$order_sql = "SELECT
+
+$order_st = $pdo->query("SELECT * FROM orders WHERE order_id = {$order_id} ORDER BY updated_at DESC");
+$order_st->setFetchMode(PDO::FETCH_ASSOC);
+$order_list = $order_st->fetchAll();
+
+$order_detail_sql = "SELECT
                 order_details.order_id,
                 order_details.order_detail_id,
                 order_details.product_id,
@@ -29,9 +34,9 @@ $order_sql = "SELECT
                 ON product_sizes.size_id = sizes.size_id
                 WHERE order_details.order_id = {$order_id}";
 
-$order_st = $pdo->query($order_sql);
-$order_st->setFetchMode(PDO::FETCH_ASSOC);
-$order_list = $order_st->fetchAll();
+$order_detail_st = $pdo->query($order_detail_sql);
+$order_detail_st->setFetchMode(PDO::FETCH_ASSOC);
+$order_detail_list = $order_detail_st->fetchAll();
 
 ?>
 
@@ -60,31 +65,69 @@ $order_list = $order_st->fetchAll();
                         <button onclick="location.href = '../menu.php'" class="mt-3">メニューに戻る</button>
                         <button onclick="location.href = 'order_list.php'" class="mt-3">購入一覧に戻る</button>
                     </div>
-                    <table class="table border-dark mx-auto">
-                        <thead>
-                            <tr class="text-nowrap">
-                                <th>注文ID</th>
-                                <th>注文明細ID</th>
-                                <th>商品ID</th>
-                                <th>商品サイズID</th>
-                                <th>数量</th>
-                                <th>作成日</th>
-                                <th>更新日</th>
+                    <table class="table table-resposive border-dark mx-auto mt-5">
+                        <?php foreach($order_list as $order) : ?>
+                            <tr>
+                                <td><?php echo '更新日'; ?></td>
+                                <td><?php echo $order['updated_at']; ?></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($order_list as $order) : ?>
-                                <tr>
-                                    <td><?php echo $order['order_id']; ?></td>
-                                    <td><?php echo $order['order_detail_id']; ?></td>
-                                    <td><?php echo $order['product_id'].' : ('.$order['name'].')'; ?></td>
-                                    <td><?php echo $order['product_size_id']?> <?php echo $order['size_name'] != null ? ": (".$order['size_name'].")" : ": (FREE)"; ?></td>
-                                    <td><?php echo $order['quantity']; ?></td>
-                                    <td><?php echo $order['created_at']; ?></td>
-                                    <td><?php echo $order['updated_at']; ?></td>
-                                <tr>
-                            <?php endforeach; ?>
-                        </tbody>
+                            <tr>
+                                <td><?php echo '注文ID'; ?></td>
+                                <td><?php echo $order['order_id']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo 'お客様名'; ?></td>
+                                <td><?php echo $order['customer_name']; ?></td>
+                            </tr>
+                            <tr>
+                                <td class="text-nowrap"><?php echo 'メールアドレス'; ?></td>
+                                <td><?php echo $order['mail']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '郵便番号'; ?></td>
+                                <td><?php echo $order['post_code']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '住所'; ?></td>
+                                <td><?php echo $order['address']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '電話番号'; ?></td>
+                                <td><?php echo $order['tel']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '削除フラグ'?></td>
+                                <td><?php echo $order['is_deleted']; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                    <table class="table table-resposive border-dark mx-auto mt-5">
+                        <?php foreach($order_detail_list as $order_detail) : ?>
+                            <tr>
+                                <td><?php echo '注文明細ID'; ?></td>
+                                <td><?php echo $order_detail['order_detail_id']; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '商品ID'; ?></td>
+                                <td><?php echo $order_detail['product_id'].' : ('.$order_detail['name'].')'; ?></td>
+                            </tr>
+                            <tr>
+                                <td class="text-nowrap"><?php echo '商品サイズID'; ?></td>
+                                <td><?php echo $order_detail['product_size_id']?> <?php echo $order_detail['size_name'] != null ? ": (".$order_detail['size_name'].")" : ": (FREE)"; ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '数量'; ?></td>
+                                <td><?php echo $order_detail['quantity'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '作成日'; ?></td>
+                                <td><?php echo $order_detail['created_at'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><?php echo '更新日'; ?></td>
+                                <td><?php echo $order_detail['updated_at'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
             </div>

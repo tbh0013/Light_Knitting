@@ -55,15 +55,12 @@
 
                     <div id="top_news_container" class="container text-center my-5">
                         <h2 id="top_news" class="text-decoration-underline">NEWS</h2>
-                        <ul class="top_news_article list-unstyled">
+                        <ul class="top_news_article list-unstyled text-center col-6 mx-auto">
                             <?php foreach ($top_news as $news) : ?>
-                                <li class="top_news_list border-top border-bottom border-dark p-3 fs-5">
-                                    <a class="top_news_detail text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
-                                        <?php
-                                            echo ($news["t_date"]);
-                                            echo ("<br>\n");
-                                            echo ($news["text"]);
-                                        ?>
+                                <li class="top_news_list border-top border-bottom border-dark p-3 fs-5 text-start">
+                                    <a class="top_news_detail d-inline-block text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
+                                            <p class="d-inline-block fw-bold m-0"><?php echo $news['t_date']; ?></p>
+                                            <p><?php echo $news['title']; ?></p>
                                     </a>
                                 </li>
                             <?php endforeach; ?>

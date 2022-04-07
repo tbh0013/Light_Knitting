@@ -1,6 +1,6 @@
 <header class="sticky-top">
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light py-0">
             <div class="container-fluid">
                 <h1 class="d-flex align-items-center m-0 w-50"><a class="navbar-brand m-0" href="index.php"><img src="img/Light_Knitting_logo.png" alt="Light Knitting" class=" img-fluid"></a></h1>
                 <li class="list-unstyled d-flex flex-row-reverse"><a class="nav-link p-0 d-lg-none" href="cart.php"><img src="img/cart.png" class="rounded float-end m-2"></a>
@@ -33,10 +33,10 @@
                                 <?php endforeach; ?>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-nowrap">
                             <a class="nav-link" href="#">ログイン</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item text-nowrap">
                             <a class="nav-link" href="#">会員登録</a>
                         </li>
                     </ul>

@@ -43,10 +43,6 @@ $order_list = $order_st->fetchAll();
                                 <th>更新日</th>
                                 <th>注文ID</th>
                                 <th>お客様名</th>
-                                <th>メールアドレス</th>
-                                <th>郵便番号</th>
-                                <th>住所</th>
-                                <th>電話番号</th>
                                 <th>削除フラグ</th>
                                 <th>作成日</th>
                                 <th></th>
@@ -60,10 +56,6 @@ $order_list = $order_st->fetchAll();
                                     <td><?php echo $order['updated_at']; ?></td>
                                     <td><?php echo $order['order_id']; ?></td>
                                     <td><?php echo $order['customer_name']; ?></td>
-                                    <td><?php echo $order['mail']; ?></td>
-                                    <td><?php echo $order['post_code']; ?></td>
-                                    <td><?php echo $order['address']; ?></td>
-                                    <td><?php echo $order['tel']; ?></td>
                                     <td><?php echo $order['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $order['created_at']; ?></td>
                                     <td class="text-nowrap"><button onclick="location.href = 'order_detail.php?order_id=<?php echo $order['order_id']; ?>'">詳細</button></td>
@@ -73,7 +65,7 @@ $order_list = $order_st->fetchAll();
                                             <button class="cancel" data-id="<?php echo $order['order_id']; ?>">削除キャンセル</button>
                                         <?php endif; ?>
                                     </td>
-                                <tr>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

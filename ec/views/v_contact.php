@@ -58,17 +58,17 @@
                                         <dd><input type="text" name="name" id="name" class="form-control" required></dd>
 
                                         <dt><label for="tel">電話番号</label></dt>
-                                        <dd><input type="tel" name="tel" id="tel" pattern="^0\d{9,10}$" placeholder="ハイフンなし0から始まる半角数字10桁或いは11桁を入力して下さい" class="form-control" required></dd>
+                                        <dd><input type="tel" name="tel" id="tel" pattern="^0\d{9,10}$" placeholder="ハイフンなし0から始まる半角数字10桁或いは11桁を入力して下さい。" class="form-control" required></dd>
                                         <!-- <dd><input type="tel" name="tel" id="tel" class="form-control"></dd> -->
 
                                         <dt><label for="mail">メールアドレス</label><strong>(必須)</strong></dt>
                                         <dd><input type="email" name="mail" id="mail" class="form-control" required></dd>
 
                                         <dt><label for="subject">件名</label><strong>(必須)</strong></dt>
-                                        <dd><input type="text" name="title" id="title" class="form-control" required></dd>
+                                        <dd><input type="text" name="title" id="title" class="form-control" placeholder="20文字以内で入力してください。" required></dd>
 
                                         <dt><label for="message">お問い合わせ内容</label><strong>(必須)</strong></dt>
-                                        <dd><textarea name="message" id="message" class="form-control" required></textarea></dd>
+                                        <dd><textarea name="message" id="message" class="form-control" placeholder="200文字以内で入力してください。" required></textarea></dd>
                                     </dl>
 
                                     <p class="send_button text-center" ><input type="submit" name="submit" value="確認する" class="p-2 bg-white border-light"></p>

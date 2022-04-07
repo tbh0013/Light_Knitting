@@ -55,7 +55,7 @@ unset($_SESSION['flash']['errors']);
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">本文</p>
-                            <textarea name="text" placeholder="50文字以内で入力してください。" class="w-100"></textarea>
+                            <textarea name="text" placeholder="100文字以内で入力してください。" class="w-100"></textarea>
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">画像ファイル</p>
