@@ -92,6 +92,18 @@ footer {
   background-image: url(../img/top_bg.png);
 }
 
+/*Newsビュー*/
+
+.pagination {
+  width: 50%;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.first, .last {
+  display: none;
+}
+
 /* itemsビュー */
 .item_pic:hover {
   transition: 0.3s;

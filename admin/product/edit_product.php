@@ -18,6 +18,8 @@ $product_st = $pdo->prepare("SELECT * FROM products WHERE product_id = $product_
 $product_st->execute();
 $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +65,13 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">カテゴリーID</p>
-                                <input type="text" name="category" class="w-100" value="<?php echo $product['category_id']; ?>" required>
+                                <select name="category" class="w-100" required>
+                                    <?php foreach($category_list as $category) : ?>
+                                        <option value="<?php echo $category['category_id'] ?>" <?php if($category['category_id'] === $product['category_id']) { echo 'selected'; } ?>>
+                                            <?php echo $category['category_id'].' : ('.$category['name'].')'; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="edit_img d-flex flex-column flex-md-row text-center text-break">
                                 <div class="main_img_edit d-flex flex-wrap my-3">
@@ -84,7 +92,7 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <div class="sub_img_edit d-flex flex-wrap my-3">
                                     <div class="sub_img_view">
-                                        <p>現在登録しているサブ画像<br>
+                                        <p class="m-0">現在登録しているサブ画像<br>
                                             <?php echo $product['sub_image_path']; ?>
                                         </p>
                                         <img  class="col-6 col-sm-4 col-md-5" onerror="this.src='./../img/no_image.png'" src="<?php if (isset($product['sub_image_path']) && $product['sub_image_path'] !== "") : ?>

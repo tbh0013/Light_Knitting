@@ -12,6 +12,10 @@ $errors = isset($_SESSION['flash']['errors'])
             : array();
 unset($_SESSION['flash']['errors']);
 
+$product_st = $pdo->prepare("SELECT product_id, name FROM products");
+$product_st->execute();
+$products = $product_st->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -63,8 +67,16 @@ unset($_SESSION['flash']['errors']);
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">商品ID</p>
-                            <input type="text" name="product_id" class="w-100">
+                            <select name="product_id" class="w-100">
+                                <option value="">0 : (なし)</option>
+                                <?php foreach($products as $product) : ?>
+                                    <option value="<?php echo $product['product_id'] ?>">
+                                        <?php echo $product['product_id'].' : ('.$product['name'].')'; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
+                        <!-- <input type="text" name="product_id" class="w-100"> -->
                         <div class="form_item mb-3">
                             <p class="mb-0">URL</p>
                             <input type="url" name="url" class="w-100">

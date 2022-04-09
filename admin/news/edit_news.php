@@ -18,6 +18,10 @@ $news_st = $pdo->prepare("SELECT * FROM news WHERE news_id = $news_id");
 $news_st->execute();
 $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
 
+$product_st = $pdo->prepare("SELECT product_id, name FROM products");
+$product_st->execute();
+$products = $product_st->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +87,14 @@ $news_list = $news_st->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">商品ID</p>
-                                <input type="text" name="product_id" class="w-100" value="<?php echo $news['product_id']; ?>" required>
+                                <select name="product_id" class="w-100">
+                                    <option value="">0 : (なし)</option>
+                                    <?php foreach($products as $product) : ?>
+                                        <option value="<?php echo $product['product_id'] ?>" <?php if($product['product_id'] === $news['product_id']) { echo 'selected'; } ?>>
+                                            <?php echo $product['product_id'].' : ('.$product['name'].')'; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="form_item mb-3">
                                 <p class="mb-0">url</p>
