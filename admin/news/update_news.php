@@ -13,6 +13,7 @@ $posts['date'] = htmlspecialchars($_POST['date'], ENT_QUOTES, 'utf-8');
 $posts['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8');
 $posts['text'] = htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf-8');
 $posts['url'] = htmlspecialchars($_POST['url'], ENT_QUOTES, 'utf-8');
+$posts['delete_main_file'] = htmlspecialchars($_POST['delete_main_file'], ENT_QUOTES, 'utf-8');
 $main_file_name = $_FILES['image_path']['name'];
 
 $is_changed_main = ($main_file_name !== "");
@@ -35,7 +36,12 @@ if ($is_changed_main) {
     }
 }
 
-
+if ($is_changed_main === false) {
+    if ($posts['delete_main_file'] === "delete") {
+        $is_changed_main = true;
+        $main_file_name = "";
+    }
+}
 
 $title_limit = 20;
 $title_length = mb_strlen($posts['title']);

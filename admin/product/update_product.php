@@ -13,6 +13,8 @@ $posts['price'] = htmlspecialchars($_POST['price'], ENT_QUOTES, 'utf-8');
 $posts['category'] = htmlspecialchars($_POST['category'], ENT_QUOTES, 'utf-8');
 $posts['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES, 'utf-8');
 $posts['is_line_up'] = htmlspecialchars($_POST['is_line_up'], ENT_QUOTES, 'utf-8');
+$posts['delete_main_file'] = htmlspecialchars($_POST['delete_main_file'], ENT_QUOTES, 'utf-8');
+$posts['delete_sub_file'] = htmlspecialchars($_POST['delete_sub_file'], ENT_QUOTES, 'utf-8');
 $main_file_name = $_FILES['image_path']['name'];
 $sub_file_name = $_FILES['sub_image_path']['name'];
 
@@ -28,6 +30,7 @@ $name_length = mb_strlen($posts['name']);
 if ($name_limit < $name_length) {
     array_push($errors, '※商品名は20文字以内で入力してください');
 }
+
 
 $is_changed_main = ($main_file_name !== "");
 if ($is_changed_main) {
@@ -66,6 +69,20 @@ if($is_changed_sub){
         }
     } else {
         array_push($errors, '※サブ画像の登録ができませんでした。');
+    }
+}
+
+if ($is_changed_main === false) {
+    if ($posts['delete_main_file'] === "delete") {
+        $is_changed_main = true;
+        $main_file_name = "";
+    }
+}
+
+if ($is_changed_sub === false) {
+    if ($posts['delete_sub_file'] === "delete") {
+        $is_changed_sub = true;
+        $sub_file_name = "";
     }
 }
 

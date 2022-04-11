@@ -16,9 +16,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="news.php">News</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.php">Contact</a>
-                        </li>
                         <li class="nav-item dropdown align-items-center text-center">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Items
@@ -33,11 +30,8 @@
                                 <?php endforeach; ?>
                             </ul>
                         </li>
-                        <li class="nav-item text-nowrap">
-                            <a class="nav-link" href="#">ログイン</a>
-                        </li>
-                        <li class="nav-item text-nowrap">
-                            <a class="nav-link" href="#">会員登録</a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.php">Contact</a>
                         </li>
                     </ul>
                 </div>

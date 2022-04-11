@@ -84,9 +84,10 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                                                                                     <?php else : ?>
                                                                                         <?php echo "./../img/no_image.png"; ?>
                                                                                     <?php endif; ?>">
+                                        <div><lavel><input type="checkbox" name="delete_main_file" value="delete">現在の画像を取り消す</lavel></div>
                                     </div>
                                     <div class="form_item mt-3 mx-auto">
-                                        <p class="mb-0">画像パス</p>
+                                        <p class="mb-0">画像登録</p>
                                         <input type="file" name="image_path" class="w-100 text-center" value="<?php echo $product['image_path']; ?>">
                                     </div>
                                 </div>
@@ -100,9 +101,10 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                                                                                     <?php else : ?>
                                                                                         <?php echo "./../img/no_image.png"; ?>
                                                                                     <?php endif; ?>">
+                                        <div><lavel><input type="checkbox" name="delete_sub_file" value="delete">現在の画像を取り消す</lavel></div>
                                     </div>
                                     <div class="form_item mt-3 mx-auto">
-                                        <p class="mb-0">サブ画像パス</p>
+                                        <p class="mb-0">サブ画像登録</p>
                                         <input type="file" name="sub_image_path" class="w-100" value="<?php echo $product['sub_image_path']; ?>">
                                     </div>
                                 </div>

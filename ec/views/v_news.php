@@ -20,14 +20,14 @@
 
                     <div id="news_article_container" class="container mb-5">
                         <ul class="news_list list-unstyled fs-5 text-center col-6 mx-auto">
-                            <?php foreach ($newslist as $news) { ?>
+                            <?php foreach ($newslist as $news) : ?>
                                 <li class="news_item my-3 text-start">
                                     <a class="news_detail d-inline-block text-decoration-none" href="news_detail.php?news_id=<?php echo $news['news_id']; ?>">
                                             <p class="d-inline-block fw-bold m-0"><?php echo $news['t_date']; ?></p>
                                             <p><?php echo $news['title']; ?></p>
                                     </a>
                                 </li>
-                            <?php } ?>
+                            <?php endforeach; ?>
                         </ul>
                     </div><!--#news_article_container-->
 

@@ -3,7 +3,18 @@ require_once 'initiallization.php';
 
 $newslist = array();
 
-$news_st = $pdo->query('SELECT DATE_FORMAT(date, "%Y-%m-%d") as t_date, news_id, title, text,url,image_path FROM news');
+$news_sql = 'SELECT
+                DATE_FORMAT(date, "%Y-%m-%d") as t_date,
+                news_id,
+                title,
+                text,
+                url,
+                image_path
+                FROM news
+                WHERE is_deleted = 0
+                ORDER BY date DESC';
+
+$news_st = $pdo->query($news_sql);
 $news_st->setFetchMode(PDO::FETCH_ASSOC);
 $newslist = $news_st->fetchAll();
 
