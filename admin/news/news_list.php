@@ -58,6 +58,7 @@ $news_list = $news_st->fetchAll();
                                     <td><?php echo $news['updated_at']; ?></td>
                                     <td><?php echo $news['news_id']; ?></td>
                                     <td><?php echo empty($news['product_id'] ? '-' : $news['product_id'];) ?></td>
+                                    <td><?php echo empty($news['product_id'] ? '-' : $news['product_id'];) ?></td>
                                     <td><?php echo $news['title']; ?></td>
                                     <td><?php echo $news['is_deleted'] ? '有効' : '無効'; ?></td>
                                     <td><?php echo $news['created_at']; ?></td>
