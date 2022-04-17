@@ -1,3 +1,5 @@
+-- DROP TABLE categories,contacts,news,orders,order_details,products,product_sizes,sizes;
+
 INSERT INTO categories (category_id, name, is_deleted, created_at, updated_at) VALUES
 (1, 'socks', 0, '2022-02-07 14:53:50', '2022-02-07 15:35:36'),
 (2, 'knit hat', 0, '2022-02-07 15:37:03', '2022-02-07 15:37:03'),
@@ -30,7 +32,6 @@ INSERT INTO products (product_id, name, price, category_id, image_path, sub_imag
 (14, ' colorful stall22', 35003, 5, 'colorful_stall.jpg', 'colorful_stall_sub.jpg', 'カラフル色のストール', 0, 0, '2022-02-08 05:50:38', '2022-04-05 05:25:48');
 
 INSERT INTO product_sizes (product_size_id, product_id, size_id, is_deleted, created_at, updated_at) VALUES
-(0, 0, 0, 0, '2022-02-24 07:39:58', '2022-02-24 07:39:58'),
 (1, 1, 1, 0, '2022-02-08 05:57:59', '2022-02-08 05:57:59'),
 (2, 1, 2, 0, '2022-02-08 05:58:36', '2022-02-08 05:58:36'),
 (3, 1, 3, 0, '2022-02-08 05:59:51', '2022-02-08 05:59:51'),
