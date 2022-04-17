@@ -21,8 +21,8 @@
                             Items
                             </a>
                             <ul class="dropdown-menu border-0 p-0 text-center fs-5" aria-labelledby="navbarDropdownMenuLink" style="background-color: #FFFFCC;">
-                                <?php foreach($category_list as $category) : ?>
-                                    <?php if($category['category_id'] === "All") : ?>
+                                <?php foreach ($category_list as $category) : ?>
+                                    <?php if ($category['category_id'] === "All") : ?>
                                         <li><a class="dropdown-item" href="items.php"><?php echo $category['name'] ?></a></li>
                                     <?php else: ?>
                                     <li><a class="dropdown-item" href="items.php?category_id=<?php echo $category['category_id'] ?>"><?php echo $category['name'] ?></a></li>
