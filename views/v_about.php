@@ -17,10 +17,10 @@
 
                     <div id="about_visual" class="container-fluid row mx-auto p-0">
                         <div class="col p-0 h-25">
-                            <img src="img/about_pic1.JPG" class="img-fluid p-0">
+                            <img src="img/about_pic1.jpg" class="img-fluid p-0">
                         </div>
                         <div class="col p-0 d-md-block d-none">
-                            <img src="img/about_pic2.JPG" class="img-fluid p-0">
+                            <img src="img/about_pic2.jpg" class="img-fluid p-0">
                         </div>
                     </div>
 
