@@ -38,10 +38,10 @@
                                 <li class="item_individual col-6 col-sm-3">
                                     <a href="item_detail.php?product_id=<?php echo $product['product_id'] ?>">
                                         <div class="item_pic">
-                                            <img class="img-fluid" onerror="this.src='./../admin/img/no_image.png'" src="<?php if (isset($product['image_path']) && $product['image_path'] !== "") : ?>
-                                                                                <?php echo "./../admin/img/{$product['image_path']}"; ?>
+                                            <img class="img-fluid" onerror="this.src='./admin/img/no_image.png'" src="<?php if (isset($product['image_path']) && $product['image_path'] !== "") : ?>
+                                                                                <?php echo "./admin/img/{$product['image_path']}"; ?>
                                                                             <?php else : ?>
-                                                                                <?php echo "./../admin/img/no_image.png"; ?>
+                                                                                <?php echo "./admin/img/no_image.png"; ?>
                                                                             <?php endif; ?>">
                                         </div>
                                     </a>
