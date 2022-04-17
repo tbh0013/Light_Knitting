@@ -24,14 +24,14 @@ $lineup_st = $pdo->query($lineup_sql);
 $lineup_st->setFetchMode(PDO::FETCH_ASSOC);
 $lineups = $lineup_st->fetchAll();
 
-$top_news_sql = 'SELECT
-                    date,
+$top_news_sql = "SELECT
+                    to_char(date,'YYYY-MM-DD') as t_date,
                     title,
                     url,
                     news_id
                     FROM news
                     WHERE is_deleted = 0
-                    ORDER BY date DESC LIMIT 5';
+                    ORDER BY date DESC LIMIT 5";
 $top_news_st = $pdo->query($top_news_sql);
 $top_news_st->setFetchMode(PDO::FETCH_ASSOC);
 $top_news = $top_news_st->fetchAll();
