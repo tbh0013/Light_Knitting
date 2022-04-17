@@ -161,7 +161,7 @@ function cart_detail() {
                 LEFT JOIN categories
                 ON products.category_id = categories.category_id
                 WHERE products.product_id = {$product_id}
-                AND sizes.size_name = {$num_size_array['size']}";
+                AND sizes.size_name = '{$num_size_array['size']}'";
             } else {
                 $cart_sql ="SELECT
                 products.product_id,
