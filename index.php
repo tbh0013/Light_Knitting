@@ -25,7 +25,7 @@ $lineup_st->setFetchMode(PDO::FETCH_ASSOC);
 $lineups = $lineup_st->fetchAll();
 
 $top_news_sql = 'SELECT
-                    DATE_FORMAT(date, "%Y-%m-%d") as t_date,
+                    date,
                     title,
                     url,
                     news_id
