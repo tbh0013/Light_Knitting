@@ -68,7 +68,7 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                         <div class="form_item mb-3">
                             <p class="mb-0">商品ID</p>
                             <select name="product_id" class="w-100">
-                                <option value="">0 : (なし)</option>
+                                <option value="0">0 : (なし)</option>
                                 <?php foreach($products as $product) : ?>
                                     <option value="<?php echo $product['product_id'] ?>">
                                         <?php echo $product['product_id'].' : ('.$product['name'].')'; ?>
