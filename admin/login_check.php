@@ -18,7 +18,7 @@ if ($password === '') {
 if ($email === 'knit@admin.com' && $password === '0000') {
     $_SESSION['admin_login'] = true;
     header("Location: ./menu.php");
-    exti();
+    exit();
 } else {
     header("Location: ./index.php");
     exit();
