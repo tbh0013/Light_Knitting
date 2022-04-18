@@ -23,7 +23,7 @@
                                 <?php if($category['category_id'] === "All") : ?>
                                     <option class="category_option" value="items.php"><?php echo $category['name'] ?></option>
                                 <?php else : ?>
-                                    <option class="category_option" value="items.php?category_id=<?php echo $category['category_id'] ?>" <?php if($categories_id === $category['category_id']) { echo 'selected'; } ?>>
+                                    <option class="category_option" value="items.php?category_id=<?php echo $category['category_id'] ?>" <?php if($categories_id == $category['category_id']) { echo 'selected'; } ?>>
                                         <?php echo $category['name'] ?>
                                     </option>
                                     <?php endif; ?>
