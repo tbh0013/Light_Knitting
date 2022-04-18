@@ -24,24 +24,6 @@ if (isset($categories_id)) {
         header('location: no_page.php');
         exit();
     }
-    // $category_list_st = $pdo->query("SELECT category_id, name FROM categories WHERE is_deleted = 0");
-    // $category_list_st->setFetchMode(PDO::FETCH_ASSOC);
-    // $category_list = $category_list_st->fetchAll();
-
-    // echo "<pre>";
-    // var_dump($categories_id);
-    // echo "</pre>";
-    // $result = array_column($category_list, 'category_id');
-    // echo "<pre>";
-    // var_dump($result);
-    // echo "</pre>";
-
-    // if(array_search($categories_id, $result,)){
-    //     echo "成功";
-    // } else {
-    //     echo "失敗";
-    // }
-    // exit;
 
     $products_st = $pdo->query("SELECT * FROM products WHERE category_id = $categories_id AND is_deleted = 0");
     $products_st->setFetchMode(PDO::FETCH_ASSOC);

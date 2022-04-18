@@ -100,20 +100,9 @@ if (isset($_POST['submit'])) {
             $code_string = (string) $val;
             $code_length = mb_strlen($val);
             // !preg_match("^\d{7}$", $code_string
-
             if (!is_numeric($val) || $code_fixed_value != $code_length || !preg_match("/^[0-9]{7}+$/", $code_string)) {
                 array_push($errors, '※郵便番号が正しくありません。ハイフンなし7文字の半角数字を入力して下さい');
             }
-
-            // if ($code_fixed_value != $code_length) {
-            //     array_push($errors, '※郵便番号が正しくありません。ハイフンなし7文字の数字を入力して下さい');
-            // }
-            //         if (!is_numeric($val)) {
-            //             array_push($errors, '※郵便番号が正しくありません。ハイフンなし半角7文字の数字を入力して下さい');
-            //         }
-            //             if(!preg_match("/^[0-9]{7}+$/", $code_string)) {
-            //                 array_push($errors, '※郵便番号が正しくありません。ハイフンなし半角7文字の数字を入力して下さい');
-            //             }
         }
     }
 
