@@ -15,7 +15,7 @@ $posts['is_line_up'] = htmlspecialchars($_POST['is_line_up'], ENT_QUOTES, 'utf-8
 $main_file_name = $_FILES['image_path']['name'];
 $sub_file_name = $_FILES['sub_image_path']['name'];
 
-$category_check_st =  $pdo->query("SELECT category_id FROM categories WHERE category_id = {$posts['category']} AND is_deleted = 0");
+$category_check_st = $pdo->query("SELECT category_id FROM categories WHERE category_id = {$posts['category']} AND is_deleted = 0");
 $category_check_st->setFetchMode(PDO::FETCH_ASSOC);
 $category_check = $category_check_st->fetchAll();
 if($category_check === array()) {
@@ -88,8 +88,29 @@ if (empty($errors)) {
     $product_st->bindParam(':description', $posts['description']);
     $product_st->bindParam(':is_line_up', $posts['is_line_up']);
     $product_st->execute();
-    header('location: product_list.php');
-    exit();
+    $product_id = $pdo->lastInsertId();
+
+    $sizes_st = $pdo->query("SELECT size_id FROM sizes");
+    $sizes_st->setFetchMode(PDO::FETCH_ASSOC);
+    $sizes = $sizes_st->fetchAll();
+    $product_size = $pdo->prepare("INSERT INTO product_sizes(product_id, size_id)VALUES(:product_id, :size_id)");
+
+    if ($posts['category'] === 1) {
+        foreach ($sizes as $size) {
+            $product_size->bindParam(':product_id', $product_id);
+            $product_size->bindParam(':size_id', $size['size_id']);
+            $product_size->execute();
+            header('location: product_list.php');
+            exit();
+        }
+    } else {
+        $size = 0;
+        $product_size->bindParam(':product_id', $product_id);
+        $product_size->bindParam(':size_id', $size);
+        $product_size->execute();
+        header('location: product_list.php');
+        exit();
+    }
 } else {
     $_SESSION['flash']['errors'] = $errors;
     header("location: create_product.php");
