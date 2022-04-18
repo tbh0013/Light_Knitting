@@ -26,7 +26,7 @@ require_once 'initiallization.php';
                         <?php foreach ($newslist as $news) : ?>
                             <h2 id="news_title" class="my-3"><?php echo $news['title']; ?></h2>
                             <div id="news_detail_pic_container" class="container row">
-                                <div class="col-5 mx-auto">
+                                <div class="col-9 col-md-5 mx-auto">
                                     <img class="img-fluid" onerror="this.src='./admin/img/no_image.png'" src="<?php if (isset($news['image_path']) && $news['image_path'] !== "") : ?>
                                                                                 <?php echo "./admin/img/{$news['image_path']}"; ?>
                                                                             <?php else : ?>
