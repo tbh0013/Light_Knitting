@@ -100,8 +100,6 @@ if (empty($errors)) {
             $product_size->bindParam(':product_id', $product_id);
             $product_size->bindParam(':size_id', $size['size_id']);
             $product_size->execute();
-            header('location: product_list.php');
-            exit();
         }
     } else {
         $size = 0;
@@ -111,6 +109,8 @@ if (empty($errors)) {
         header('location: product_list.php');
         exit();
     }
+    header('location: product_list.php');
+    exit();
 } else {
     $_SESSION['flash']['errors'] = $errors;
     header("location: create_product.php");
