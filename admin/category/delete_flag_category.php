@@ -15,7 +15,7 @@ $check_st->execute();
 $checks = $check_st->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($checks as $check) {
-    if($check['is_deleted'] === "0") {
+    if($check['is_deleted'] == "0") {
         $category_sql = "SELECT category_id, is_deleted FROM products WHERE category_id = {$category_id} AND is_deleted = 0";
         $category_st = $pdo->query($category_sql);
         $category_st->setFetchMode(PDO::FETCH_ASSOC);
@@ -36,7 +36,7 @@ foreach($checks as $check) {
             echo '<pre>';
             echo "<a href="."category_list.php".">カテゴリー一覧に戻る</a>";
         }
-    } else if($check['is_deleted'] === "1"){
+    } else if($check['is_deleted'] == "1"){
         $deleted_sql = "UPDATE categories SET
                         is_deleted=:is_deleted
                         WHERE category_id = $category_id";

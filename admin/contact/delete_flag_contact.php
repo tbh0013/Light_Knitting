@@ -15,7 +15,7 @@ $check_st->execute();
 $checks = $check_st->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($checks as $check) {
-    if($check['is_deleted'] === "0") {
+    if($check['is_deleted'] == "0") {
         var_dump($check['is_deleted']);
         $deleted_sql = "UPDATE contacts SET
                         is_deleted=:is_deleted
@@ -27,7 +27,7 @@ foreach($checks as $check) {
         $deleted_st->execute();
         header('location: contact_list.php');
         exit();
-    } else if($check['is_deleted'] === "1"){
+    } else if($check['is_deleted'] == "1"){
         $deleted_sql = "UPDATE contacts SET
                         is_deleted=:is_deleted
                         WHERE contact_id = $contact_id";
