@@ -95,7 +95,7 @@ if (empty($errors)) {
     $sizes = $sizes_st->fetchAll();
     $product_size = $pdo->prepare("INSERT INTO product_sizes(product_id, size_id)VALUES(:product_id, :size_id)");
 
-    if ($posts['category'] === 1) {
+    if ($posts['category'] === "1") {
         foreach ($sizes as $size) {
             $product_size->bindParam(':product_id', $product_id);
             $product_size->bindParam(':size_id', $size['size_id']);
