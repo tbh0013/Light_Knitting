@@ -18,15 +18,15 @@
 
                     <h2 id="item_heading" class="text-decoration-underline text-center p-3"><?php echo $categories[0]['name'];?></h2>
                     <div id="category_menu" class="d-flex justify-content-center align-items-center">
-                        <select class="test1" name="category" onchange="location.href=value;">
+                        <select class="category_select" name="category" onchange="location.href=value;">
                             <?php foreach($category_list as $category) : ?>
                                 <?php if($category['category_id'] === "All") : ?>
-                                    <option class="test2" value="items.php" <?php if($categories_id === null) { echo 'selected'; } ?>><?php echo $category['name'] ?></option>
+                                    <option class="category_option" value="items.php"><?php echo $category['name'] ?></option>
                                 <?php else : ?>
-                                    <option class="test2" value="items.php?category_id=<?php echo $category['category_id'] ?>" <?php if($categories_id === $category['category_id']) { echo 'selected'; } ?>>
+                                    <option class="category_option" value="items.php?category_id=<?php echo $category['category_id'] ?>" <?php if($categories_id === $category['category_id']) { echo 'selected'; } ?>>
                                         <?php echo $category['name'] ?>
                                     </option>
-                                <?php endif; ?>
+                                    <?php endif; ?>
                             <?php endforeach; ?>
                         </select>
                     </div><!--#category_menu-->

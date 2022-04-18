@@ -144,11 +144,11 @@ footer {
   background-color: black;
 }
 
-.test1 {
+.category_select {
   position:relative;
 }
 
-.test2 {
+.category_option {
   position:absolute;
 top:10px;
 left:80px;
