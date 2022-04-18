@@ -87,7 +87,7 @@
                                                 <?php endif; ?>
                                             </div>
                                             <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                                            <input type="submit" name="submit" class="cart_in_button mb-3 px-5" value="カートに入れる">
+                                            <input type="submit" name="submit" class="btn btn-outline-dark text-decoration-none px-5 mb-3" value="カートに入れる">
                                         </form>
 
                                     </div><!--#item_information-->

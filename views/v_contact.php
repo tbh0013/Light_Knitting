@@ -40,7 +40,7 @@
                                     <dd><p><?php echo $posts['message']; ?></dd>
                                     <input type="hidden" name="message" value="<?php echo $posts['message']; ?>">
                                 </dl>
-                                <p class="send_button text-center" ><input type="submit" name="submit_check" value="送信する" class="p-2 bg-white border-light"></p>
+                                <p class="send_button text-center" ><input type="submit" name="submit_check" value="送信する" class="btn btn-outline-dark text-decoration-none px-5"></p>
                             </form>
                             <div class="move text-center">
                                 <a href="contact.php" class="btn btn-outline-dark text-decoration-none m-3">contactページに戻る</a>
@@ -71,7 +71,7 @@
                                         <dd><textarea name="message" id="message" class="form-control" placeholder="200文字以内で入力してください。" required></textarea></dd>
                                     </dl>
 
-                                    <p class="send_button text-center" ><input type="submit" name="submit" value="確認する" class="p-2 bg-white border-light"></p>
+                                    <p class="send_button text-center" ><input type="submit" name="submit" value="確認する" class="btn btn-outline-dark text-decoration-none px-5"></p>
                                 </form>
                         <?php endif; ?>
 

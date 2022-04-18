@@ -86,7 +86,7 @@
                                 </table>
                             </div>
                             <div class="text-center">
-                                <input type="submit" name="submit_check" value="注文を確定">
+                                <input type="submit" name="submit_check" class="btn btn-outline-dark text-decoration-none px-5 mb-4" value="注文を確定">
                             </div>
                         </form>
                         <div class="move d-flex flex-md-row flex-column justify-content-center">
@@ -123,7 +123,7 @@
                                 <input type="tel" name="tel" pattern="^0\d{9,10}$" placeholder="ハイフンなし0から始まる半角数字10桁或いは11桁を入力して下さい。" class="form-control" value="<?php echo $tel; ?>" required>
                             </p>
                             <p class="mx-auto text-center">
-                                <input type="submit" name="submit" class="px-4" value="確認">
+                                <input type="submit" name="submit" class="btn btn-outline-dark text-decoration-none px-5" value="確認">
                             </p>
                         </form>
                         <div class="move text-center">
