@@ -37,10 +37,10 @@
                     <div id="icons">
                         <div class="row justify-content-center align-items-center m-0">
                             <div class="col-3 p-0 m-2">
-                                <a href="#"><img src="img/instagram_logo.png" class="img-fluid p-0"></a>
+                                <a href="https://www.instagram.com/"><img src="img/instagram_logo.png" class="img-fluid p-0"></a>
                             </div>
                             <div class="col-3 p-0 m-2">
-                                <a href="#"><img src="img/twitter_logo.png" class="img-fluid p-0"></a>
+                                <a href="https://twitter.com/"><img src="img/twitter_logo.png" class="img-fluid p-0"></a>
                             </div>
                         </div>
                         <div class="row mb-4 mx-0">
