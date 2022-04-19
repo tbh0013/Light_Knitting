@@ -108,7 +108,7 @@ if (empty($errors)) {
         {$img_query}
         {$sub_img_query}
         description=:description,
-        is_line_up=:is_line_up,
+        is_line_up=:is_line_up
         WHERE product_id = '{$posts['product_id']}'";
 
     $update_sql = $query;
