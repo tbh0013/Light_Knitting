@@ -109,7 +109,7 @@ if (empty($errors)) {
         {$sub_img_query}
         description=:description,
         is_line_up=:is_line_up,
-        WHERE product_id = {$posts['product_id']}";
+        WHERE product_id = '{$posts['product_id']}'";
 
     $update_sql = $query;
     $product_st = $pdo->prepare($update_sql);
