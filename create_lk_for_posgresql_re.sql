@@ -37,14 +37,14 @@ ALTER TABLE orders
 
 -- ニュース
 CREATE TABLE news (
-    news_id serial NOT NULL ,
-    product_id int NOT NULL ,
-    date date DEFAULT NULL ,
-    title varchar(255) DEFAULT NULL ,
-    text text DEFAULT NULL ,
-    image_path varchar(255) DEFAULT NULL ,
-    url varchar(255) DEFAULT NULL ,
-    is_deleted int NOT NULL DEFAULT 0  ,
+    news_id serial NOT NULL,
+    product_id int,
+    date date DEFAULT NULL,
+    title varchar(255) DEFAULT NULL,
+    text text DEFAULT NULL,
+    image_path varchar(255) DEFAULT NULL,
+    url varchar(255) DEFAULT NULL,
+    is_deleted int NOT NULL DEFAULT 0,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     updated_at timestamp without time zone DEFAULT now() NOT NULL
 );
