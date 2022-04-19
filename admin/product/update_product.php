@@ -15,6 +15,7 @@ $posts['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES, 'utf
 $posts['is_line_up'] = htmlspecialchars($_POST['is_line_up'], ENT_QUOTES, 'utf-8');
 $posts['delete_main_file'] = htmlspecialchars($_POST['delete_main_file'], ENT_QUOTES, 'utf-8');
 $posts['delete_sub_file'] = htmlspecialchars($_POST['delete_sub_file'], ENT_QUOTES, 'utf-8');
+$is_deleted = 0;
 $main_file_name = $_FILES['image_path']['name'];
 $sub_file_name = $_FILES['sub_image_path']['name'];
 
@@ -121,7 +122,7 @@ if (empty($errors)) {
     $product_st->bindParam(':category', $posts['category']);
     $product_st->bindParam(':description', $posts['description']);
     $product_st->bindParam(':is_line_up', $posts['is_line_up']);
-    $product_st->bindParam(':is_deleted', 0);
+    $product_st->bindParam(':is_deleted', $is_deleted);
     $product_st->execute();
     header('location: product_list.php');
     exit();
