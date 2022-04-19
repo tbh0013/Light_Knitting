@@ -109,7 +109,6 @@ if (empty($errors)) {
         {$sub_img_query}
         description=:description,
         is_line_up=:is_line_up,
-        is_deleted = :is_deleted
         WHERE product_id = {$posts['product_id']}";
 
     $update_sql = $query;
@@ -121,7 +120,6 @@ if (empty($errors)) {
     $product_st->bindParam(':category', $posts['category']);
     $product_st->bindParam(':description', $posts['description']);
     $product_st->bindParam(':is_line_up', $posts['is_line_up']);
-    $product_st->bindParam(':is_deleted', $posts['is_deleted']);
     $product_st->execute();
     header('location: product_list.php');
     exit();
