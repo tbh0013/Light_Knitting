@@ -13,6 +13,7 @@ $posts['date'] = htmlspecialchars($_POST['date'], ENT_QUOTES, 'utf-8');
 $posts['title'] = htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8');
 $posts['text'] = htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf-8');
 $posts['url'] = htmlspecialchars($_POST['url'], ENT_QUOTES, 'utf-8');
+$posts['is_deleted'] = htmlspecialchars($_POST['is_deleted'], ENT_QUOTES, 'utf-8');
 $posts['delete_main_file'] = htmlspecialchars($_POST['delete_main_file'], ENT_QUOTES, 'utf-8');
 $main_file_name = $_FILES['image_path']['name'];
 

@@ -57,6 +57,7 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                     <form action="update_news.php" method="POST" enctype="multipart/form-data">
                         <?php foreach($news_list as $news) : ?>
                             <input type="hidden" name="news_id" value="<?php echo $news['news_id']; ?>">
+                            <input type="hidden" name="is_deleted" value="<?php echo $news['is_deleted']; ?>">
                             <div class="form_item mb-3">
                                 <p class="mb-0">お知らせ日</p>
                                 <input type="date" name="date" class="w-100" value="<?php echo $news['date']; ?>" required>

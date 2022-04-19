@@ -55,6 +55,7 @@ $products = $product_st->fetchAll(PDO::FETCH_ASSOC);
                     <form action="update_product.php" method="POST" enctype="multipart/form-data">
                         <?php foreach($products as $product) : ?>
                             <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                            <input type="hidden" name="is_deleted" value="<?php echo $product['is_deleted']; ?>">
                             <div class="form_item mb-3">
                                 <p class="mb-0">商品名</p>
                                 <input type="text" name="name" class="w-100" value="<?php echo $product['name']; ?>" required>
