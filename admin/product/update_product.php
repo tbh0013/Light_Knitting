@@ -18,7 +18,7 @@ $posts['delete_sub_file'] = htmlspecialchars($_POST['delete_sub_file'], ENT_QUOT
 $main_file_name = $_FILES['image_path']['name'];
 $sub_file_name = $_FILES['sub_image_path']['name'];
 
-$category_check_st =  $pdo->query("SELECT category_id FROM categories WHERE category_id = {$posts['category']} AND is_deleted = 0");
+$category_check_st =  $pdo->query("SELECT category_id FROM categories WHERE category_id = '{$posts['category']}' AND is_deleted = 0");
 $category_check_st->setFetchMode(PDO::FETCH_ASSOC);
 $category_check = $category_check_st->fetchAll();
 if($category_check === array()) {
