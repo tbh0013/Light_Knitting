@@ -53,6 +53,7 @@ $category_list = $category_st->fetchAll(PDO::FETCH_ASSOC);
                     <form action="update_category.php" method="POST">
                         <?php foreach($category_list as $category) : ?>
                             <input type="hidden" name="category_id" value="<?php echo $category['category_id']; ?>">
+                            <input type="hidden" name="is_deleted" value="<?php echo $category['is_deleted']; ?>">
                             <div class="form_item mb-3">
                                 <p class="mb-0">カテゴリー名</p>
                                 <input type="text" name="name" class="w-100" value="<?php echo $category['name']; ?>" required>
