@@ -18,7 +18,7 @@ $posts['delete_sub_file'] = htmlspecialchars($_POST['delete_sub_file'], ENT_QUOT
 $main_file_name = $_FILES['image_path']['name'];
 $sub_file_name = $_FILES['sub_image_path']['name'];
 
-$category_check_st =  $pdo->query("SELECT category_id FROM categories WHERE category_id = '{$posts['category']}' AND is_deleted = 0");
+$category_check_st =  $pdo->query("SELECT category_id FROM categories WHERE category_id = {$posts['category']} AND is_deleted = 0");
 $category_check_st->setFetchMode(PDO::FETCH_ASSOC);
 $category_check = $category_check_st->fetchAll();
 if($category_check === array()) {
@@ -108,8 +108,9 @@ if (empty($errors)) {
         {$img_query}
         {$sub_img_query}
         description=:description,
-        is_line_up=:is_line_up
-        WHERE product_id = '{$posts['product_id']}'";
+        is_line_up=:is_line_up,
+        is_deleted = :is_deleted
+        WHERE product_id = {$posts['product_id']}";
 
     $update_sql = $query;
     $product_st = $pdo->prepare($update_sql);
@@ -120,6 +121,7 @@ if (empty($errors)) {
     $product_st->bindParam(':category', $posts['category']);
     $product_st->bindParam(':description', $posts['description']);
     $product_st->bindParam(':is_line_up', $posts['is_line_up']);
+    $product_st->bindParam(':is_deleted', 0);
     $product_st->execute();
     header('location: product_list.php');
     exit();
