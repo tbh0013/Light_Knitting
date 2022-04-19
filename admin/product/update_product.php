@@ -87,10 +87,10 @@ if ($is_changed_sub === false) {
     }
 }
 
-$description_limit = 50;
+$description_limit = 500;
 $description_length = mb_strlen($posts['description']);
 if ($description_limit < $description_length) {
-    array_push($errors, '※商品説明は50文字以内で入力してください');
+    array_push($errors, '※商品説明は500文字以内で入力してください');
 }
 
 if (!preg_match('/^([0-1]{1})$/',$posts['is_line_up'])) {

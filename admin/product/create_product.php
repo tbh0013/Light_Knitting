@@ -73,7 +73,7 @@ unset($_SESSION['flash']['errors']);
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">商品説明</p>
-                            <textarea name="description" placeholder="50文字以内で入力してください。" class="w-100"></textarea>
+                            <textarea name="description" placeholder="500文字以内で入力してください。" class="w-100"></textarea>
                         </div>
                         <div class="form_item mb-3">
                             <p class="mb-0">ラインナップフラグ(1=有効,0=無効)</p>

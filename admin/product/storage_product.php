@@ -11,6 +11,7 @@ $posts['name'] = htmlspecialchars($_POST['name'], ENT_QUOTES, 'utf-8');
 $posts['price'] = htmlspecialchars($_POST['price'], ENT_QUOTES, 'utf-8');
 $posts['category'] = htmlspecialchars($_POST['category'], ENT_QUOTES, 'utf-8');
 $posts['description'] = htmlspecialchars($_POST['description'], ENT_QUOTES, 'utf-8');
+$posts['description'] = nl2br($posts['description']);
 $posts['is_line_up'] = htmlspecialchars($_POST['is_line_up'], ENT_QUOTES, 'utf-8');
 $main_file_name = $_FILES['image_path']['name'];
 $sub_file_name = $_FILES['sub_image_path']['name'];
@@ -68,10 +69,10 @@ if($is_changed_sub){
     }
 }
 
-$description_limit = 50;
+$description_limit = 500;
 $description_length = mb_strlen($posts['description']);
 if ($description_limit < $description_length) {
-    array_push($errors, '※商品説明は50文字以内で入力してください');
+    array_push($errors, '※商品説明は500文字以内で入力してください');
 }
 
 if (!preg_match('/^([0-1]{1})$/',$posts['is_line_up'])) {

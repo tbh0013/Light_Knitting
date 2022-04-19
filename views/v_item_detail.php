@@ -49,7 +49,8 @@
                                 </div><!--.pic_container-->
 
                                 <div class="detail_container col text-center">
-                                    <p><?php echo $product['description']; ?></p>
+
+                                    <p><?php echo nl2br($product['description']); ?></p>
 
                                     <div id="item_information">
                                         <div class="item_detail_place">
