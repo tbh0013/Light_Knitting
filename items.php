@@ -25,7 +25,7 @@ if (isset($categories_id)) {
         exit();
     }
 
-    $products_st = $pdo->query("SELECT * FROM products WHERE category_id = $categories_id AND is_deleted = 0");
+    $products_st = $pdo->query("SELECT * FROM products WHERE category_id = $categories_id AND is_deleted = 0 ORDER BY updated_at DESC");
     $products_st->setFetchMode(PDO::FETCH_ASSOC);
     $products = $products_st->fetchAll();
 } else {
@@ -36,7 +36,8 @@ if (isset($categories_id)) {
                     JOIN categories
                     USING(category_id)
                     WHERE products.is_deleted = 0
-                    AND categories.is_deleted = 0";
+                    AND categories.is_deleted = 0
+                    ORDER BY category_id,updated_at DESC ";
     $products_st = $pdo->query($product_sql);
     $products_st->setFetchMode(PDO::FETCH_ASSOC);
     $products = $products_st->fetchAll();
